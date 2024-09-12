@@ -23,7 +23,7 @@
                         <div class="search-container">                                
                             <div class="search-box">                            
                                 <input type="text" class="search" placeholder="검색" />
-                                <img class="search-icon" src="@/assets/images/top/searchtool.png" alt="검색"/> 
+                                <img class="search-icon" src="@/assets/images/icon/searchtool.png" alt="검색"/> 
                             </div>                               
                         </div>
                     </div>

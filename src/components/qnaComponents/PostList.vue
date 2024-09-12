@@ -16,7 +16,7 @@
           <div class="search-btn-box">
             <button type="submit" class="search-btn">
               검색하기
-              <img class="search-icon" src="@/assets/images/top/searchtool.png" alt="검색"/>
+              <img class="search-icon" src="@/assets/images/icon/searchtool.png" alt="검색"/>
             </button>
           </div>
         </form>

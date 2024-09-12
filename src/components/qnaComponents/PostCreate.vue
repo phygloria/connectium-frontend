@@ -32,7 +32,7 @@
                     <span class="image-upload-text">이미지 선택 </span>
                     <input type="file" id="upload-image" @change="onFileSelected" ref="fileInput" hidden accept="image/*" />
                     <label for="upload-image">
-                      <img class="imageUpIcon" src="@/assets/images/create/icon_upload.png" alt="Upload icon" />
+                      <img class="imageUpIcon" src="@/assets/images/icon/icon_upload.png" alt="Upload icon" />
                     </label>
                   </div>
                 </div>

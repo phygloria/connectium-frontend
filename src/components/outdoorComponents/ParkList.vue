@@ -42,8 +42,13 @@
                         </div>
                       </div>
                       <div class="like-area">
-                        <button class="like-button" @click="toggleLike(event)">
-                          {{ event.liked ? '♥' : '♡' }}
+                        <button class="like-button" @click="toggleLike(event.id)">
+                          <img 
+                            :src="event.liked ? require('@/assets/images/icon/heart_icon_in_pink.png') : require('@/assets/images/icon/flat_heart_shape.png')"
+                            :alt="event.liked ? '좋아요 취소' : '좋아요'"
+                            class="heart-icon"
+                          >                          
+                          <!-- {{ event.liked ? '♥' : '♡' }} -->
                         </button>
                       </div>
                     </div>
@@ -62,11 +67,19 @@
 
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, reactive, computed, onMounted } from 'vue';
 import { useAllPrograms } from '@/composables/useAllPrograms';
 
-const { programs, isLoading, error, fetchPrograms } = useAllPrograms();
+// 고유 ID 생성을 위한 함수
+let nextId = 1;
+function generateUniqueId() {
+  return nextId++;
+}
 
+const { programs: initialPrograms, isLoading, error, fetchPrograms } = useAllPrograms();
+
+// programs를 reactive로 변경
+const programs = reactive([]);
 
 const activeFilter = ref('all');
 
@@ -86,17 +99,30 @@ const filterFunctions = {
   paid: event => event.payatnm === '유료'
 };
 
+// const filteredEvents = computed(() => 
+//   programs.value.filter(filterFunctions[activeFilter.value])
+// );
+
 const filteredEvents = computed(() => 
-  programs.value.filter(filterFunctions[activeFilter.value])
+  programs.filter(filterFunctions[activeFilter.value])
 );
 
-const toggleLike = (event) => {
-  // Vue의 반응성 시스템을 활용하여 업데이트
-  const index = programs.value.findIndex(e => e.id === event.id);
-  if (index !== -1) {
-    programs.value[index] = { ...programs.value[index], liked: !programs.value[index].liked };
+
+// const toggleLike = (event) => {
+//   // Vue의 반응성 시스템을 활용하여 업데이트
+//   const index = programs.value.findIndex(e => e.id === event.id);
+//   if (index !== -1) {
+//     programs.value[index] = { ...programs.value[index], liked: !programs.value[index].liked };
+//   }
+// };
+const toggleLike = (eventId) => {
+  const event = programs.find(e => e.id === eventId);
+  if (event) {
+    event.liked = !event.liked;
   }
 };
+
+
 
 const formatDate = (dateString) => {
   if (!dateString) return '';
@@ -111,6 +137,13 @@ const getImageUrl = (url) => {
 
 onMounted(async () => {
   await fetchPrograms();
+
+  // 초기 데이터를 reactive 배열로 복사하면서 고유 ID 할당
+  programs.push(...initialPrograms.value.map(event => ({
+    ...event,
+    id: generateUniqueId(),
+    liked: false // 초기 좋아요 상태 설정
+  })));
 });
 
 </script>
@@ -300,7 +333,7 @@ onMounted(async () => {
 .status {
   position: static; /* 절대 위치에서 일반 위치로 변경 */
   display: inline-block; /* 인라인 블록으로 변경 */
-  padding: 3px 8px;
+  padding: 3px 5px;
   border-radius: 10px;
   font-size: 12px;
   margin-top: 5px; /* 상태 위 여백 추가 */
@@ -316,12 +349,24 @@ onMounted(async () => {
   color: white;
 }
 
+
 .like-button {
-  position: static; /* 절대 위치에서 일반 위치로 변경 */
   background: none;
   border: none;
-  font-size: 24px;
   cursor: pointer;
-  margin-top: 10px; /* 좋아요 버튼 위 여백 추가 */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;  /* 원하는 크기로 조정 */
+  height: 20px; /* 원하는 크기로 조정 */
+}
+
+.heart-icon {
+  transition: transform 0.2s ease;
+}
+
+.like-button:hover .heart-icon {
+  transform: scale(1.1);
 }
 </style>
