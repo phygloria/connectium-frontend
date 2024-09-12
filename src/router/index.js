@@ -6,6 +6,11 @@ import HomeView from '@/views/HomeView.vue';
 import QnAView from '@/views/QnAView.vue';
 import EducationView from '@/views/EducationView.vue';
 import JoyfulView from '@/views/JoyfulView.vue';
+import CommunityList from '@/components/communityComponents/CommunityList.vue';
+import CommunityCreate from '@/components/communityComponents/CommunityCreate.vue';
+import CommunityDetail from '@/components/communityComponents/CommunityDetail.vue';
+import CommunityEdit from '@/components/communityComponents/CommunityEdit.vue';
+
 
 
 const routes = [
@@ -44,6 +49,28 @@ const routes = [
     name: '신나는우리동네',
     component: JoyfulView,
   },
+  {
+    path: '/community',
+    name: '우리아이커뮤니티',
+    component: CommunityList
+  },
+
+  {
+    path: '/community/create',
+    name: 'CommunityCreate',
+    component: CommunityCreate
+  },
+  {
+    path: '/community/:id',
+    name: 'CommunityDetail',
+    component: CommunityDetail
+  },
+  {
+    path: '/community/edit/:id',
+    name: 'CommunityEdit',
+    component: CommunityEdit
+  },
+  
 ];
 
 const router = createRouter({
