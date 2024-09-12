@@ -4,7 +4,8 @@ import PostEdit from '@/components/qnaComponents/PostEdit.vue';
 import PostView from '@/components/qnaComponents/PostView.vue';
 import HomeView from '@/views/HomeView.vue';
 import QnAView from '@/views/QnAView.vue';
-import JoyfulVillage from '@/views/JoyfulVillage.vue';
+import EducationView from '@/views/EducationView.vue';
+import JoyfulView from '@/views/JoyfulView.vue';
 
 
 const routes = [
@@ -34,9 +35,14 @@ const routes = [
     component: PostEdit,
   },
   {
-    path: '/joyfulVillage',
+    path: '/educationProgram',
+    name: '교육프로그램',
+    component: EducationView,
+  },
+  {
+    path: '/joyful',
     name: '신나는우리동네',
-    component: JoyfulVillage,
+    component: JoyfulView,
   },
 ];
 

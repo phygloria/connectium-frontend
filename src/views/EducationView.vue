@@ -8,6 +8,6 @@
 
 <script setup>
 import MainTop from '@/components/MainTop.vue';
-import ParkList from '@/components/outdoorComponents/ParkList.vue';
+import ParkList from '@/components/programComponents/ProgramList.vue';
 
 </script>

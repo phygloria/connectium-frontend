@@ -34,6 +34,7 @@
                     <label for="upload-image">
                       <img class="imageUpIcon" src="@/assets/images/icon/icon_upload.png" alt="Upload icon" />
                     </label>
+                    <h6 class="file-size"> 1MB 미만의 jpg파일</h6>
                   </div>
                 </div>
               </div>
@@ -304,6 +305,13 @@ textarea {
   cursor: pointer;
   z-index: 1;
   /* textarea 위에 표시되도록 */
+}
+
+.file-size {
+  position: absolute;
+  top: 130px;
+  opacity: 50%;
+
 }
 
 .upload-image {
