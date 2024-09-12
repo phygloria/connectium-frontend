@@ -38,8 +38,12 @@ export default {
     }).then((response) => response.data);
   },
 
-  updatePost(id, post) {
-    return axios.put(`${API_URL}/post/${id}`, post).then(response => response.data);
+  updatePost(id, formData) {
+    return api.put(`/post/${id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then(response => response.data);
   },
 
   deletePost(id) {
