@@ -32,8 +32,8 @@
                     <nav class="main-nav">
                         <router-link to="#" class="nav-item">공지사항</router-link>
                         <router-link to="#" class="nav-item">우리아이 커뮤니티</router-link>
-                        <router-link to="#" class="nav-item">교육 프로그램</router-link>
-                        <router-link to="/joyfulVillage" class="nav-item">신나는 우리동네</router-link>
+                        <router-link to="/educationProgram" class="nav-item">교육 프로그램</router-link>
+                        <router-link to="/joyful" class="nav-item">신나는 우리동네</router-link>
                         <router-link to="#" class="nav-item">우리 같이가요!</router-link>
                         <router-link to="/postList" class="nav-item">QnA</router-link>
                     </nav>
