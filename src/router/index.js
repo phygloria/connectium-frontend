@@ -10,7 +10,7 @@ import CommunityList from '@/components/communityComponents/CommunityList.vue';
 import CommunityCreate from '@/components/communityComponents/CommunityCreate.vue';
 import CommunityDetail from '@/components/communityComponents/CommunityDetail.vue';
 import CommunityEdit from '@/components/communityComponents/CommunityEdit.vue';
-
+import ProgramView from '@/views/ProgramView.vue';
 
 
 const routes = [
@@ -48,6 +48,11 @@ const routes = [
     path: '/joyful',
     name: '신나는우리동네',
     component: JoyfulView,
+  },
+  {
+    path: '/program/:type/:svcid',
+    name: 'programDetail',
+    component: ProgramView
   },
   {
     path: '/community',

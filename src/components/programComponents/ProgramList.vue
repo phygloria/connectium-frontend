@@ -25,7 +25,7 @@
           <div class="list-container">
             <div class="list-column">
               <div class="events-column">
-                <div class="event-card" v-for="event in filteredEvents" :key="event.id" >
+                <div class="event-card" v-for="event in filteredEvents" :key="event.id" @click="navigateToDetail(event)">
                   <div class="img-area">
                     <img :src="getImageUrl(event.imageUrl)" :alt="event.title || event.svcnm" />
                   </div>
@@ -69,12 +69,15 @@
 <script setup>
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useAllPrograms } from '@/composables/useAllPrograms';
+import { useRouter } from 'vue-router';
 
 // 고유 ID 생성을 위한 함수
 let nextId = 1;
 function generateUniqueId() {
   return nextId++;
 }
+
+const router = useRouter();
 
 const { programs: initialPrograms, isLoading, error, fetchPrograms } = useAllPrograms();
 
@@ -145,6 +148,16 @@ onMounted(async () => {
     liked: false // 초기 좋아요 상태 설정
   })));
 });
+
+const navigateToDetail = (event) => {
+  router.push({ 
+    name: 'programDetail', 
+    params: { 
+      type: event.type === 'program1' ? 'CulProgram' : 'EduProgram', 
+      svcid: event.svcid 
+    } 
+  });
+};
 
 </script>
 
