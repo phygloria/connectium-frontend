@@ -5,13 +5,13 @@ import PostView from '@/components/qnaComponents/PostView.vue';
 import HomeView from '@/views/HomeView.vue';
 import QnAView from '@/views/QnAView.vue';
 import EducationView from '@/views/EducationView.vue';
-import JoyfulView from '@/views/JoyfulView.vue';
 import CommunityList from '@/components/communityComponents/CommunityList.vue';
 import CommunityCreate from '@/components/communityComponents/CommunityCreate.vue';
 import CommunityDetail from '@/components/communityComponents/CommunityDetail.vue';
 import CommunityEdit from '@/components/communityComponents/CommunityEdit.vue';
 import ProgramView from '@/views/ProgramView.vue';
-
+import ParkView from '@/views/ParkView.vue';
+import ParkDetail from '@/components/outdoorComponents/ParkDetail.vue';
 
 const routes = [
   {
@@ -45,11 +45,6 @@ const routes = [
     component: EducationView,
   },
   {
-    path: '/joyful',
-    name: '신나는우리동네',
-    component: JoyfulView,
-  },
-  {
     path: '/program/:type/:svcid',
     name: 'programDetail',
     component: ProgramView
@@ -75,6 +70,16 @@ const routes = [
     name: 'CommunityEdit',
     component: CommunityEdit
   },
+  {
+    path: '/outdoor/park',
+    name: 'ParkList',
+    component: ParkView
+  },
+  {
+    path: '/outdoor/park/:id',
+    name: 'ParkDetail',
+    component: ParkDetail
+  }
   
 ];
 
