@@ -58,7 +58,7 @@ import { RouterLink } from 'vue-router';
 
 .top-bar {
     width: 100%;
-    background: #91c529;
+    background: #a8dd3f;
     box-shadow: 0px 3px 7px #DBFA5F;
     border-radius: 50px;
     padding: 1% 15% 1% 15%;

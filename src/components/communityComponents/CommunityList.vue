@@ -10,9 +10,10 @@
 
         <div class="content-wrapper">
           <div class="category-buttons">
-            <button v-for="category in categories" :key="category" @click="selectCategory(category)"
-              :class="{ active: selectedCategory === category }">
-              {{ category }}
+            <button v-for="category in categories" :key="category.value" 
+              @click="selectCategory(category.value)"
+              :class="{ active: selectedCategory === category.value }">
+              {{ category.label }}
             </button>
           </div>
           <div class="post-btn">
@@ -26,8 +27,10 @@
               <router-link :to="`/community/${post.id}`">
                 <h3>{{ post.title }}</h3>
               </router-link>
-              <span class="post-author">{{ post.authorName }}</span>
-              <span class="post-category">{{ post.category }}</span>
+              <div class="post-item-wrapper">
+                <span class="post-category">{{ post.category }}</span>
+                <span class="post-author">{{ post.authorName }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -41,9 +44,7 @@ import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 import MainTop from '@/components/MainTop.vue'
 
-const categories = ref(['전체','5세미만', '5세~6세', '7~9세', '10세이상'])
 const posts = ref([])
-const selectedCategory = ref(null)
 
 const fetchPosts = async () => {
   try {
@@ -54,22 +55,33 @@ const fetchPosts = async () => {
   }
 }
 
-const selectCategory = async (category) => {
-  selectedCategory.value = category
-  try {
-    const response = await axios.get(`http://localhost:8080/api/community/category/${category}`)
-    posts.value = response.data
-  } catch (error) {
-    console.error('Error fetching posts by category:', error)
-  }
+const selectedCategory = ref('all')
+
+const categories = [
+  { value: 'all', label: '전체' },
+  { value: '5세미만', label: '5세미만' },
+  { value: '5세~6세', label: '5세~6세' },
+  { value: '7~9세', label: '7~9세' },
+  { value: '10세이상', label: '10세이상' }
+];
+
+const filterFunctions = {
+  all: () => true,
+  '5세미만': post => post.category === '5세미만',
+  '5세~6세': post => post.category === '5세~6세',
+  '7~9세': post => post.category === '7~9세',
+  '10세이상': post => post.category === '10세이상'
+};
+
+
+const selectCategory = (category) => {
+  selectedCategory.value = category;
 }
 
 const filteredPosts = computed(() => {
-  if (selectedCategory.value) {
-    return posts.value.filter(post => post.category === selectedCategory.value)
-  }
-  return posts.value
-})
+  const filterFunction = filterFunctions[selectedCategory.value] || filterFunctions.all;
+  return posts.value.filter(filterFunction);
+});
 
 onMounted(fetchPosts)
 </script>
@@ -181,7 +193,7 @@ onMounted(fetchPosts)
 }
 
 .post-button {
-  padding: 10px 20px;
+  padding: 5px 50px;
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -191,30 +203,56 @@ onMounted(fetchPosts)
 
 .post-item {
   background-color: white;
-  padding: 15px;
+  padding: 10px; /* 패딩 조금 늘림 */
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 제목과 정보 사이 공간 분배 */
+  min-height: 80px; /* 최소 높이 설정 */
 }
 
 .post-item h3 {
-  margin: 0 0 10px 0;
+  margin-right: auto; /* 이 줄을 추가하여 오른쪽 정렬 */ 
+  margin-left: 30px;
   color: #333;
 }
 
 .post-item p {
+  display: flex;
   color: #666;
   margin-bottom: 10px;
 }
 
-.post-category,
+.post-item-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 수직 중앙 정렬 */
+  height: 20px; /* 높이 지정 */
+
+}
+
+.post-category{
+  font-size: 12px;
+  color: #999;
+  margin-right: auto; /* 이 줄을 추가하여 오른쪽 정렬 */  
+  margin-left: 10px;
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+}
 .post-author {
   font-size: 12px;
   color: #999;
+  margin-left: auto; /* 이 줄을 추가하여 오른쪽 정렬 */
   margin-right: 10px;
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
 }
 .post-btn {
-  
+  display: flex;
+  margin-bottom: 5px;
+
 }
 .create-post-button {
   align-self: flex-end;
