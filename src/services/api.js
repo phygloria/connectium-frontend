@@ -52,6 +52,17 @@ export default {
 
   getAllPrograms() {
     return api.get('/programs/all').then((response) => response.data);
-  }
+  },
+
+  // 프로그램 상세 정보 가져오기
+  getProgramDetail(type, svcid) {
+    return api.get(`/programs/detail/${type}/${svcid}`);
+  },
+
+// 이미지 URL 프록시
+getProxyImageUrl(filename) {
+  return `${API_URL}/programs/proxy-image?filename=${encodeURIComponent(filename)}`;
+}
+
   
 };
