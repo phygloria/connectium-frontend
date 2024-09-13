@@ -188,48 +188,80 @@ onMounted(async () => {
   padding: 20px;
 }
 
+
 .filters {
   margin-bottom: 20px;
   color: black;
   font-size: 25px;
   font-family: Pretendard;
   font-weight: 400;
-  word-wrap: break-word
+  word-wrap: break-word;
+  display: flex;
+  flex-wrap: wrap;  /* 버튼이 넘칠 경우 줄바꿈 */
+  justify-content: center;  /* 버튼들을 중앙 정렬 */
+
 }
+
+
 
 /* 버튼 비활성화 상태 */
 .filters button {
   margin-right: 10px;
+  margin-bottom: 10px;  /* 세로 정렬 시 버튼 간 간격 */
   padding: 5px 10px;
   border: none;
   background-color: #ffffff;
   cursor: pointer;
-  width: 120px; height: 100%; border-radius: 20px; border: 2px #C0EA6A solid;
+  border-radius: 20px;
+  border: 2px #C0EA6A solid;
+  white-space: nowrap;  /* 버튼 내 텍스트를 한 줄로 유지 */
+  overflow: hidden;
+  max-width: 100%;  /* 부모 컨테이너를 넘지 않도록 */
 }
 
 /* 비활성화 | '교육프로그램' 글자수 가로길이 조정 */
 .filters button.education-program {
   margin-right: 10px;
   padding: 5px 10px;
-  border: none;
   background-color: #ffffff;
   cursor: pointer;
-  width: 170px; height: 100%; border-radius: 20px; border: 2px #C0EA6A solid;
+  width: auto;  /* 내용에 맞게 너비 조정 */
+  height: 100%; border-radius: 20px; border: 2px #C0EA6A solid;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* 버튼 활성화 상태 */
 .filters button.active {
-  background-color: #8FD600;
+  background-color: #92c925;
   color: white;
-  width: 120px; height: 100%; border-radius: 20px; border: 2px #C0EA6A solid;
+  width: auto;  /* 내용에 맞게 너비 조정 */
+  height: 100%; border-radius: 20px; border: 2px #C0EA6A solid;
 }
 
 /* 활성화 | '교육프로그램' 글자수 가로길이 조정 */
 .filters button.active.education-program {
   background-color: #8FD600;
   color: white;
-  width: 170px; height: 100%; border-radius: 20px; border: 2px #C0EA6A solid;
+  width: auto;  /* 내용에 맞게 너비 조정 */
+  height: 100%; border-radius: 20px; border: 2px #C0EA6A solid;
 }
+
+/* 미디어 쿼리를 사용하여 작은 화면에서 폰트 크기와 패딩을 조절 */
+@media (max-width: 750px) {
+  .filters {
+    flex-direction: column;  /* 세로 정렬 */
+  }
+
+  .filters button,
+  .filters button.education-program,
+  .filters button.active,
+  .filters button.active.education-program {
+    margin-right: 0;
+    font-size: 16px;
+  }
+}
+
 
 
 .loading {

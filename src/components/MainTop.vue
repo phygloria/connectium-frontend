@@ -58,7 +58,7 @@ import { RouterLink } from 'vue-router';
 
 .top-bar {
     width: 100%;
-    background: #B3E000;
+    background: #91c529;
     box-shadow: 0px 3px 7px #DBFA5F;
     border-radius: 50px;
     padding: 1% 15% 1% 15%;
@@ -118,7 +118,7 @@ import { RouterLink } from 'vue-router';
     font-family: 'MangoByeolbyeol', sans-serif; 
     font-weight: 400;
     margin: 0;
-    -webkit-text-stroke: 5px #8fc622;
+    -webkit-text-stroke: 5px #9ed334;
     paint-order: stroke fill;
 }
 
@@ -203,7 +203,7 @@ import { RouterLink } from 'vue-router';
 
 .nav-item {
     color: black;
-    /* text-decoration: none; */
+    text-decoration: none;
 }
 
 @media (max-width: 1200px) {
