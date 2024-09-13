@@ -1,182 +1,223 @@
 <template>
-    <div class="community-container">
-      <h1 class="community-title">우리아이 커뮤니티</h1>
-      <p class="community-subtitle">우리아이를 돌아보세요!</p>
-      
-      <div class="content-wrapper">
-        <div class="category-buttons">
-          <button
-            v-for="category in categories"
-            :key="category"
-            @click="selectCategory(category)"
-            :class="{ active: selectedCategory === category }"
-          >
-            {{ category }}
-          </button>
+
+  <MainTop />
+
+  <div class="common-Container">
+    <div class="common-ContainerLine">
+      <div class="community-container">
+        <h1 class="community-title">우리아이 커뮤니티</h1>
+        <p class="community-subtitle">우리아이를 돌아보세요!</p>
+
+        <div class="content-wrapper">
+          <div class="category-buttons">
+            <button v-for="category in categories" :key="category" @click="selectCategory(category)"
+              :class="{ active: selectedCategory === category }">
+              {{ category }}
+            </button>
+          </div>
+          <div class="post-btn">
+            <router-link to="/community/create" class="create-post-button">글쓰기</router-link>
+          </div>
         </div>
         
-        <div class="post-list">
-          <router-link to="/community/create" class="create-post-button">글쓰기</router-link>
-          
-          <div v-for="post in filteredPosts" :key="post.id" class="post-item">
-            <router-link :to="`/community/${post.id}`">
-              <h3>{{ post.title }}</h3>
-            </router-link>
-            <span class="post-author">{{ post.authorName }}</span>
-            <span class="post-category">{{ post.category }}</span>
+        <div class="list-wrapper">
+          <div class="post-list">
+            <div v-for="post in filteredPosts" :key="post.id" class="post-item">
+              <router-link :to="`/community/${post.id}`">
+                <h3>{{ post.title }}</h3>
+              </router-link>
+              <span class="post-author">{{ post.authorName }}</span>
+              <span class="post-category">{{ post.category }}</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  import { ref, computed, onMounted } from 'vue'
-  import axios from 'axios'
-  
-  export default {
-    setup() {
-      const categories = ref(['나', '이', '구', '분'])
-      const posts = ref([])
-      const selectedCategory = ref(null)
-  
-      const fetchPosts = async () => {
-        try {
-          const response = await axios.get('http://localhost:8080/api/community')
-          posts.value = response.data
-        } catch (error) {
-          console.error('Error fetching posts:', error)
-        }
-      }
-  
-      const selectCategory = async (category) => {
-        selectedCategory.value = category
-        try {
-          const response = await axios.get(`http://localhost:8080/api/community/category/${category}`)
-          posts.value = response.data
-        } catch (error) {
-          console.error('Error fetching posts by category:', error)
-        }
-      }
-  
-      const filteredPosts = computed(() => {
-        if (selectedCategory.value) {
-          return posts.value.filter(post => post.category === selectedCategory.value)
-        }
-        return posts.value
-      })
-  
-      onMounted(fetchPosts)
-  
-      return {
-        categories,
-        selectedCategory,
-        filteredPosts,
-        selectCategory
-      }
-    }
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import axios from 'axios'
+import MainTop from '@/components/MainTop.vue'
+
+const categories = ref(['전체','5세미만', '5세~6세', '7~9세', '10세이상'])
+const posts = ref([])
+const selectedCategory = ref(null)
+
+const fetchPosts = async () => {
+  try {
+    const response = await axios.get('http://localhost:8080/api/community')
+    posts.value = response.data
+  } catch (error) {
+    console.error('Error fetching posts:', error)
   }
-  </script>
-  
-  <style scoped>
-  .community-container {
-    font-family: 'Arial', sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
+}
+
+const selectCategory = async (category) => {
+  selectedCategory.value = category
+  try {
+    const response = await axios.get(`http://localhost:8080/api/community/category/${category}`)
+    posts.value = response.data
+  } catch (error) {
+    console.error('Error fetching posts by category:', error)
   }
-  
-  .community-title {
-    font-size: 24px;
-    color: #333;
-    text-align: center;
+}
+
+const filteredPosts = computed(() => {
+  if (selectedCategory.value) {
+    return posts.value.filter(post => post.category === selectedCategory.value)
   }
+  return posts.value
+})
+
+onMounted(fetchPosts)
+</script>
+
+<style scoped>
+.common-Container {
+  padding: 5% 23% 5% 23%;
+}
+
+.common-ContainerLine {
+  align-items: center;
+  width: 100%;
+  box-shadow: 0px 3px 7px #DBFA5F;
+  border-radius: 50px;
+  border: 2px #8CD000 solid;
+  height: auto;
+  min-height: 330px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.community-container {
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 40px;
+}
+
+.community-title {
+  color: #333;
+  text-align: center;
+  color: black;
+  font-size: 50px;
+  font-family: MangoByeolbyeol;
+  font-weight: 400;
+  word-wrap: break-word
+}
+
+.community-subtitle {
+  color: #1E1E1E;
+  font-size: 30px;
+  font-family: Ownglyph meetme;
+  font-weight: 400;
+  word-wrap: break-word
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center; /* 수직 중앙 정렬 */
+}
+
+.category-buttons {
+  height: 50px;
+  margin-bottom: 20px;
+  color: black;
+  font-size: 25px;
+  font-family: Pretendard;
+  font-weight: 400;
+  word-wrap: break-word;
+  display: flex;
+  flex-wrap: wrap;  /* 버튼이 넘칠 경우 줄바꿈 */
+  justify-content: center;  /* 버튼들을 중앙 정렬 */
+}
+
+/* 버튼 비활성화 상태 */
+.category-buttons button {
+  width: auto;  /* 내용에 맞게 너비 조정 */
+  height: 50px;
+  margin-right: 10px;
+  margin-bottom: 10px;  /* 세로 정렬 시 버튼 간 간격 */
+  padding: 5px 10px;
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 2px #C0EA6A solid;
+  white-space: nowrap;  /* 버튼 내 텍스트를 한 줄로 유지 */
+  overflow: hidden;
+  max-width: 100%;  /* 부모 컨테이너를 넘지 않도록 */
+}
+
+/* 버튼 활성화 상태 */
+.category-buttons button.active {
+  background-color: #8FD600;
+  color: white;
+  width: auto;  /* 내용에 맞게 너비 조정 */
+  height: 50px; border-radius: 20px; border: 2px #C0EA6A solid;
+}
+
+.post-list {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-input {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.post-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+}
+
+.post-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.post-item {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-item h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.post-item p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.post-category,
+.post-author {
+  font-size: 12px;
+  color: #999;
+  margin-right: 10px;
+}
+.post-btn {
   
-  .community-subtitle {
-    font-size: 16px;
-    color: #666;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .content-wrapper {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .category-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .category-buttons button {
-    padding: 10px;
-    border: none;
-    background-color: #fff;
-    color: #333;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .category-buttons button.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .post-list {
-    flex-grow: 1;
-  }
-  
-  .post-input {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .post-input input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px 0 0 5px;
-  }
-  
-  .post-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-  }
-  
-  .post-item {
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  
-  .post-item h3 {
-    margin: 0 0 10px 0;
-    color: #333;
-  }
-  
-  .post-item p {
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  .post-category, .post-time {
-    font-size: 12px;
-    color: #999;
-    margin-right: 10px;
-  }
-  .create-post-button {
-  display: inline-block;
+}
+.create-post-button {
+  align-self: flex-end;
   margin-bottom: 20px;
   padding: 10px 20px;
   background-color: #4CAF50;
