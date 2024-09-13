@@ -35,7 +35,7 @@
   export default {
     setup() {
       const router = useRouter()
-      const categories = ['나', '이', '구', '분']
+      const categories = ['전체','5세미만', '5세~6세', '7~9세', '10세이상']
       const newPost = ref({
         title: '',
         authorName: '',
