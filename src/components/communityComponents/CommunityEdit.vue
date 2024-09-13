@@ -1,33 +1,34 @@
 <template>
-    <div class="edit-post-container" v-if="post">
-      <h2>글 수정</h2>
-      <form @submit.prevent="updatePost">
-        <div>
+    <div class="post-edit-container" v-if="post">
+      <h2 class="edit-title">글 수정</h2>
+      <form @submit.prevent="updatePost" class="edit-form">
+        <div class="form-group">
           <label for="title">제목:</label>
-          <input id="title" v-model="post.title" required>
+          <input id="title" v-model="post.title" required class="form-input">
         </div>
-        <div>
-          <label for="authorName">작성자:</label>
-          <input id="authorName" v-model="post.authorName" required>
+        <div class="form-group">
+          <label for="author">작성자:</label>
+          <input id="author" v-model="post.authorName" required class="form-input">
         </div>
-        <div>
+        <div class="form-group">
           <label for="category">카테고리:</label>
-          <select id="category" v-model="post.category" required>
+          <select id="category" v-model="post.category" required class="form-input">
             <option v-for="category in categories" :key="category" :value="category">
               {{ category }}
             </option>
           </select>
         </div>
-        <div>
+        <div class="form-group">
           <label for="content">내용:</label>
-          <textarea id="content" v-model="post.content" required></textarea>
+          <textarea id="content" v-model="post.content" required class="form-textarea"></textarea>
         </div>
-        <button type="submit">수정 완료</button>
+        <button type="submit" class="submit-button">수정 완료</button>
       </form>
     </div>
   </template>
   
   <script>
+  import '@/assets/css/edit.css'
   import { ref, onMounted } from 'vue'
   import axios from 'axios'
   import { useRoute, useRouter } from 'vue-router'
@@ -37,7 +38,7 @@
       const route = useRoute()
       const router = useRouter()
       const post = ref(null)
-      const categories = ['나', '이', '구', '분']
+      const categories = ['전체','5세미만', '5세~6세', '7~9세', '10세이상']
   
       const fetchPost = async () => {
         try {
@@ -68,36 +69,3 @@
   }
   </script>
   
-  <style scoped>
-  .edit-post-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  form div {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input, select, textarea {
-    width: 100%;
-    padding: 8px;
-  }
-  
-  textarea {
-    height: 150px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  </style>

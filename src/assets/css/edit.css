@@ -1,0 +1,87 @@
+.post-edit-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f8e3;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-title {
+  color: #8ac007;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.edit-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+  font-weight: bold;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #8ac007;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.file-label:hover {
+  background-color: #7ab006;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-name {
+  margin-left: 10px;
+  color: #666;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #8ac007;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #7ab006;
+}

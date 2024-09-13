@@ -164,19 +164,15 @@ const navigateToDetail = (event) => {
 
 <style scoped>
 .common-container {
-  padding: 20px 30px 20px 30px;
+  padding: 1% 2%;
 }
 
-.common-containerLine {
-  width: 100%;
-  box-shadow: 0px 3px 7px #DBFA5F;
-  border-radius: 50px;
-  border: 2px #8CD000 solid;
-  height: auto;
-  min-height: 330px;
+.common-containerLine { 
+  width: 100%; box-shadow: 0px 3px 7px #DBFA5F; border-radius: 50px; border: 2px #8CD000 solid; 
+  height: auto; min-height: 330px;
   padding: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
 }
 
 .title {
