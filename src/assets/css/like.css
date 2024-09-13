@@ -1,0 +1,27 @@
+.like-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px; /* 원하는 크기로 조정 */
+  height: 20px; /* 원하는 크기로 조정 */
+}
+
+.heart-icon {
+  transition: transform 0.2s ease;
+  width: 23px; /* 원하는 크기로 조정 */
+  height: 20px; /* 원하는 크기로 조정 */
+}
+
+.like-button:hover .heart-icon {
+  transform: scale(1.1);
+}

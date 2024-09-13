@@ -20,10 +20,10 @@
                             <router-link to="#" class="auth-link">로그인</router-link>
                             <router-link to="#" class="auth-link">회원가입</router-link>
                         </div>                      
-                        <div class="search-container">                                
-                            <div class="search-box">                            
-                                <input type="text" class="search" placeholder="검색" />
-                                <img class="search-icon" src="@/assets/images/icon/searchtool.png" alt="검색"/> 
+                        <div class="top-search-container">                                
+                            <div class="top-search-box">                            
+                                <input type="text" class="top-search" placeholder="검색" />
+                                <img class="top-search-icon" src="@/assets/images/icon/searchtool.png" alt="검색"/> 
                             </div>                               
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                         <router-link to="#" class="nav-item">공지사항</router-link>
                         <router-link to="/community" class="nav-item">우리아이 커뮤니티</router-link>
                         <router-link to="/educationProgram" class="nav-item">교육 프로그램</router-link>
-                        <router-link to="/joyful" class="nav-item">신나는 우리동네</router-link>
+                        <router-link to="/outdoor/park" class="nav-item">신나는 우리동네</router-link>
                         <router-link to="#" class="nav-item">우리 같이가요!</router-link>
                         <router-link to="/postList" class="nav-item">QnA</router-link>
                     </nav>
@@ -142,14 +142,14 @@ import { RouterLink } from 'vue-router';
     margin-left: 20px;
 }
 
-.search-container {
+.top-search-container {
     position: relative;
     width: 200px;
     height: 50px;
     margin-right: 30px;
 }
 
-.search-box {
+.top-search-box {
     width: 100%;
     height: 100%;
     background-color: white;
@@ -160,7 +160,7 @@ import { RouterLink } from 'vue-router';
     position: relative;
 }
 
-.search {
+.top-search {
     width: 100%;
     height: 100%;
     border: none;
@@ -179,7 +179,7 @@ import { RouterLink } from 'vue-router';
     vertical-align: middle; /* 추가 */
 }
 
-.search-icon {
+.top-search-icon {
     position: absolute;
     width: 20px;
     height: 20px;
