@@ -86,7 +86,7 @@ onMounted(fetchPosts);
 
 <style scoped>
 .common-Container {
-  padding: 20px 30px 20px 30px;
+  padding: 1% 2%;
 }
 .common-ContainerLine { 
   width: 100%; box-shadow: 0px 3px 7px #DBFA5F; border-radius: 50px; border: 2px #8CD000 solid; 
@@ -133,9 +133,7 @@ h2, h5 {
   padding: 0 10px; /* 내부 패딩 추가 */
 }
 
-.search:focus {
-  /* 포커스 시 추가적인 스타일 변경이 필요하다면 여기에 추가 */
-}
+
 /* 플레이스홀더 스타일 조정 (선택사항) */
 .search::placeholder {
   color: #999;

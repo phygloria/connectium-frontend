@@ -72,7 +72,7 @@
 
 <style scoped>
 .common-Container {
-    padding: 20px 30px 20px 30px;
+  padding: 1% 2%;
 }
 
 .common-ContainerLine {

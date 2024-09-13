@@ -65,6 +65,10 @@ const getImageUrl = (imagePath) => {
 onMounted(fetchPost);
 </script>
 
+
+
+
+
 <style scoped>
 .post-detail-container {
   max-width: 800px;

@@ -88,7 +88,7 @@ onMounted(fetchPosts)
 
 <style scoped>
 .common-Container {
-  padding: 5% 23% 5% 23%;
+  padding: 1% 2%;
 }
 
 .common-ContainerLine {
@@ -107,6 +107,7 @@ onMounted(fetchPosts)
 .community-container {
   font-family: 'Arial', sans-serif;
   width: 100%;
+  max-width: 1000px;
   padding: 20px;
   background-color: #f0f0f0;
   border-radius: 40px;
