@@ -98,6 +98,12 @@ export default {
   setAuthHeader(token) {
     localStorage.setItem('token', token);
   },
+  
+  logout() {
+    return api.post('/auth/logout').then(() => {
+      this.removeAuthHeader();
+    });
+  },
 
   removeAuthHeader() {
     localStorage.removeItem('token');
