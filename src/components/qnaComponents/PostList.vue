@@ -7,41 +7,48 @@
           <h2>Q & A</h2>
           <h5>무엇이든 물어보세요!</h5>
         </div>
-      </div>  
-      <div class="search-container">                                
-        <form @submit.prevent="questionSearch" class="search-form">
-          <div class="search-box">                            
-            <input type="text" class="search" v-model="searchQuery" placeholder="질문 검색하기" />
-          </div>
-          <div class="search-btn-box">
-            <button type="submit" class="search-btn">
-              검색하기
-              <img class="search-icon" src="@/assets/images/icon/searchtool.png" alt="검색"/>
-            </button>
-          </div>
-        </form>
       </div>
-      <div class="q-filter-Container">
-        <div class="q-filter-Bar">
-          <div class="q-filter-Text">최신순</div>
-          <div class="q-filter-Text">댓글많은순</div>
-          <div class="q-filter-Text">좋아요순</div>
-          <div class="q-filter-Text">오래된순</div>
+      <div class="search-warpper">  
+        <div class="search-container">                                
+          <form @submit.prevent="questionSearch" class="search-form">
+            <div class="search-box">                            
+              <input type="text" class="search" v-model="searchQuery" placeholder="질문 검색하기" />
+            </div>
+            <div class="search-btn-box">
+              <button type="submit" class="search-btn">
+                검색하기
+                <img class="search-icon" src="@/assets/images/icon/searchtool.png" alt="검색"/>
+              </button>
+            </div>
+          </form>
         </div>
-        <router-link to="/post/create" class="goToPost">글쓰기</router-link>
+      </div>
+      <div class="filter-warpper">
+        <div class="filter-Container">
+          <div class="filter-Bar">
+            <div class="filter-Text">최신순</div>
+            <div class="filter-Text">댓글많은순</div>
+            <div class="filter-Text">좋아요순</div>
+            <div class="filter-Text">오래된순</div>
+          </div>
+          <div class="post">
+            <router-link to="/post/create" class="goToPost">글쓰기</router-link>
+          </div>
+        </div>
       </div>
       
 
-      <div class="q-list-Container">
-        <div class="q-list-Line">
-          <div class="q-list-box">
-            <div class="q-list-bar">
-              <div class="q-list-Title" v-for="post in posts" :key="post.id">
-                <router-link :to="`/post/${post.id}`"> {{ post.title }} </router-link>                
-                
+      <div class="list-Container">
+        <div class="list-Line">
+          <div class="list-box">
+            <div class="list-bar">
+              <div class="list-Title" v-for="post in posts" :key="post.id">
                 <div>
-                  <router-link :to="`/post/${post.id}/edit`" class="q-list-Edit"> 수정 </router-link>
-                  <button @click="deletePost(post.id)" class="q-list-Delete">삭제</button>
+                  <router-link :to="`/post/${post.id}`"> {{ post.title }} </router-link>                
+                </div>
+                <div class="list-edNdel">
+                  <router-link :to="`/post/${post.id}/edit`" class="list-Edit">수정</router-link>
+                  <button @click="deletePost(post.id)" class="list-Delete">삭제</button>
                 </div>
               </div>
             </div>

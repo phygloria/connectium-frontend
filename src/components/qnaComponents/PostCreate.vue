@@ -8,7 +8,7 @@
         <h2 class="component-title">질문하기</h2>
         <div class="bodyContainer">
           <div class="bodyBar">
-            <form @submit.prevent="createPost">
+            <form @submit.prevent="createPost" class="c-form">
               <div class="input-row">
                 <div class="input-wrapper title-wrapper">
                   <input id="title" v-model="post.title" required placeholder="제목">
