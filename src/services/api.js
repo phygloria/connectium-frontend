@@ -21,11 +21,23 @@ api.interceptors.request.use(
   }
 );
 
-export default {
-  getAllPosts() {
-    return axios.get(`${API_URL}/post`).then((response) => response.data);
-  },
 
+export default {
+
+  //게시글 가져오기
+  // getAllPosts() {
+  //   return axios.get(`${API_URL}/post`).then((response) => response.data);
+  // },
+
+    // 페이징 처리해서 게시글 가져오기
+    getAllPosts(page = 0, size = 10) {
+      return api
+        .get(`/post`, {
+          params: { page: page, size: size },
+        })
+        .then((response) => response.data);
+    },
+  
   getPostById(id) {
     return axios.get(`${API_URL}/post/${id}`).then((response) => response.data);
   },
@@ -85,5 +97,27 @@ export default {
   // 공원이미지 가져오기
   getParkImage(imageName) {
     return `${API_URL}/outdoorImages/${imageName}`;
+  },
+
+  login(username, password) {
+    return api.post('/auth/login', { username, password });
+  },
+
+  register(name, phoneNumber, username, email, password) {
+    return api.post('/auth/register', { name, phoneNumber, username, email, password });
+  },
+
+  setAuthHeader(token) {
+    localStorage.setItem('token', token);
+  },
+  
+  logout() {
+    return api.post('/auth/logout').then(() => {
+      this.removeAuthHeader();
+    });
+  },
+
+  removeAuthHeader() {
+    localStorage.removeItem('token');
   },
 };
