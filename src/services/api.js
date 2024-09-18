@@ -21,52 +21,6 @@ api.interceptors.request.use(
   }
 );
 
-<<<<<<< HEAD
-
-// 아래 주석처리코드는...될때까지 무한에러중이어서; 임시주석처리함;
-
-// // 응답 인터셉터 추가
-// api.interceptors.response.use(
-//   (response) => response,
-//   async (error) => {
-//     const originalRequest = error.config;
-//     if (error.response.status === 403 && !originalRequest._retry) {
-//       originalRequest._retry = true;
-//       try {
-//         // 리프레시 토큰을 사용하여 새 액세스 토큰 요청
-//         const refreshToken = localStorage.getItem("refreshToken");
-//         const response = await api.post("/auth/refresh", { refreshToken });
-//         const { accessToken } = response.data;
-//         localStorage.setItem("token", accessToken);
-//         originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
-//         return api(originalRequest);
-//       } catch (refreshError) {
-//         // 리프레시 실패 시 로그아웃 처리
-//         localStorage.removeItem("token");
-//         localStorage.removeItem("refreshToken");
-//         // - 페이지로 리다이렉트
-//         window.location.href = "/";
-//         return Promise.reject(refreshError);
-//       }
-//     }
-//     return Promise.reject(error);
-//   }
-// );
-
-
-
-
-
-
-
-
-export default {
-  getAllPosts() {
-    return axios.get(`${API_URL}/post`).then((response) => response.data);
-  },
-=======
->>>>>>> 4f0efc6942bd2a9113b4eb6ec9525f9ddb3c2cda
-
 export default {
 
   //게시글 가져오기
