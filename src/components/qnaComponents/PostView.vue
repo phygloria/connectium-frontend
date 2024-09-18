@@ -4,6 +4,7 @@
       <div class="post-header">
         <h2 class="post-title">{{ post.title }}</h2>
         <p class="post-author">작성자: {{ post.author }}</p>
+        <p class="post-view-count">조회수: {{ post.viewCount }}</p>
       </div>
       <div v-if="post.imagePath" class="image-container">
         <img :src="getImageUrl(post.imagePath)" :alt="post.title" class="post-image">

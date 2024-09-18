@@ -24,8 +24,8 @@
 
                 <div class="auth-container">
                     <div class="auth-section">
-                        <router-link to="#" class="auth-link">로그인</router-link>
-                        <router-link to="#" class="auth-link">회원가입</router-link>
+                        <router-link to="/login" class="auth-link">로그인</router-link>
+                        <router-link to="/register" class="auth-link">회원가입</router-link>
                     </div>
                     <div class="top-search-container">
                         <div class="top-search-box">
