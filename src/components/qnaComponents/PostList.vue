@@ -44,7 +44,8 @@
             <div class="list-bar">
               <div class="list-Title" v-for="post in posts" :key="post.id">
                 <div>
-                  <router-link :to="`/post/${post.id}`"> {{ post.title }} </router-link>                
+                  <router-link :to="`/post/${post.id}`"> {{ post.title }} </router-link> 
+                  <p class="post-view-count">조회수: {{ post.viewCount }}</p>               
                 </div>
                 <div class="list-edNdel">
                   <router-link :to="`/post/${post.id}/edit`" class="list-Edit">수정</router-link>
