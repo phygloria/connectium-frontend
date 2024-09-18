@@ -99,7 +99,7 @@ textarea::placeholder {
   border: 3px #ffffff solid;
 }
 
-form {
+.c-form {
   display: flex;
   flex-direction: column;
 }
