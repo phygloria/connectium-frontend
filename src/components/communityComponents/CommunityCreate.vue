@@ -26,11 +26,11 @@
                   </select>
                 </div>
               </div>
-              
               <div class="content-wrapper">
                 <label for="content" class="input-label">내용:</label>
                 <textarea id="content" v-model="newPost.content" required></textarea>
               </div>
+              
               
               <div class="btn">
                 <button type="submit" id="submit">글 등록</button>
@@ -107,11 +107,11 @@ export default {
 }
 
 .input-label {
-  position: absolute;
+
   left: 15px;
   margin-right: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  
   color: #555555;
   font-size: 14px;
   pointer-events: none;

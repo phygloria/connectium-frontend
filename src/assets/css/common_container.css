@@ -1,12 +1,17 @@
 .common-container {
-    padding: 0.3% 2%;
+    padding: 1% 2%;
     margin-bottom: 2%;
   }
   
-  .common-containerLine { 
-    width: 100%; box-shadow: 0px 3px 7px #DBFA5F; border-radius: 50px; border: 2px #8CD000 solid; 
-    height: auto; min-height: 330px;
-    padding: 1% 2% 50px 2%;
+  .common-container-line { 
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px 3px 7px #DBFA5F;
+    border-radius: 50px;
+    border: 2px #8CD000 solid;
+    height: auto;
+    min-height: 330px;
+    padding: 10px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
   }

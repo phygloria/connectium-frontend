@@ -1,3 +1,11 @@
+.content-detail-container {
+
+}
+.content-detail-warpper {
+
+}
+
+
 
 .contents-detail {
   max-width: 1000px;
@@ -12,6 +20,7 @@
   font-size: 24px;
   color: #333;
   margin-bottom: 20px;
+  font-family: MangoByeolbyeol;
 }
 
 .content-wrapper {
@@ -20,14 +29,26 @@
 }
 
 .image-container {
+  display: flex;
   flex: 1;
   position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
-.image-container img {
+.image-container {
+  display: flex;
   width: 100%;
   height: auto;
   border-radius: 10px;
+  box-shadow: 0 3px 3px 0 #d8d4d4;
+}
+
+.detail-img-area {
+  /* width: 100%;
+  height: auto; */
+  width: 350px;
+  height: 350px;
 }
 
 .info-container {
@@ -45,10 +66,12 @@
 .label {
   font-weight: bold;
   min-width: 80px;
+  text-align-last: left;
 }
 
 .value {
   flex: 1;
+  text-align-last: left;
 }
 
 .description {
@@ -60,14 +83,34 @@
   margin-bottom: 10px;
 }
 
+.direction-button {
+  margin: 5px;
+  padding: 8px;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 3px 3px 0 #cdd1cd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .review-section {
   margin-top: 20px;
+  
+}
+.review-write {
+  font-family: Ownglyph meetme !important;
 }
 
 .review-section textarea {
   width: 100%;
   height: 100px;
   margin-top: 10px;
+  font-family: Mango Ddobak;
+}
+
+.info-item-btn {
+  position: relative;
+  top: 20%;
 }
 
 .reservation-button {
@@ -85,6 +128,8 @@
 }
 
 .action-buttons {
+  display: flex;
+  align-items: center;
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -95,8 +140,9 @@
 .bookmark-button {
   margin: 5px;
   padding: 8px;
-  background: #f0f0f0;
+  background: #ffffff;
   border: none;
+  box-shadow: 0 3px 3px 0 #cdd1cd;
   border-radius: 5px;
   cursor: pointer;
 }

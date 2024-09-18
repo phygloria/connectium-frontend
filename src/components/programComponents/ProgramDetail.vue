@@ -1,59 +1,73 @@
 <template>
-  <div v-if="program" class="contents-detail">
-    <h2 class="service-name">{{ program.svcnm }}</h2>
-    <div class="content-wrapper">
-      <div class="image-container">
-        <img :src="getImageUrl(program.imgurl)" :alt="program.svcnm" v-if="program.imgurl">
-        <div class="action-buttons">
-          <button class="map-button">지도보기</button>
-          <button class="like-button">♡</button>
-          <button class="bookmark-button">🔖</button>
+  <div class="common-container">
+    <div class="common-container-line">
+      <div class="content-detail-container">
+        <div class="content-detail-warpper">
+          <div v-if="program" class="contents-detail">
+            <h2 class="service-name">{{ program.svcnm }}</h2>
+            <div class="content-wrapper">
+              <div class="image-container">
+                <div class="detail-img-area">
+                  <img :src="getImageUrl(program.imgurl)" :alt="program.svcnm" v-if="program.imgurl">
+                </div>
+                <div class="action-buttons">
+                  <button class="map-button">지도보기</button>
+                  <button class="like-button">♡</button>
+                  <button class="bookmark-button">🔖</button>
+                </div>
+              </div>
+              <div class="info-container">
+                <div class="info-item">
+                  <span class="label">대상 :</span>
+                  <span class="value">{{ program.usetgtinfo }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">이용기간 :</span>
+                  <span class="value">{{ formatDateRange(program.svcopnbgndt, program.svcopnenddt) }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">접수기간 :</span>
+                  <span class="value">{{ formatDateRange(program.rcptbgndt, program.rcptenddt) }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">위치 :</span>
+                  <span class="value">{{ program.areanm }} {{ program.placenm }}</span>
+                  <button class="direction-button">지도보기</button>
+                </div>
+                <div class="info-item">
+                  <span class="label">가격 :</span>
+                  <span class="value">{{ program.payatnm }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">문의처 :</span>
+                  <span class="value">{{ program.telno }}</span>
+                </div>
+
+                <div class="info-item-btn">
+                  <a :href="program.svcurl" target="_blank" class="reservation-button">예약하기</a>
+                </div>
+              </div>
+            </div>
+            <div class="description" v-if="program.dtlcont">
+              <h3>상세 설명</h3>
+              <p>{{ program.dtlcont }}</p>
+            </div>
+
+
+            <div class="review-section">
+              <h3 class="review-write">리뷰쓰기</h3>
+              <textarea placeholder="리뷰를 작성해주세요"></textarea>
+            </div>
+          </div>
+          <div v-else>Loading...</div>
         </div>
       </div>
-      <div class="info-container">
-        <div class="info-item">
-          <span class="label">대상 :</span>
-          <span class="value">{{ program.usetgtinfo }}</span>
-        </div>
-        <div class="info-item">
-          <span class="label">이용기간 :</span>
-          <span class="value">{{ formatDateRange(program.svcopnbgndt, program.svcopnenddt) }}</span>
-        </div>
-        <div class="info-item">
-          <span class="label">접수기간 :</span>
-          <span class="value">{{ formatDateRange(program.rcptbgndt, program.rcptenddt) }}</span>
-        </div>
-        <div class="info-item">
-          <span class="label">위치 :</span>
-          <span class="value">{{ program.areanm }} {{ program.placenm }}</span>
-          <button class="direction-button">지도보기</button>
-        </div>
-        <div class="info-item">
-          <span class="label">가격 :</span>
-          <span class="value">{{ program.payatnm }}</span>
-        </div>
-        <div class="info-item">
-          <span class="label">문의처 :</span>
-          <span class="value">{{ program.telno }}</span>
-        </div>
-        <div class="info-item">
-          <a :href="program.svcurl" target="_blank" class="reservation-button">예약하기</a>
-        </div>
-      </div>
-    </div>
-    <div class="description" v-if="program.dtlcont">
-      <h3>상세 설명</h3>
-      <p>{{ program.dtlcont }}</p>
-    </div>
-    <div class="review-section">
-      <h3>리뷰쓰기</h3>
-      <textarea placeholder="리뷰를 작성해주세요"></textarea>
     </div>
   </div>
-  <div v-else>Loading...</div>
 </template>
 
 <script setup>
+import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
@@ -87,4 +101,3 @@ const formatDateRange = (start, end) => {
 
 onMounted(fetchProgramDetail);
 </script>
-
