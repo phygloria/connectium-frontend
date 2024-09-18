@@ -86,4 +86,20 @@ export default {
   getParkImage(imageName) {
     return `${API_URL}/outdoorImages/${imageName}`;
   },
+
+  login(username, password) {
+    return api.post('/auth/login', { username, password });
+  },
+
+  register(name, phoneNumber, username, email, password) {
+    return api.post('/auth/register', { name, phoneNumber, username, email, password });
+  },
+
+  setAuthHeader(token) {
+    localStorage.setItem('token', token);
+  },
+
+  removeAuthHeader() {
+    localStorage.removeItem('token');
+  },
 };

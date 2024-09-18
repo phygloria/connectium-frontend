@@ -12,6 +12,8 @@ import CommunityEdit from '@/components/communityComponents/CommunityEdit.vue';
 import ProgramView from '@/views/ProgramView.vue';
 import ParkView from '@/views/ParkView.vue';
 import ParkDetail from '@/components/outdoorComponents/ParkDetail.vue';
+import Login from '@/components/loginComponents/Login.vue';
+import Register from '@/components/loginComponents/Register.vue';
 
 const routes = [
   {
@@ -79,6 +81,16 @@ const routes = [
     path: '/outdoor/park/:id',
     name: 'ParkDetail',
     component: ParkDetail
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
   }
   
 ];
@@ -86,6 +98,19 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+// 네비게이션 가드
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login', '/register'];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('token');
+
+  if (authRequired && !loggedIn) {
+    return next('/login');
+  }
+
+  next();
 });
 
 export default router;
