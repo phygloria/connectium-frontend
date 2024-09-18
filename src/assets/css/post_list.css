@@ -208,7 +208,7 @@ h5 {
 }
 
 /* 중간 크기 화면에 대한 대응 */
-@media (max-width: 1524px) {
+@media (max-width: 1724px) {
   .common-ContainerLine {
     justify-content: center;
   }
@@ -219,9 +219,7 @@ h5 {
   
   }
   .search-form {
-    
     align-content: center;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -233,7 +231,6 @@ h5 {
 
   .filter-Container {
     padding: 0 15%;
-    flex-direction: column;
     align-items: center;
   }
 
@@ -256,6 +253,55 @@ h5 {
   }
 }
 
+
+@media (max-width: 1024px) {
+  .common-ContainerLine {
+    justify-content: center;
+  }
+  
+  .search-container {
+    padding: 0 5%; /* 패딩 조정 */
+    margin-bottom: 20px; /* 아래 여백 추가 */
+    flex-direction: column;
+  
+  }
+  .search-form {
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-box {
+    width: 70%;
+  }
+
+  .filter-Container {
+    padding: 0 15%;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .filter-Bar {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .filter-Text, .goToPost {
+    font-size: 20px;
+  }
+
+  .goToPost {
+    align-items: center;
+    margin-top: 10px;
+  }
+  .list-Container {
+    padding: 0 5% 20px 5%;
+  }
+}
 /* 더 작은 화면에 대한 추가 대응 */
 @media (max-width: 800px) {
   .filter-Container {
