@@ -2,8 +2,8 @@
 
   <MainTop />
 
-  <div class="common-Container">
-    <div class="common-ContainerLine">
+  <div class="common-container">
+    <div class="common-container-line">
       <div class="community-container">
         <h1 class="community-title">우리아이 커뮤니티</h1>
         <p class="community-subtitle">우리아이를 돌아보세요!</p>
@@ -40,6 +40,7 @@
 </template>
 
 <script setup>
+import '@/assets/css/common_container.css'
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 import MainTop from '@/components/MainTop.vue'
@@ -87,22 +88,7 @@ onMounted(fetchPosts)
 </script>
 
 <style scoped>
-.common-Container {
-  padding: 1% 2%;
-}
 
-.common-ContainerLine {
-  align-items: center;
-  width: 100%;
-  box-shadow: 0px 3px 7px #DBFA5F;
-  border-radius: 50px;
-  border: 2px #8CD000 solid;
-  height: auto;
-  min-height: 330px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
 
 .community-container {
   font-family: 'Arial', sans-serif;

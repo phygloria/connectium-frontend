@@ -1,16 +1,8 @@
-.common-Container {
-  padding: 1% 2%;
-}
-.common-ContainerLine {
+.list-container {
   width: 100%;
-  box-shadow: 0px 3px 7px #dbfa5f;
-  border-radius: 50px;
-  border: 2px #8cd000 solid;
-  height: auto;
-  min-height: 330px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+}
+.list-warpper {
+  padding: 0 10%;
 }
 
 h2,
@@ -169,6 +161,17 @@ h5 {
   text-align: left; /* 왼쪽 정렬 */
 }
 
+.list-ediNdelNcount {
+  display: flex;
+
+}
+.post-view-count {
+  display: flex;
+  margin-right: 10px;
+  font-size: 14px !important;
+  align-items: center;
+}
+
 .list-Edit,
 .list-Delete {
   text-decoration: none;
@@ -209,8 +212,11 @@ h5 {
 
 /* 중간 크기 화면에 대한 대응 */
 @media (max-width: 1724px) {
-  .common-ContainerLine {
+  .common-container-Line {
     justify-content: center;
+  }
+  .list-warpper {
+    padding: 0 8%;
   }
   
   .search-container {
@@ -255,8 +261,11 @@ h5 {
 
 
 @media (max-width: 1024px) {
-  .common-ContainerLine {
+  .common-container-Line {
     justify-content: center;
+  }
+  .list-warpper {
+    padding: 0 5%;
   }
   
   .search-container {
@@ -304,6 +313,9 @@ h5 {
 }
 /* 더 작은 화면에 대한 추가 대응 */
 @media (max-width: 800px) {
+  .list-warpper {
+    padding: 0 1%;
+  }
   .filter-Container {
     flex-direction: column;
     align-items: center;
@@ -319,8 +331,13 @@ h5 {
     margin-right: 0;
     margin-top: 10px;
   }
-  .list-edNdel {
+  .list-ediNdelNcount {
     display: flex;
+  }
+  
+  .post-view-count{
+    font-size: 10px;
+    align-items: center;
   }
 
   .list-Edit, .list-Delete {

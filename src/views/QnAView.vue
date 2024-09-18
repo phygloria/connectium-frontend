@@ -1,9 +1,9 @@
 <template>
-    <div class="QnA">
+
       <MainTop />
       <br>
       <PostList />
-    </div>
+
   </template>
   
   <script setup>

@@ -3,7 +3,7 @@
   <MainTop />
 
   <div class="common-container">
-    <div class="common-containerLine">
+    <div class="common-container-line">
       <div>
         <h2 class="component-title">질문하기</h2>
         <div class="bodyContainer">
@@ -19,7 +19,7 @@
                   <span class="input-label">User</span>
                 </div>
               </div>
-              <div class="content-wrapper">
+              <div class="c-content-wrapper">
                 <div class="input-wrapper">
                   <textarea id="content" v-model="post.content" required placeholder="질문내용"></textarea>
                   <span class="input-label">Question</span>
@@ -62,6 +62,7 @@
 </template>
 
 <script setup>
+import '@/assets/css/common_container.css'
 import '@/assets/css/create.css';
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';

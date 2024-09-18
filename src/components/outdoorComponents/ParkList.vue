@@ -1,6 +1,6 @@
 <template>
-    <div class="common-Container">
-        <div class="common-ContainerLine">
+    <div class="common-container">
+        <div class="common-container-line">
             <div class="title-container">
                 <div class="title-bar">
                     <h1 class="title">바깥공기 마시자</h1>

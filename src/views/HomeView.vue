@@ -1,11 +1,11 @@
 <template>
-  <div class="home">
+
     <MainTop />
     <br>
     <HomeBody />
     <br>
     <HomeContents />
-  </div>
+
 </template>
 
 <script setup>

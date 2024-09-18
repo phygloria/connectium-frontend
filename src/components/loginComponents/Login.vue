@@ -66,14 +66,14 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
   }
   
   .login-form {
     background-color: white;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 3px rgba(161, 185, 156, 0.397);
     width: 300px;
   }
   
@@ -95,20 +95,21 @@
     font-weight: bold;
   }
   
-  input {
+  #username, #password{
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 5px;
     font-size: 1rem;
     font-family: Pretendard, sans-serif;
+    box-shadow: 0 3px 5px 0 rgba(157, 170, 156, 0.397);
   }
   
   .login-button {
     width: 100%;
     padding: 0.5rem;
     background-color: #a8dd3f;
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 5px;
     font-size: 1rem;

@@ -21,7 +21,6 @@ api.interceptors.request.use(
   }
 );
 
-
 export default {
 
   //게시글 가져오기
