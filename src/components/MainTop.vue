@@ -4,9 +4,12 @@
             <div class="top-container">
                 <div class="upper-section">
                     <div class="logo-slogan">
-                        <router-Link to="/">
-                            <img class="imageLogo" src="/connectiumLogoLight.png" alt="">
-                        </router-Link>
+                        <div>
+                            <router-Link to="/">
+                                <img class="imageLogo" src="/connectiumLogoLight.png" alt="">
+                            </router-Link>
+                            
+                        </div>
                         <div class="text-container">
                             <h2 class="slogan">
                                 <span>아이랑</span>
