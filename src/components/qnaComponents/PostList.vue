@@ -60,6 +60,11 @@
           </div>
         </div>
       </div>
+      <div>
+        <button @click="prevPage" :disabled="page === 0">이전</button>
+        <span>페이지: {{ page+1 }}</span>
+        <button @click="nextPage">다음</button>
+      </div>
     </div>
   </div>
 </template>
@@ -72,14 +77,39 @@ import api from '@/services/api';
 
 const posts = ref([]);
 const searchQuery = ref('');
+const page = ref(0);  // 현재 페이지 번호
+const size = ref(5); // 페이지당 게시물 수
 
+// 전체 목록 불러오기
+// const fetchPosts = async () => {
+//   try {
+//     posts.value = await api.getAllPosts();
+//   } catch (error) {
+//     console.error('Error fetching posts:', error);
+//   }
+// };
+
+// 페이징 처리해서 전체 목록 불러오기
 const fetchPosts = async () => {
   try {
-    posts.value = await api.getAllPosts();
+    posts.value = await api.getAllPosts(page.value, size.value);  
   } catch (error) {
     console.error('Error fetching posts:', error);
   }
 };
+
+const prevPage = () => {
+  if (page.value > 0) {
+    page.value -= 1;
+    fetchPosts();
+  }
+};
+
+const nextPage = () => {
+  page.value += 1;
+  fetchPosts();
+};
+
 
 const deletePost = async (id) => {
   try {

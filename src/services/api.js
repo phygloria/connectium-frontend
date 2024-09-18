@@ -21,6 +21,7 @@ api.interceptors.request.use(
   }
 );
 
+<<<<<<< HEAD
 
 // 아래 주석처리코드는...될때까지 무한에러중이어서; 임시주석처리함;
 
@@ -63,7 +64,25 @@ export default {
   getAllPosts() {
     return axios.get(`${API_URL}/post`).then((response) => response.data);
   },
+=======
+>>>>>>> 4f0efc6942bd2a9113b4eb6ec9525f9ddb3c2cda
 
+export default {
+
+  //게시글 가져오기
+  // getAllPosts() {
+  //   return axios.get(`${API_URL}/post`).then((response) => response.data);
+  // },
+
+    // 페이징 처리해서 게시글 가져오기
+    getAllPosts(page = 0, size = 10) {
+      return api
+        .get(`/post`, {
+          params: { page: page, size: size },
+        })
+        .then((response) => response.data);
+    },
+  
   getPostById(id) {
     return axios.get(`${API_URL}/post/${id}`).then((response) => response.data);
   },
