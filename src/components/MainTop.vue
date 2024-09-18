@@ -21,9 +21,12 @@
 
                 <div class="auth-container">
                     <div class="auth-section">
-                        <router-link to="/login" class="auth-link">로그인</router-link>
-                        <router-link to="/register" class="auth-link">회원가입</router-link>
-                    </div>
+                        <template v-if="!isLoggedIn">
+        <router-link to="/login" class="auth-link">로그인</router-link>
+        <router-link to="/register" class="auth-link">회원가입</router-link>
+      </template>
+      <a v-else @click="logout" class="auth-link">로그아웃</a>
+    </div>
                     <div class="top-search-container">
                         <div class="top-search-box">
                             <input type="text" class="top-search" placeholder="검색" />
@@ -48,6 +51,32 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import api from '@/services/api';  // api 서비스 import
+
+const router = useRouter();
+const isLoggedIn = ref(false);
+
+onMounted(() => {
+  checkLoginStatus();
+});
+
+function checkLoginStatus() {
+  const token = localStorage.getItem('token');
+  isLoggedIn.value = !!token;
+}
+
+async function logout() {
+  try {
+    await api.logout();
+    localStorage.removeItem('token');
+    isLoggedIn.value = false;
+    router.push('/');
+  } catch (error) {
+    console.error('로그아웃 실패:', error);
+  }
+}
 </script>
 
 <style src="@/assets/font.css"></style>
