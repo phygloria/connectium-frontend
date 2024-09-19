@@ -42,15 +42,15 @@
 <script setup>
 import '@/assets/css/common_container.css'
 import { ref, computed, onMounted } from 'vue'
-import axios from 'axios'
+import api from '@/services/api';
 import MainTop from '@/components/MainTop.vue'
 
 const posts = ref([])
 
 const fetchPosts = async () => {
   try {
-    const response = await axios.get('http://localhost:8080/api/community')
-    posts.value = response.data
+    const response = await api.getAllCommunityPosts()
+    posts.value = response
   } catch (error) {
     console.error('Error fetching posts:', error)
   }
