@@ -83,17 +83,14 @@ export default {
 
   // park_info 리스트 가져오기
   getAllParks() {
-    return axios.get(`${API_URL}/outdoor`).then((response) => response.data);
+    return api.get(`/outdoor`).then((response) => response.data);
   },
 
   //  park_info 상세 정보 가져오기
   getParkDetail(id) {
-    return axios
-      .get(`${API_URL}/outdoor/${id}`)
-      .then((response) => response.data);
+    return api.get(`/outdoor/${id}`).then((response) => response.data);
   },
-
-  // 공원이미지 가져오기
+  
   getParkImage(imageName) {
     return `${API_URL}/outdoorImages/${imageName}`;
   },
