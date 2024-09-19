@@ -1,12 +1,12 @@
 <template>
     <MainTop />
     <br>
-    <ParkDetail />
+    <EducationDetail />
 
 </template>
 
 <script setup>
 import MainTop from '@/components/MainTop.vue';
-import ParkDetail from '@/components/outdoorComponents/ParkDetail.vue';
+import EducationDetail from '@/components/educationComponents/EducationDetail.vue';
 </script>                       
   

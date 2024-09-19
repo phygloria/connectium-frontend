@@ -138,4 +138,19 @@ export default {
   deleteCommunityPost(id) {
     return api.delete(`/community/${id}`);
   },
+  
+  // 교육 프로그램 전체 목록 가져오기
+  getAllEducations() {
+    return api.get('/education').then(response => response.data);
+  },
+
+  // 교육 프로그램 상세 정보 가져오기
+  getEducationById(id) {
+    return api.get(`/education/${id}`).then(response => response.data);
+  },
+
+  // 교육 프로그램 이미지 URL 가져오기
+  getEducationImageUrl(imageName) {
+    return `${API_URL}/educationImages/${imageName}`;
+  },
 };

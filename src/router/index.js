@@ -14,6 +14,9 @@ import ParkView from '@/views/ParkView.vue';
 import ParkDetailView from '@/views/ParkDetailView.vue';
 import Login from '@/components/loginComponents/Login.vue';
 import Register from '@/components/loginComponents/Register.vue';
+import EduView from '@/views/EduView.vue';
+import EduDetailView from '@/views/EduDetailView.vue';
+
 
 const routes = [
   {
@@ -89,8 +92,18 @@ const routes = [
   },
   {
     path: '/register',
-    name: 'register',
+    name: 'register', 
     component: Register
+  },
+  {
+    path: '/Education',
+    name: 'jun',
+    component: EduView
+  },
+  {
+    path: '/Education/:id',
+    name: 'junDetail',
+    component: EduDetailView
   }
   
 ];
