@@ -83,14 +83,17 @@ export default {
 
   // park_info 리스트 가져오기
   getAllParks() {
-    return api.get(`/outdoor`).then((response) => response.data);
+    return axios.get(`${API_URL}/outdoor`).then((response) => response.data);
   },
 
   //  park_info 상세 정보 가져오기
   getParkDetail(id) {
-    return api.get(`/outdoor/${id}`).then((response) => response.data);
+    return axios
+      .get(`${API_URL}/outdoor/${id}`)
+      .then((response) => response.data);
   },
-  
+
+  // 공원이미지 가져오기
   getParkImage(imageName) {
     return `${API_URL}/outdoorImages/${imageName}`;
   },
@@ -115,5 +118,26 @@ export default {
 
   removeAuthHeader() {
     localStorage.removeItem('token');
+  },
+
+  // community
+  getAllCommunityPosts() {
+    return api.get('/community').then(response => response.data);
+  },
+
+  getCommunityPostById(id) {
+    return api.get(`/community/${id}`).then(response => response.data);
+  },
+
+  createCommunityPost(postData) {
+    return api.post('/community', postData).then(response => response.data);
+  },
+
+  updateCommunityPost(id, postData) {
+    return api.put(`/community/${id}`, postData).then(response => response.data);
+  },
+
+  deleteCommunityPost(id) {
+    return api.delete(`/community/${id}`);
   },
 };

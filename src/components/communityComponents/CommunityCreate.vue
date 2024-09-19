@@ -46,8 +46,8 @@
 <script>
 import '@/assets/css/create.css';
 import { ref } from 'vue'
-import axios from 'axios'
 import { useRouter } from 'vue-router'
+import api from '@/services/api.js'
 
 export default {
   setup() {
@@ -61,13 +61,13 @@ export default {
     })
 
     const createPost = async () => {
-      try {
-        await axios.post('http://localhost:8080/api/community', newPost.value)
-        router.push('/community')
-      } catch (error) {
-        console.error('Error creating post:', error)
-      }
-    }
+  try {
+    await api.createCommunityPost(newPost.value)
+    router.push('/community')
+  } catch (error) {
+    console.error('Error creating post:', error)
+  }
+}
 
     return {
       categories,

@@ -1,71 +1,72 @@
 <template>
-    <div class="post-edit-container" v-if="post">
-      <h2 class="edit-title">글 수정</h2>
-      <form @submit.prevent="updatePost" class="edit-form">
-        <div class="form-group">
-          <label for="title">제목:</label>
-          <input id="title" v-model="post.title" required class="form-input">
-        </div>
-        <div class="form-group">
-          <label for="author">작성자:</label>
-          <input id="author" v-model="post.authorName" required class="form-input">
-        </div>
-        <div class="form-group">
-          <label for="category">카테고리:</label>
-          <select id="category" v-model="post.category" required class="form-input">
-            <option v-for="category in categories" :key="category" :value="category">
-              {{ category }}
-            </option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="content">내용:</label>
-          <textarea id="content" v-model="post.content" required class="form-textarea"></textarea>
-        </div>
-        <button type="submit" class="submit-button">수정 완료</button>
-      </form>
-    </div>
-  </template>
-  
-  <script>
-  import '@/assets/css/edit.css'
-  import { ref, onMounted } from 'vue'
-  import axios from 'axios'
-  import { useRoute, useRouter } from 'vue-router'
-  
-  export default {
-    setup() {
-      const route = useRoute()
-      const router = useRouter()
-      const post = ref(null)
-      const categories = ['전체','5세미만', '5세~6세', '7~9세', '10세이상']
-  
-      const fetchPost = async () => {
-        try {
-          const response = await axios.get(`http://localhost:8080/api/community/${route.params.id}`)
-          post.value = response.data
-        } catch (error) {
-          console.error('Error fetching post:', error)
-        }
-      }
-  
-      const updatePost = async () => {
-        try {
-          await axios.put(`http://localhost:8080/api/community/${route.params.id}`, post.value)
-          router.push(`/community/${route.params.id}`)
-        } catch (error) {
-          console.error('Error updating post:', error)
-        }
-      }
-  
-      onMounted(fetchPost)
-  
-      return {
-        post,
-        categories,
-        updatePost
-      }
+  <div class="post-edit-container" v-if="post">
+    <h2 class="edit-title">글 수정</h2>
+    <form @submit.prevent="updatePost" class="edit-form">
+      <div class="form-group">
+        <label for="title">제목:</label>
+        <input id="title" v-model="post.title" required class="form-input">
+      </div>
+      <div class="form-group">
+        <label for="author">작성자:</label>
+        <input id="author" v-model="post.authorName" required class="form-input">
+      </div>
+      <div class="form-group">
+        <label for="category">카테고리:</label>
+        <select id="category" v-model="post.category" required class="form-input">
+          <option v-for="category in categories" :key="category" :value="category">
+            {{ category }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="content">내용:</label>
+        <textarea id="content" v-model="post.content" required class="form-textarea"></textarea>
+      </div>
+      <button type="submit" class="submit-button">수정 완료</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import '@/assets/css/edit.css'
+import { ref, onMounted } from 'vue'
+
+import { useRoute, useRouter } from 'vue-router'
+import api from '@/services/api.js'
+
+export default {
+  setup() {
+    const route = useRoute()
+    const router = useRouter()
+    const post = ref(null)
+    const categories = ['전체','5세미만', '5세~6세', '7~9세', '10세이상']
+
+    const fetchPost = async () => {
+try {
+  const response = await api.getCommunityPostById(route.params.id)
+  post.value = response
+} catch (error) {
+  console.error('Error fetching post:', error)
+}
+}
+
+const updatePost = async () => {
+try {
+  await api.updateCommunityPost(route.params.id, post.value)
+  router.push(`/community/${route.params.id}`)
+} catch (error) {
+  console.error('Error updating post:', error)
+}
+}
+
+    onMounted(fetchPost)
+
+    return {
+      post,
+      categories,
+      updatePost
     }
   }
-  </script>
-  
+}
+</script>
+
