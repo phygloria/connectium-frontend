@@ -67,9 +67,11 @@ import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';
 
+
 const router = useRouter();
 const parks = ref([]);
 const isLoading = ref(true);
+const error = ref(false);
 const activeFilter = ref('all');
 
 const filters = [
@@ -87,6 +89,7 @@ const fetchParks = async () => {
     isLoading.value = false;
   } catch (error) {
     console.error('Error fetching parks:', error);
+    error.value = '데이터를 불러오는 데 실패했습니다.';
     isLoading.value = false;
   }
 };
@@ -112,7 +115,7 @@ const toggleLike = (id) => {
 };
 
 const getImageUrl = (imagePath) => {
-  return `http://localhost:8080/api/outdoorImages/${imagePath}`;
+  return `${api.API_URL}/outdoorImages/${imagePath}`;
 };
 
 const navigateToDetail = (content) => {

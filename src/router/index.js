@@ -11,7 +11,7 @@ import CommunityDetail from '@/components/communityComponents/CommunityDetail.vu
 import CommunityEdit from '@/components/communityComponents/CommunityEdit.vue';
 import ProgramView from '@/views/ProgramView.vue';
 import ParkView from '@/views/ParkView.vue';
-import ParkDetail from '@/components/outdoorComponents/ParkDetail.vue';
+import ParkDetailView from '@/views/ParkDetailView.vue';
 import Login from '@/components/loginComponents/Login.vue';
 import Register from '@/components/loginComponents/Register.vue';
 
@@ -74,13 +74,13 @@ const routes = [
   },
   {
     path: '/outdoor/park',
-    name: 'ParkList',
+    name: '신나는 우리동네',
     component: ParkView
   },
   {
     path: '/outdoor/park/:id',
     name: 'ParkDetail',
-    component: ParkDetail
+    component: ParkDetailView
   },
   {
     path: '/login',
