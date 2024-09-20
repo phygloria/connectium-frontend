@@ -60,10 +60,10 @@
           </div>
         </div>
       </div>
-      <div>
-        <button @click="prevPage" :disabled="page === 0">이전</button>
-        <span>페이지: {{ page+1 }}</span>
-        <button @click="nextPage">다음</button>
+      <div class="page-container">
+        <button @click="prevPage" :disabled="page === 0" class="prev-page">◀</button>
+        <span class="page-num">{{ page+1 }}</span>
+        <button @click="nextPage" class="next-page">▶</button>
       </div>
     </div>
   </div>
@@ -128,4 +128,31 @@ const questionSearch = () => {
 onMounted(fetchPosts);
 </script>
 
-<style scoped></style>
+
+
+
+
+
+
+<style scoped>
+
+.page-container {
+  display: flex;
+}
+
+.page-num {
+  margin: 0 30%;
+}
+
+.prev-page {
+  color: #90ce2d;
+  border: none;
+  background-color: transparent;
+}
+.next-page {
+  color: #90ce2d;
+  border: none;
+  background-color: transparent;
+}
+
+</style>
