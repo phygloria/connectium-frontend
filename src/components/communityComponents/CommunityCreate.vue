@@ -1,6 +1,9 @@
 <template>
-  <div class="common-Container">
-    <div class="common-ContainerLine">
+  
+<MainTop />
+
+  <div class="common-container">
+    <div class="common-container-line">
       <div>
         <h2 class="component-title">새 글 작성</h2>
         <div class="bodyContainer">
@@ -26,7 +29,7 @@
                   </select>
                 </div>
               </div>
-              <div class="content-wrapper">
+              <div class="input-wrapper">
                 <label for="content" class="input-label">내용:</label>
                 <textarea id="content" v-model="newPost.content" required></textarea>
               </div>
@@ -43,24 +46,24 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import '@/assets/css/common_container.css'
 import '@/assets/css/create.css';
+import MainTop from '@/components/MainTop.vue';
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import api from '@/services/api.js'
 
-export default {
-  setup() {
-    const router = useRouter()
-    const categories = ['전체', '5세미만', '5세~6세', '7~9세', '10세이상']
-    const newPost = ref({
-      title: '',
-      authorName: '',
-      content: '',
-      category: ''
-    })
+const router = useRouter()
+const categories = ['전체', '5세미만', '5세~6세', '7~9세', '10세이상']
+const newPost = ref({
+  title: '',
+  authorName: '',
+  content: '',
+  category: ''
+})
 
-    const createPost = async () => {
+const createPost = async () => {
   try {
     await api.createCommunityPost(newPost.value)
     router.push('/community')
@@ -68,15 +71,8 @@ export default {
     console.error('Error creating post:', error)
   }
 }
-
-    return {
-      categories,
-      newPost,
-      createPost
-    }
-  }
-}
 </script>
+
 
 <style scoped>
 .input-row {

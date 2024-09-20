@@ -32,8 +32,8 @@
                                     <div class="content-info-box">
                                         <div class="content-info-area">
                                             <div class="content-info">
-                                                <h3 class="content-name">{{ content.name }}</h3>
-                                                <p class="content-address">{{ content.address }}</p>
+                                                <h3 class="content-title">{{ content.name }}</h3>
+                                                <p class="content-location">{{ content.address }}</p>
                                                 <p class="content-feature">{{ content.feature }}</p>
                                                 <p clss="content-fee">{{ content.ent_fee }}</p>
                                             </div>
