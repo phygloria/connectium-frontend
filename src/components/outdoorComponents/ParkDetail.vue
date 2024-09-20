@@ -48,7 +48,7 @@
             </div>
 
             <div class="review-section">
-              <h3>리뷰쓰기</h3>
+              <h3 class="review-write">리뷰쓰기</h3>
               <textarea placeholder="리뷰를 작성해주세요"></textarea>
             </div>
           </div>
