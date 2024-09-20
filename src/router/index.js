@@ -16,13 +16,25 @@ import Login from '@/components/loginComponents/Login.vue';
 import Register from '@/components/loginComponents/Register.vue';
 import EduView from '@/views/EduView.vue';
 import EduDetailView from '@/views/EduDetailView.vue';
-
+import ProgramList from '@/components/programComponents/ProgramList.vue';
+import Weather from '@/components/WeatherWidget.vue';
+import WeatherPopup from '@/components/WeatherPopup.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: HomeView, 
+  },
+  {
+    path: '/weather',
+    name: 'weather',
+    component: Weather, 
+  },
+  {
+    path: '/weather-popup',
+    name: 'WeatherPopup',
+    component: WeatherPopup, 
   },
   {
     path: '/postList',
@@ -52,7 +64,12 @@ const routes = [
   {
     path: '/program/:type/:svcid',
     name: 'programDetail',
-    component: ProgramView
+    component: ProgramView,
+  },
+  {
+    path: '/program/all',
+    name: 'programList',
+    component: ProgramList
   },
   {
     path: '/community',

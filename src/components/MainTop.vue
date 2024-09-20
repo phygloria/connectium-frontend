@@ -36,6 +36,7 @@
                             <img class="top-search-icon" src="@/assets/images/icon/searchtool.png" alt="검색" />
                         </div>
                     </div>
+                    <WeatherWidget /> 
                 </div>
             </div>
             <div class="lower-section">
@@ -58,6 +59,7 @@ import { RouterLink } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';  // api 서비스 import
+import WeatherWidget from './WeatherWidget.vue';
 
 const router = useRouter();
 const isLoggedIn = ref(false);

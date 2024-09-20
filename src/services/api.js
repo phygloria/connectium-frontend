@@ -81,6 +81,13 @@ export default {
     )}`;
   },
 
+  // 날씨
+  getWeather(latitude, longitude) {
+    return api.get('/weather', {
+      params: { latitude, longitude }
+    }).then(response => response.data);
+  },
+
   // park_info 리스트 가져오기
   getAllParks() {
     return api.get(`/outdoor`).then((response) => response.data);
