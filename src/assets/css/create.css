@@ -1,7 +1,11 @@
-
+.bodyContainer {
+  width: 100%;
+  padding: 0 15%;
+}
 
 .bodyBar {
-  margin: 0 0 1% 0;
+  margin: 0 0 2% 0;
+  width: 100%;
 }
 
 .input-row {
@@ -13,6 +17,7 @@
 
 .input-wrapper {
   position: relative;
+  width: 100%;
 }
 
 
