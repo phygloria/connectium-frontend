@@ -151,7 +151,7 @@ input {
 .signup-button {
   width: 100%;
   padding: 0.5rem;
-  background-color: #a8dd3f;
+  background-color:  #90ce2d;
   color: white;
   border: none;
   border-radius: 5px;

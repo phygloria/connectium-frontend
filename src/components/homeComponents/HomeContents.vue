@@ -28,10 +28,10 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const contentsItems = ref([
-    { src: new URL('@/assets/images/home/contents (1).jpg', import.meta.url).href, route: '/postList' },
-    { src: new URL('@/assets/images/home/contents (2).jpg', import.meta.url).href, route: '/postEdit' },
+    { src: new URL('@/assets/images/home/contents (1).jpg', import.meta.url).href, route: '/educationProgram' },
+    { src: new URL('@/assets/images/home/contents (2).jpg', import.meta.url).href, route: '/community' },
     { src: new URL('@/assets/images/home/contents (3).jpg', import.meta.url).href, route: '/postCreate' },
-    { src: new URL('@/assets/images/home/contents (4).jpg', import.meta.url).href, route: '/postView' },
+    { src: new URL('@/assets/images/home/contents (4).jpg', import.meta.url).href, route: '/outdoor/park' },
 ]);
 
 const goToContents = (route) => {
@@ -45,7 +45,7 @@ const goToContents = (route) => {
 }
 
 .containerLine {
-    width: 100%; box-shadow: 0px 3px 7px #DBFA5F; border-radius: 50px; border: 2px #8CD000 solid; 
+    width: 100%; box-shadow: 0px 3px 7px #DBFA5F; border-radius: 50px; border: 2px  #90ce2d solid; 
     height: auto; min-height: 330px;
     padding: 10px;
     display: flex;
