@@ -5,7 +5,10 @@
   padding: 0 10%;
 }
 
-h2,
+h2 {
+  font-family: MangoByeolbyeol;
+  font-size: 50px;
+}
 h5 {
   font-family: Mango Ddobak;
 }
@@ -185,6 +188,8 @@ h5 {
   height: 30px; /* 버튼 높이 설정 */
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .list-Edit {
