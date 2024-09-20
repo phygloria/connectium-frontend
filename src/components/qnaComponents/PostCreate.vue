@@ -4,57 +4,56 @@
 
   <div class="common-container">
     <div class="common-container-line">
-      <div>
-        <h2 class="component-title">질문하기</h2>
-        <div class="bodyContainer">
-          <div class="bodyBar">
-            <form @submit.prevent="createPost" class="c-form">
-              <div class="input-row">
-                <div class="input-wrapper title-wrapper">
-                  <input id="title" v-model="post.title" required placeholder="제목">
-                  <span class="input-label">Title</span>
-                </div>
-                <div class="input-wrapper author-wrapper">
+      <h2 class="component-title">질문하기</h2>
+      <div class="bodyContainer">
+        <div class="bodyBar">
+          <form @submit.prevent="createPost" class="c-form">
+            <div class="input-row">
+              <div class="input-wrapper title-wrapper">
+                <input id="title" v-model="post.title" required placeholder="제목">
+                <span class="input-label">Title</span>
+              </div>
+              <!-- <div class="input-wrapper author-wrapper">
                   <input id="author" v-model="post.author" required placeholder="글쓴이">
                   <span class="input-label">User</span>
-                </div>
+                </div> -->
+            </div>
+            <div class="c-content-wrapper">
+              <div class="input-wrapper">
+                <textarea id="content" v-model="post.content" required placeholder="질문내용"></textarea>
+                <span class="input-label">Question</span>
               </div>
-              <div class="c-content-wrapper">
-                <div class="input-wrapper">
-                  <textarea id="content" v-model="post.content" required placeholder="질문내용"></textarea>
-                  <span class="input-label">Question</span>
-                </div>
-
-                <br>
-                <!-- 이미지 업로드 -->
-                <div class="image-upload-area">
-                  <div v-if="!previewUrl">
-                    <span class="image-upload-text">이미지 선택 </span>
-                    <input type="file" id="upload-image" @change="onFileSelected" ref="fileInput" hidden accept="image/*" />
-                    <label for="upload-image">
-                      <img class="imageUpIcon" src="@/assets/images/icon/icon_upload.png" alt="Upload icon" />
-                    </label>
-                    <h6 class="file-size"> 1MB 미만의 jpg파일</h6>
-                  </div>
-                </div>
-              </div>
-              <!-- 선택한 이미지 미리보기 -->
-              <div v-if="previewUrl" class="preview=container">
-                <img :src="previewUrl" alt="Preview" style="max-width: 300px;">
-                <br>
-                <button @click="removePreview" class="remove-preview">X</button>
-              </div>
-
-              <div v-if="uploadStatus">{{ uploadStatus }}</div>
-
 
               <br>
-              <!-- 작성완료 버튼 -->
-              <div class="btn">
-                <button type="submit" id="submit">질문하기</button>
+              <!-- 이미지 업로드 -->
+              <div class="image-upload-area">
+                <div v-if="!previewUrl">
+                  <span class="image-upload-text">이미지 선택 </span>
+                  <input type="file" id="upload-image" @change="onFileSelected" ref="fileInput" hidden
+                    accept="image/*" />
+                  <label for="upload-image">
+                    <img class="imageUpIcon" src="@/assets/images/icon/icon_upload.png" alt="Upload icon" />
+                  </label>
+                  <h6 class="file-size"> 1MB 미만의 jpg파일</h6>
+                </div>
               </div>
-            </form>
-          </div>
+            </div>
+            <!-- 선택한 이미지 미리보기 -->
+            <div v-if="previewUrl" class="preview=container">
+              <img :src="previewUrl" alt="Preview" style="max-width: 300px;">
+              <br>
+              <button @click="removePreview" class="remove-preview">X</button>
+            </div>
+
+            <div v-if="uploadStatus">{{ uploadStatus }}</div>
+
+
+            <br>
+            <!-- 작성완료 버튼 -->
+            <div class="btn">
+              <button type="submit" id="submit">질문하기</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

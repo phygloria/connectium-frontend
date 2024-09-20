@@ -176,7 +176,10 @@
 }
 
 .content-location,
-.content-date {
+.content-date,
+.content-feature,
+.content-fee
+ {
   color: #1e1e1e;
   font-size: 14px; /* 글자 크기를 조금 줄임 */
   font-family: Pretendard-Regular;
@@ -185,6 +188,8 @@
   word-wrap: break-word;
   margin-bottom: 3px; /* 각 항목 사이 여백 추가 */
 }
+
+
 
 .status {
   position: static; /* 절대 위치에서 일반 위치로 변경 */

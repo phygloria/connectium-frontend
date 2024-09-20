@@ -3,8 +3,8 @@
         <div class="common-container-line">
             <div class="title-container">
                 <div class="title-bar">
-                    <h1 class="title">바깥공기 마시자</h1>
-                    <h5 class="sub-title">중랑구 산책 가기 좋은 곳</h5>
+                    <h1 class="title">교육 프로그램</h1>
+                    <h5 class="sub-title">교육 프로그램</h5>
                     <div class="filter-bar">
                         <div class="filters">
                             <button v-for="filter in filters" :key="filter.value" @click="activeFilter = filter.value"
@@ -32,8 +32,8 @@
                                     <div class="content-info-box">
                                         <div class="content-info-area">
                                             <div class="content-info">
-                                                <h3 class="content-title">{{ content.name }}</h3>
-                                                <p class="content-location">{{ content.address }}</p>
+                                                <h3 class="content-name">{{ content.name }}</h3>
+                                                <p class="content-address">{{ content.address }}</p>
                                                 <p class="content-feature">{{ content.feature }}</p>
                                                 <p clss="content-fee">{{ content.ent_fee }}</p>
                                             </div>
@@ -67,28 +67,25 @@ import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';
 
-
 const router = useRouter();
-const parks = ref([]);
+const educations = ref([]);
 const isLoading = ref(true);
 const error = ref(false);
 const activeFilter = ref('all');
 
 const filters = [
   { value: 'all', label: '전체보기' },
-//   { value: '필터1', label: '필터1' },
-//   { value: '필터2', label: '필터2' },
   { value: '무료', label: '무료' },
   { value: '유료', label: '유료' }
 ];
 
-const fetchParks = async () => {
+const fetchEducations = async () => {
   try {
-    const response = await api.getAllParks();
-    parks.value = response.map(park => ({...park, liked: false}));
+    const response = await api.getAllEducations();
+    educations.value = response.map(education => ({...education, liked: false}));
     isLoading.value = false;
   } catch (error) {
-    console.error('Error fetching parks:', error);
+    console.error('Error fetching educations:', error);
     error.value = '데이터를 불러오는 데 실패했습니다.';
     isLoading.value = false;
   }
@@ -96,31 +93,29 @@ const fetchParks = async () => {
 
 const filterFunctions = {
   all: () => true,
-//   '필터1': park => park.category === '필터1',
-//   '필터2': park => park.category === '필터2',
-  '무료': park => park.ent_fee === '무료',
-  '유료': park => park.ent_fee !== '무료'
+  '무료': education => education.ent_fee === '무료',
+  '유료': education => education.ent_fee !== '무료'
 };
 
 const filteredEvents = computed(() => {
   const filterFunction = filterFunctions[activeFilter.value] || filterFunctions.all;
-  return parks.value.filter(filterFunction);
+  return educations.value.filter(filterFunction);
 });
 
 const toggleLike = (id) => {
-  const park = parks.value.find(p => p.id === id);
-  if (park) {
-    park.liked = !park.liked;
+  const education = educations.value.find(e => e.id === id);
+  if (education) {
+    education.liked = !education.liked;
   }
 };
 
 const getImageUrl = (imagePath) => {
-  return `${api.API_URL}/outdoorImages/${imagePath}`;
+  return api.getEducationImageUrl(imagePath);
 };
 
 const navigateToDetail = (content) => {
-  router.push(`/outdoor/park/${content.id}`);
+  router.push(`/education/${content.id}`);
 };
 
-onMounted(fetchParks);
+onMounted(fetchEducations);
 </script>

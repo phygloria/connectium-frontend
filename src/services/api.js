@@ -81,16 +81,21 @@ export default {
     )}`;
   },
 
+  // 날씨
+  getWeather(latitude, longitude) {
+    return api.get('/weather', {
+      params: { latitude, longitude }
+    }).then(response => response.data);
+  },
+
   // park_info 리스트 가져오기
   getAllParks() {
-    return axios.get(`${API_URL}/outdoor`).then((response) => response.data);
+    return api.get(`/outdoor`).then((response) => response.data);
   },
 
   //  park_info 상세 정보 가져오기
   getParkDetail(id) {
-    return axios
-      .get(`${API_URL}/outdoor/${id}`)
-      .then((response) => response.data);
+    return api.get(`/outdoor/${id}`).then((response) => response.data);
   },
 
   // 공원이미지 가져오기
@@ -139,5 +144,20 @@ export default {
 
   deleteCommunityPost(id) {
     return api.delete(`/community/${id}`);
+  },
+  
+  // 교육 프로그램 전체 목록 가져오기
+  getAllEducations() {
+    return api.get('/education').then(response => response.data);
+  },
+
+  // 교육 프로그램 상세 정보 가져오기
+  getEducationById(id) {
+    return api.get(`/education/${id}`).then(response => response.data);
+  },
+
+  // 교육 프로그램 이미지 URL 가져오기
+  getEducationImageUrl(imageName) {
+    return `${API_URL}/educationImages/${imageName}`;
   },
 };

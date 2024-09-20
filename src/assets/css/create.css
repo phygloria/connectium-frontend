@@ -1,7 +1,11 @@
-
+.bodyContainer {
+  width: 100%;
+  padding: 0 15%;
+}
 
 .bodyBar {
-  margin: 0 20% 2% 20%;
+  margin: 0 0 2% 0;
+  width: 100%;
 }
 
 .input-row {
@@ -13,6 +17,7 @@
 
 .input-wrapper {
   position: relative;
+  width: 100%;
 }
 
 
@@ -103,7 +108,7 @@ textarea {
   height: 100%;
   padding: 10px;
   margin-bottom: 5px;
-  border: 2px #8cd000 solid;
+  border: 2px  #90ce2d solid;
   border-radius: 20px;
   box-shadow: 0px 3px 7px #b3e000;
   font-size: 15px;
@@ -218,7 +223,7 @@ textarea {
 }
 
 #submit:hover {
-  background: #8cd000;
+  background:  #90ce2d;
 }
 
 @media (max-width: 768px) {

@@ -36,6 +36,7 @@
                             <img class="top-search-icon" src="@/assets/images/icon/searchtool.png" alt="검색" />
                         </div>
                     </div>
+                    <WeatherWidget /> 
                 </div>
             </div>
             <div class="lower-section">
@@ -45,6 +46,7 @@
                     <router-link to="/educationProgram" class="nav-item">교육 프로그램</router-link>
                     <router-link to="/outdoor/park" class="nav-item">신나는 우리동네</router-link>
                     <router-link to="#" class="nav-item">우리 같이가요!</router-link>
+                    <router-link to="/Education" class="nav-item">준성</router-link>
                     <router-link to="/postList" class="nav-item">QnA</router-link>
                 </nav>
             </div>
@@ -57,6 +59,7 @@ import { RouterLink } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';  // api 서비스 import
+import WeatherWidget from './WeatherWidget.vue';
 
 const router = useRouter();
 const isLoggedIn = ref(false);
@@ -92,7 +95,7 @@ async function logout() {
 
 .top-bar {
     width: 100%;
-    background: #a9da49;
+    background:  #90ce2d;
     box-shadow: 0px 3px 7px #DBFA5F;
     border-radius: 50px;
     padding: 1% 30%;
@@ -166,7 +169,7 @@ async function logout() {
 }
 
 .lower-section {
-    width: 95%;
+    width: 90%;
     align-self: center;
 }
 
@@ -182,6 +185,8 @@ async function logout() {
     text-decoration: none;
     white-space: nowrap;
     text-align: center;
+    font-family: 'Mango Ddobak';
+    font-size: 20px;
     padding: 5px 10px;
     flex: 0 1 auto;
     min-width: fit-content;

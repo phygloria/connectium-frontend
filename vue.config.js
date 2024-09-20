@@ -18,5 +18,14 @@ module.exports = defineConfig({
       title: 'Index Page',
       chunks: ['chunk-vendors', 'chunk-common', 'index']
     }
+  },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        pathRewrite: { '^/api': '/api' }
+      }
+    }
   }
-})
+});

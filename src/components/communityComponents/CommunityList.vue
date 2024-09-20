@@ -25,7 +25,7 @@
           <div class="post-list">
             <div v-for="post in filteredPosts" :key="post.id" class="post-item">
               <router-link :to="`/community/${post.id}`">
-                <h3>{{ post.title }}</h3>
+                <h3 class="post-title">{{ post.title }}</h3>
               </router-link>
               <div class="post-item-wrapper">
                 <span class="post-category">{{ post.category }}</span>
@@ -42,15 +42,15 @@
 <script setup>
 import '@/assets/css/common_container.css'
 import { ref, computed, onMounted } from 'vue'
-import axios from 'axios'
+import api from '@/services/api';
 import MainTop from '@/components/MainTop.vue'
 
 const posts = ref([])
 
 const fetchPosts = async () => {
   try {
-    const response = await axios.get('http://localhost:8080/api/community')
-    posts.value = response.data
+    const response = await api.getAllCommunityPosts()
+    posts.value = response
   } catch (error) {
     console.error('Error fetching posts:', error)
   }
@@ -155,7 +155,7 @@ onMounted(fetchPosts)
 
 /* 버튼 활성화 상태 */
 .category-buttons button.active {
-  background-color: #8FD600;
+  background-color:  #90ce2d;
   color: white;
   width: auto;  /* 내용에 맞게 너비 조정 */
   height: 50px; border-radius: 20px; border: 2px #C0EA6A solid;
@@ -181,7 +181,7 @@ onMounted(fetchPosts)
 
 .post-button {
   padding: 5px 50px;
-  background-color: #4CAF50;
+  background-color:  #90ce2d;
   color: white;
   border: none;
   border-radius: 0 5px 5px 0;
@@ -200,10 +200,11 @@ onMounted(fetchPosts)
   min-height: 80px; /* 최소 높이 설정 */
 }
 
-.post-item h3 {
+.post-title {
   margin-right: auto; /* 이 줄을 추가하여 오른쪽 정렬 */ 
   margin-left: 30px;
   color: #333;
+  text-decoration: none;
 }
 
 .post-item p {
@@ -245,7 +246,7 @@ onMounted(fetchPosts)
   align-self: flex-end;
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color:  #90ce2d;
   color: white;
   text-decoration: none;
   border-radius: 5px;

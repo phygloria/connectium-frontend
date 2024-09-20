@@ -56,8 +56,11 @@
 
             <div class="review-section">
               <h3 class="review-write">리뷰쓰기</h3>
-              <textarea placeholder="리뷰를 작성해주세요"></textarea>
+              <textarea placeholder="리뷰를                                                    작성해주세요"></textarea>
             </div>
+          </div>
+          <div v-else-if="error" class="error-message">
+            {{ error }}
           </div>
           <div v-else>Loading...</div>
         </div>

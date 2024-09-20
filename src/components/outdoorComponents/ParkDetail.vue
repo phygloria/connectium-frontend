@@ -3,7 +3,7 @@
     <div class="common-container-line">
       <div class="content-detail-container">
         <div class="content-detail-warpper">
-          <div v-if="content" class="content-detail">
+          <div v-if="content" class="contents-detail">
             <h2 class="service-name">{{ content.name }}</h2>
             <div class="content-wrapper">
               <div class="image-container">
