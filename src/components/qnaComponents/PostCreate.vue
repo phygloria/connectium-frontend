@@ -14,10 +14,10 @@
                   <input id="title" v-model="post.title" required placeholder="제목">
                   <span class="input-label">Title</span>
                 </div>
-                <div class="input-wrapper author-wrapper">
+                <!-- <div class="input-wrapper author-wrapper">
                   <input id="author" v-model="post.author" required placeholder="글쓴이">
                   <span class="input-label">User</span>
-                </div>
+                </div> -->
               </div>
               <div class="c-content-wrapper">
                 <div class="input-wrapper">
