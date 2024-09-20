@@ -167,7 +167,7 @@ async function logout() {
 }
 
 .lower-section {
-    width: 95%;
+    width: 90%;
     align-self: center;
 }
 
@@ -183,6 +183,8 @@ async function logout() {
     text-decoration: none;
     white-space: nowrap;
     text-align: center;
+    font-family: 'Mango Ddobak';
+    font-size: 20px;
     padding: 5px 10px;
     flex: 0 1 auto;
     min-width: fit-content;

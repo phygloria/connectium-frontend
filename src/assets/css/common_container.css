@@ -1,6 +1,9 @@
 .common-container {
     padding: 1% 2%;
     margin-bottom: 2%;
+  max-width: 2200px;
+  margin-left: auto;
+  margin-right: auto;
   }
   
   .common-container-line { 
@@ -9,9 +12,8 @@
     box-shadow: 0px 3px 7px #DBFA5F;
     border-radius: 50px;
     border: 2px #8CD000 solid;
-    height: auto;
     min-height: 330px;
-    padding: 10px;
+    padding: 30px 40px;
     display: flex;
     flex-direction: column;
   }

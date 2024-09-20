@@ -96,7 +96,6 @@ export default {
   /* 자식 요소의 기준점 */
   overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
 
 }
