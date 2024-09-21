@@ -87,6 +87,13 @@ export default {
 };
 </script>
 
+
+
+
+
+
+
+
 <style scoped>
 .background-container {
   width: 100%;
@@ -279,5 +286,48 @@ label {
   display: flex;
   justify-content: center;
   font-family: 'Mango Ddobak';
+}
+
+
+
+
+
+/* 더 작은 화면에 대한 추가 대응 */
+@media (max-width: 800px) {
+  .login-container {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%; /* 전체 너비 사용 */
+    right: auto; /* right 속성 제거 */
+  }
+  
+  .login-form {
+    margin-left: 0; /* 왼쪽 마진 제거 */
+    width: 90%; /* 폼의 너비를 90%로 조정 */
+    max-width: 400px; /* 최대 너비 설정 */
+  }
+}
+
+/* 매우 작은 화면에 대한 대응 */
+@media (max-width: 480px) {
+  .login-container {
+    position: fixed; /* 고정 위치로 변경 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: none; /* transform 제거 */
+    background-color: rgba(255, 255, 255, 0.9); /* 배경색 추가 */
+    z-index: 1000; /* 다른 요소들 위에 표시 */
+  }
+
+  .login-form {
+    height: auto; /* 높이를 자동으로 조정 */
+    width: 90%; /* 폼의 너비를 90%로 조정 */
+    max-width: 350px; /* 최대 너비 설정 */
+    padding: 2rem; /* 패딩 줄임 */
+  }
 }
 </style>
