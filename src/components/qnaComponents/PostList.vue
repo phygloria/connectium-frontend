@@ -135,6 +135,9 @@ onMounted(fetchPosts);
 
 
 <style scoped>
+h2 {
+  font-size: 50px;
+}
 
 .page-container {
   display: flex;

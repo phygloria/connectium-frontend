@@ -39,13 +39,13 @@
                                             </div>
 
                                             
-                                            <div class="like-area">
+                                            <!-- <div class="like-area">
                                                 <button class="like-button" @click="toggleLike(content.id)">
                                                     <img :src="content.liked ? require('@/assets/images/icon/heart_icon_in_pink.png') : require('@/assets/images/icon/flat_heart_shape.png')"
                                                         :alt="content.liked ? '좋아요 취소' : '좋아요'" 
                                                         class="heart-icon">
                                                 </button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
 <script setup>
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_list.css';
-import '@/assets/css/like.css';
+// import '@/assets/css/like.css';
 import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';
@@ -76,8 +76,6 @@ const activeFilter = ref('all');
 
 const filters = [
   { value: 'all', label: '전체보기' },
-//   { value: '필터1', label: '필터1' },
-//   { value: '필터2', label: '필터2' },
   { value: '무료', label: '무료' },
   { value: '유료', label: '유료' }
 ];
@@ -85,7 +83,7 @@ const filters = [
 const fetchParks = async () => {
   try {
     const response = await api.getAllParks();
-    parks.value = response.map(park => ({...park, liked: false}));
+    parks.value = response.map(park => ({...park, }));
     isLoading.value = false;
   } catch (error) {
     console.error('Error fetching parks:', error);
@@ -96,8 +94,6 @@ const fetchParks = async () => {
 
 const filterFunctions = {
   all: () => true,
-//   '필터1': park => park.category === '필터1',
-//   '필터2': park => park.category === '필터2',
   '무료': park => park.ent_fee === '무료',
   '유료': park => park.ent_fee !== '무료'
 };
@@ -107,12 +103,12 @@ const filteredEvents = computed(() => {
   return parks.value.filter(filterFunction);
 });
 
-const toggleLike = (id) => {
-  const park = parks.value.find(p => p.id === id);
-  if (park) {
-    park.liked = !park.liked;
-  }
-};
+// const toggleLike = (id) => {
+//   const park = parks.value.find(p => p.id === id);
+//   if (park) {
+//     park.liked = !park.liked;
+//   }
+// };
 
 const getImageUrl = (imagePath) => {
   return `${api.API_URL}/outdoorImages/${imagePath}`;

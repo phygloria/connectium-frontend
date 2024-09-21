@@ -12,7 +12,7 @@
                 </div>
                 <div class="action-buttons">
                   <button class="map-button">지도보기</button>
-                  <button class="like-button">♡</button>
+                  <!-- <button class="like-button">♡</button> -->
                   <button class="bookmark-button">🔖</button>
                 </div>
               </div>
@@ -65,7 +65,7 @@
 <script setup>
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
-import '@/assets/css/like.css';
+// import '@/assets/css/like.css';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import api from '@/services/api';
@@ -78,7 +78,7 @@ const error = ref(null);
 const fetchContentDetail = async () => {
   try {
     const response = await api.getParkDetail(route.params.id);
-    content.value = { ...response, liked: false }; // liked 속성 추가
+    content.value = { ...response, }; // liked 속성 추가 (...response, liked: false )
     error.value = null; // 성공 시 에러 초기화
   } catch (error) {
     console.error('Error fetching content detail:', error);

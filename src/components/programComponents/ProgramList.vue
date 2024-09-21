@@ -54,13 +54,13 @@
                               </span>
                             </div>
                           </div>
-                          <div class="like-area">
+                          <!-- <div class="like-area">
                             <button class="like-button" @click="toggleLike(content.id)">
                               <img
                                 :src="content.liked ? require('@/assets/images/icon/heart_icon_in_pink.png') : require('@/assets/images/icon/flat_heart_shape.png')"
                                 :alt="content.liked ? '좋아요 취소' : '좋아요'" class="heart-icon">
                             </button>
-                          </div>
+                          </div> -->
                         </div>
                       </div>
                     </div>
@@ -81,7 +81,7 @@
 <script setup>
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_list.css';
-import '@/assets/css/like.css';
+// import '@/assets/css/like.css';///
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useAllPrograms } from '@/composables/useAllPrograms';
 import { useRouter } from 'vue-router';
@@ -106,17 +106,17 @@ onMounted(async () => {
   }
 });
 
-// 고유 ID 생성을 위한 함수
-let nextId = 1;
-function generateUniqueId() {
-  return nextId++;
-}
+// // like 고유 ID 생성을 위한 함수
+// let nextId = 1;
+// function generateUniqueId() {
+//   return nextId++;
+// }
 
 // 컴포저블과 라우터 설정
 
 const router = useRouter();
 
-const { programs, initialPrograms, isLoading, error, fetchPrograms } = useAllPrograms();
+const { programs, isLoading, error, fetchPrograms } = useAllPrograms();
 
 
 // 반응형 상태 설정
@@ -129,7 +129,6 @@ const activeFilter = ref('all');
 const filters = reactive([
   { value: 'all', label: '전체보기' },
   { value: 'culture', label: '문화행사' },
-  // { value: 'education', label: '교육프로그램' },
   { value: 'free', label: '무료' },
   { value: 'paid', label: '유료' }
 ]);
@@ -140,7 +139,6 @@ const filters = reactive([
 const filterFunctions = {
   all: () => true,
   culture: content => content.type === 'program1',
-  // education: content => content.type === 'program2',
   free: content => content.payatnm === '무료',
   paid: content => content.payatnm === '유료'
 };
@@ -158,15 +156,15 @@ const filteredEvents = computed(() => {
 
 
 
-// 메서드 정의
+// // like 메서드 정의
 
-const toggleLike = (eventId) => {
-  const index = programs.value.findIndex(e => e.id === eventId);
-  if (index !== -1) {
-    const updatedProgram = { ...programs.value[index], liked: !programs.value[index].liked };
-    programs.value[index] = updatedProgram;
-  }
-};
+// const toggleLike = (eventId) => {
+//   const index = programs.value.findIndex(e => e.id === eventId);
+//   if (index !== -1) {
+//     const updatedProgram = { ...programs.value[index], liked: !programs.value[index].liked };
+//     programs.value[index] = updatedProgram;
+//   }
+// };
 
 
 const formatDate = (dateString) => {
@@ -256,14 +254,14 @@ const navigateToDetail = (content) => {
 onMounted(async () => {
   await fetchPrograms();
 
-  // 초기 데이터를 reactive 배열로 복사하면서 고유 ID 할당
-  if (initialPrograms.value) {
-    programs.value.push(...initialPrograms.value.map(content => ({
-      ...content,
-      id: generateUniqueId(),
-      liked: false // 초기 좋아요 상태 설정
-    })));
-  }
+  // // 초기 데이터를 reactive 배열로 복사하면서 like 고유 ID 할당
+  // if (initialPrograms.value) {
+  //   programs.value.push(...initialPrograms.value.map(content => ({
+  //     ...content,
+  //     id: generateUniqueId(),
+  //     liked: false // 초기 좋아요 상태 설정
+  //   })));
+  // }
 });
 
 
