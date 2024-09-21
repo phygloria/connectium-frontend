@@ -1,10 +1,5 @@
 <template>
     <header class="top-header">
-        <div class="wheather-bar">
-            <div class="weather-compo">
-                <WeatherWidget />
-            </div>
-        </div>
         <div class="top-bar">
             <div class="top-container">
                 <div class="upper-section">
@@ -27,6 +22,12 @@
                     </div>
                 </div>
 
+                <div class="wheather-bar">
+                    <div class="weather-compo">
+                        <WeatherWidget />
+                    </div>
+                </div>
+
                 <div class="auth-container">
                     <div class="auth-section">
                         <template v-if="!isLoggedIn">
@@ -41,8 +42,8 @@
                             <img class="top-search-icon" src="@/assets/images/icon/searchtool.png" alt="검색" />
                         </div>
                     </div>
-
                 </div>
+
             </div>
             <div class="lower-section">
                 <nav class="main-nav">
@@ -64,7 +65,7 @@ import { RouterLink } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';  // api 서비스 import
-import WeatherWidget from '../views/WeatherWidget.vue';
+import WeatherWidget from '@/components/weatherComponents/WeatherWidget.vue';
 
 const router = useRouter();
 const isLoggedIn = ref(false);
@@ -93,19 +94,17 @@ async function logout() {
 <style src="@/assets/font.css"></style>
 
 <style scoped>
-.wheather-bar {
-    position: absolute;
-    width: 30%;
-    height: 30%;
-    right: 13%;
-    top: -7%
+
+.wheather-bar{
+    position: relative;
+    left: 5%;
+    right: 5%;
 }
 .weather-compo {
-    position: relative;
-    left: 97%;
-    top: 100px;
-    width: 200px;
-    height: 150px;
+    align-items: center;
+    width: 300px;
+    height: 130px;
+    
 }
 
 /* 스타일유지 */
@@ -119,7 +118,6 @@ async function logout() {
     box-shadow: 0px 3px 7px #DBFA5F;
     border-radius: 50px;
     padding: 1% 10%;
-    display: flex;
     flex-direction: column;
 }
 

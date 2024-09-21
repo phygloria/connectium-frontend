@@ -83,7 +83,6 @@
   font-size: 20px;
   font-family: Mango Ddobak;
   font-weight: 400;
-  word-wrap: keep-all;
   display: inline-block; 
 }
 
@@ -91,6 +90,7 @@
   padding: 0 0 0 23%;
   display: flex;
   justify-content: space-between; /* 필터와 글쓰기 버튼을 양쪽 끝으로 정렬 */
+  max-width: 1210px;
   margin-bottom: 10px; /* list-Line과의 간격 조정 */
   align-items: center;
   flex-wrap: wrap;

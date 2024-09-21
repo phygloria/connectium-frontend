@@ -13,7 +13,7 @@
   <script setup>
   import { ref, onMounted } from 'vue';
   import api from '@/services/api';
-  import WeatherPopup from '../components/WeatherPopup.vue';
+  import WeatherPopup from './WeatherPopup.vue';
   
   // 반응형 상태 선언
   const weatherData = ref(null);
@@ -58,9 +58,8 @@
   
   <style scoped>
   .weather-widget {
-    padding: 20px;
     border-radius: 8px;
     max-width: 300px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
   }
   </style>
