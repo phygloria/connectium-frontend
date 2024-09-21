@@ -277,6 +277,15 @@ async function logout() {
 }
 
 
+
+
+
+
+
+
+
+
+
 /* 아이패드 가로 크기에 대응하는 미디어 쿼리 추가 */
 @media (max-width: 2048px) {
     .main-nav {
