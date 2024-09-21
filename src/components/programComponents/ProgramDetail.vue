@@ -12,7 +12,7 @@
                 </div>
                 <div class="action-buttons">
                   <button class="map-button">지도보기</button>
-                  <button class="like-button">♡</button>
+                  <!-- <button class="like-button">♡</button> -->
                   <button class="bookmark-button">🔖</button>
                 </div>
               </div>

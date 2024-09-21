@@ -33,7 +33,7 @@ import image2 from '@/assets/images/home/MaskImage (2).png';
 import image3 from '@/assets/images/home/MaskImage (3).png';
 import image4 from '@/assets/images/home/MaskImage (4).png';
 
-const images = [image4, image2, image1, image3];
+const images = [image2, image1, image4, image3];
 
 const currentIndex = ref(0);
 
@@ -57,7 +57,7 @@ onMounted(() => {
 
 <style scoped>
 .bodyContainer {
-    width: 100%; height: 100%; position: relative; padding: 0 30px 0 30px;
+    width: 100%; height: 100%; position: relative; padding: 0 2%;
 }
 .bodyImageBar {
     width: 100%; height: 500px; left: 0px; top: 0px; position: relative; 

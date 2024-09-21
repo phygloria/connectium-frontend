@@ -5,14 +5,6 @@
   padding: 0 10%;
 }
 
-h2 {
-  font-family: MangoByeolbyeol;
-  font-size: 50px;
-}
-h5 {
-  font-family: Mango Ddobak;
-}
-
 .search-container {
   padding: 0 22%; /* 패딩 조정 */
   margin-bottom: 20px; /* 아래 여백 추가 */
