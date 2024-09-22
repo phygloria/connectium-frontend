@@ -4,48 +4,62 @@
 
   <div class="common-container">
     <div class="common-container-line">
-      <div class="community-container">
+      <div class="commponent-title">
         <h1 class="community-title">우리아이 커뮤니티</h1>
         <p class="community-subtitle">우리아이를 돌아보세요!</p>
-
-        <div class="content-wrapper">
-          <div class="category-buttons">
-            <button v-for="category in categories" :key="category.value" 
-              @click="selectCategory(category.value)"
-              :class="{ active: selectedCategory === category.value }">
+      </div>
+      <div class="post-btn">
+        <router-link to="/community/create" class="create-post-button">글쓰기</router-link>
+      </div>
+      <div class="content-wrapper">
+        <div class="category-buttons">
+          <router-link v-for="category in categories" :key="category.value"
+            :to="{ name: 'FilteredCommunity', params: { category: category.value } }" custom
+            v-slot="{ navigate, isActive }">
+            <button @click="navigate" :class="{ active: isActive }">
               {{ category.label }}
             </button>
-          </div>
-          <div class="post-btn">
-            <router-link to="/community/create" class="create-post-button">글쓰기</router-link>
-          </div>
+          </router-link>
         </div>
-        
-        <div class="list-wrapper">
-          <div class="post-list">
-            <div v-for="post in filteredPosts" :key="post.id" class="post-item">
-              <router-link :to="`/community/${post.id}`">
-                <h3 class="post-title">{{ post.title }}</h3>
-              </router-link>
-              <div class="post-item-wrapper">
-                <span class="post-category">{{ post.category }}</span>
-                <span class="post-author">{{ post.authorName }}</span>
-              </div>
-            </div>
+
+      </div>
+    </div>
+
+    <div class="list-wrapper">
+      <div class="post-list">
+        <div v-for="post in filteredPosts" :key="post.id" class="post-item">
+          <router-link :to="`/community/${post.id}`">
+            <h3 class="post-title">{{ post.title }}</h3>
+          </router-link>
+          <div class="post-item-wrapper">
+            <span class="post-category">{{ post.category }}</span>
+            <span class="post-author">{{ post.authorName }}</span>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </template>
+
 
 <script setup>
 import '@/assets/css/common_container.css'
 import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import api from '@/services/api';
 import MainTop from '@/components/MainTop.vue'
 
+const route = useRoute()
+
 const posts = ref([])
+
+const categories = [
+  { value: '5세미만', label: '5세미만' },
+  { value: '5세~6세', label: '5세~6세' },
+  { value: '7~9세', label: '7~9세' },
+  { value: '10세이상', label: '10세이상' }
+];
 
 const fetchPosts = async () => {
   try {
@@ -56,49 +70,24 @@ const fetchPosts = async () => {
   }
 }
 
-const selectedCategory = ref('all')
-
-const categories = [
-  { value: 'all', label: '전체' },
-  { value: '5세미만', label: '5세미만' },
-  { value: '5세~6세', label: '5세~6세' },
-  { value: '7~9세', label: '7~9세' },
-  { value: '10세이상', label: '10세이상' }
-];
-
-const filterFunctions = {
-  all: () => true,
-  '5세미만': post => post.category === '5세미만',
-  '5세~6세': post => post.category === '5세~6세',
-  '7~9세': post => post.category === '7~9세',
-  '10세이상': post => post.category === '10세이상'
-};
-
-
-const selectCategory = (category) => {
-  selectedCategory.value = category;
-}
-
 const filteredPosts = computed(() => {
-  const filterFunction = filterFunctions[selectedCategory.value] || filterFunctions.all;
-  return posts.value.filter(filterFunction);
+  const category = route.params.category;
+  if (category) {
+    return posts.value.filter(post => post.category === category);
+  }
+  return posts.value;
 });
 
-onMounted(fetchPosts)
+onMounted(async () => {
+  await fetchPosts();
+})
 </script>
 
+
+
+
+
 <style scoped>
-
-
-.community-container {
-  font-family: 'Arial', sans-serif;
-  width: 100%;
-  max-width: 1000px;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 40px;
-}
-
 .community-title {
   color: #333;
   text-align: center;
@@ -120,46 +109,65 @@ onMounted(fetchPosts)
 .content-wrapper {
   display: flex;
   gap: 20px;
-  justify-content: center; /* 수직 중앙 정렬 */
+  justify-content: center;
+  /* 수직 중앙 정렬 */
+  margin-bottom: 5%;
 }
 
 .category-buttons {
-  height: 50px;
   margin-bottom: 20px;
-  color: black;
-  font-size: 25px;
-  font-family: Pretendard;
-  font-weight: 400;
-  word-wrap: break-word;
-  display: flex;
-  flex-wrap: wrap;  /* 버튼이 넘칠 경우 줄바꿈 */
-  justify-content: center;  /* 버튼들을 중앙 정렬 */
+  flex-wrap: wrap;
+  /* 버튼이 넘칠 경우 줄바꿈 */
+  justify-content: space-between;
+  /* 버튼들 사이에 공간을 균등하게 분배 */
+  gap: 12% 1%;
+  /* 버튼 사이의 간격 */
+  display: grid;
+  /* 2개의 열로 변경 */
+  grid-template-columns: repeat(2, minmax(350px, 1fr));
+  max-width: 1040px;
+  /* 두 카드의 너비(500px * 2) + 간격(20px) */
+  height: 350px;
+  margin: 0 auto;
+  /* 중앙 정렬 */
 }
 
 /* 버튼 비활성화 상태 */
 .category-buttons button {
-  width: auto;  /* 내용에 맞게 너비 조정 */
-  height: 50px;
+  height: 120%;
+  width: 100%;
   margin-right: 10px;
-  margin-bottom: 10px;  /* 세로 정렬 시 버튼 간 간격 */
+  margin-bottom: 10px;
   padding: 5px 10px;
   border: none;
   background-color: #ffffff;
   cursor: pointer;
   border-radius: 20px;
   border: 2px #C0EA6A solid;
-  white-space: nowrap;  /* 버튼 내 텍스트를 한 줄로 유지 */
+  white-space: nowrap;
+  /* 버튼 내 텍스트를 한 줄로 유지 */
   overflow: hidden;
-  max-width: 100%;  /* 부모 컨테이너를 넘지 않도록 */
+
+  font-family: "MangoDdobak-B", sans-serif;
+  /* 폰트 적용 */
+  font-size: 20px;
+  /* 폰트 크기 조정 */
+  font-weight: 500;
+  /* 폰트 굵기 조정 */
+  color: #333;
+  /* 텍스트 색상 */
 }
 
 /* 버튼 활성화 상태 */
 .category-buttons button.active {
-  background-color:  #90ce2d;
+  background-color: #90ce2d;
   color: white;
-  width: auto;  /* 내용에 맞게 너비 조정 */
-  height: 50px; border-radius: 20px; border: 2px #C0EA6A solid;
+  height: 120%;
+  border-radius: 20px;
+  border: 2px #C0EA6A solid;
 }
+
+
 
 .post-list {
   flex-grow: 1;
@@ -181,7 +189,7 @@ onMounted(fetchPosts)
 
 .post-button {
   padding: 5px 50px;
-  background-color:  #90ce2d;
+  background-color: #90ce2d;
   color: white;
   border: none;
   border-radius: 0 5px 5px 0;
@@ -190,18 +198,22 @@ onMounted(fetchPosts)
 
 .post-item {
   background-color: white;
-  padding: 10px; /* 패딩 조금 늘림 */
+  padding: 10px;
+  /* 패딩 조금 늘림 */
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* 제목과 정보 사이 공간 분배 */
-  min-height: 80px; /* 최소 높이 설정 */
+  justify-content: space-between;
+  /* 제목과 정보 사이 공간 분배 */
+  min-height: 80px;
+  /* 최소 높이 설정 */
 }
 
 .post-title {
-  margin-right: auto; /* 이 줄을 추가하여 오른쪽 정렬 */ 
+  margin-right: auto;
+  /* 이 줄을 추가하여 오른쪽 정렬 */
   margin-left: 30px;
   color: #333;
   text-decoration: none;
@@ -216,37 +228,46 @@ onMounted(fetchPosts)
 .post-item-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* 수직 중앙 정렬 */
-  height: 20px; /* 높이 지정 */
+  align-items: center;
+  /* 수직 중앙 정렬 */
+  height: 20px;
+  /* 높이 지정 */
 
 }
 
-.post-category{
+.post-category {
   font-size: 12px;
   color: #999;
-  margin-right: auto; /* 이 줄을 추가하여 오른쪽 정렬 */  
+  margin-right: auto;
+  /* 이 줄을 추가하여 오른쪽 정렬 */
   margin-left: 10px;
   display: flex;
-  align-items: center; /* 수직 중앙 정렬 */
+  align-items: center;
+  /* 수직 중앙 정렬 */
 }
+
 .post-author {
   font-size: 12px;
   color: #999;
-  margin-left: auto; /* 이 줄을 추가하여 오른쪽 정렬 */
+  margin-left: auto;
+  /* 이 줄을 추가하여 오른쪽 정렬 */
   margin-right: 10px;
   display: flex;
-  align-items: center; /* 수직 중앙 정렬 */
+  align-items: center;
+  /* 수직 중앙 정렬 */
 }
+
 .post-btn {
   display: flex;
   margin-bottom: 5px;
 
 }
+
 .create-post-button {
   align-self: flex-end;
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color:  #90ce2d;
+  background-color: #90ce2d;
   color: white;
   text-decoration: none;
   border-radius: 5px;
