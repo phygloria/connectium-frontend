@@ -2,27 +2,21 @@
   <div class="bodyContainer">
     <div class="bodyImageBar">
       <transition-group name="fade" tag="div">
-          <img
-                v-for="(image, index) in images"
-                :key="image"
-                v-show="currentIndex === index"
-                :src="image"
-                class="homeImage"
-                alt="Home carousel image"
-              />
+        <img v-for="(image, index) in images" :key="image" v-show="currentIndex === index" :src="image"
+          class="homeImage" alt="Home carousel image" />
       </transition-group>
-        <div class="imageText">
-          <h2>깜짝 놀랄걸요?</h2>
-          <p>우리동네에 이런 곳이 있었다니!!!</p>
+      <div class="imageText">
+        <h2>깜짝 놀랄걸요?</h2>
+        <p>우리동네에 이런 곳이 있었다니!!!</p>
+      </div>
+      <div class="arrowContainer">
+        <div class="arrowBar">
+          <div class="arrow left-arrow" @click="prevImage"></div>
+          <div class="arrow right-arrow" @click="nextImage"></div>
         </div>
-        <div class="arrowContainer">
-          <div class="arrowBar">
-            <div class="arrow left-arrow" @click="prevImage"></div>
-            <div class="arrow right-arrow" @click="nextImage"></div>
-          </div>
-        </div>
+      </div>
     </div>
-  </div>    
+  </div>
 </template>
 
 <script setup>
@@ -57,36 +51,53 @@ onMounted(() => {
 
 <style scoped>
 .bodyContainer {
-    width: 100%; height: 100%; position: relative; padding: 0 2%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 0 2%;
 }
+
 .bodyImageBar {
-    width: 100%; height: 500px; left: 0px; top: 0px; position: relative; 
-    background: #D9D9D9; border-radius: 70px; overflow: hidden;
+  width: 100%;
+  height: 500px;
+  left: 0px;
+  top: 0px;
+  position: relative;
+  background: #D9D9D9;
+  border-radius: 70px;
+  overflow: hidden;
 }
+
 .homeImage {
-    width: 100%; height: 100%; 
-    position: absolute;
-    top: 0; left: 0;
-    border-radius: 70px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 70px;
 }
 
 .imageText {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 25%;
   color: white;
   text-align: right;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .imageText h2 {
-    font-family: 'MangoByeolbyeol';
-    font-size: 2.5em; 
+  font-family: 'MangoByeolbyeol';
+  font-size: 2.5em;
+  line-height: 1.2; /* 행간 추가 */
+  margin-bottom: 0.2em; /* 아래 여백 추가 */
 }
 
 .imageText p {
   font-family: 'MangoByeolbyeol';
-  font-size: 2.5em; 
+  font-size: 2.5em;
+  line-height: 1.2; /* 행간 추가 */
+  margin-top: 0; /* 위 여백 제거 */
 }
 
 .fade-enter-active,
@@ -105,8 +116,10 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  pointer-events: none; /* 이미지 클릭을 방해하지 않도록 */
+  pointer-events: none;
+  /* 이미지 클릭을 방해하지 않도록 */
 }
+
 .arrowBar {
   position: relative;
   width: 100%;
@@ -123,27 +136,78 @@ onMounted(() => {
   cursor: pointer;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  pointer-events: auto; /* 화살표 클릭 가능하도록 */
+  pointer-events: auto;
+  /* 화살표 클릭 가능하도록 */
 }
 
 .left-arrow {
-  left: 22%; /* arrowBar의 padding과 일치 */
+  left: 22%;
+  /* arrowBar의 padding과 일치 */
   border-right: 25px solid #ffffff;
 }
 
 .right-arrow {
-  right: 22%; /* arrowBar의 padding과 일치 */
+  right: 22%;
+  /* arrowBar의 padding과 일치 */
   border-left: 25px solid #ffffff;
 }
 
 /* 화살표에 호버 효과 추가 */
 .left-arrow:hover {
-    border-right-color: #A3D600;
+  border-right-color: #A3D600;
 }
 
 .right-arrow:hover {
-    border-left-color: #A3D600;
+  border-left-color: #A3D600;
 }
 
 
+
+
+
+
+@media (max-width: 1024px) {
+
+  .bodyImageBar {
+  height: 500px;
+  background: #ffffff;
+}
+
+  .homeImage {
+  height: 50%;
+  } 
+
+
+.arrow {
+  top: 25%;
+}
+.left-arrow {
+  left: 10%;
+}
+
+.right-arrow {
+  right: 10%;
+}
+
+
+
+  .imageText {
+    position: absolute;
+    top: 30%;
+  right: 16%;
+  font-size: 70%;
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  .imageText h2 {
+    font-size: 2em;
+  }
+
+  .imageText p {
+    font-size: 2em;
+  }
+}
 </style>

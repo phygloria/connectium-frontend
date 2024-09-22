@@ -55,7 +55,7 @@ const goToContents = (route) => {
 
 .title {
     position: relative;
-    right: 14%;
+    right: 10%;
     color: #242424;
     font-size: 50px;
     font-family: 'MangoByeolbyeol', sans-serif;
@@ -96,18 +96,49 @@ const goToContents = (route) => {
   transform: scale(1.0);
 }
 
-@media (max-width: 1024px) {
-  .contents {
-    width: 250px;
-    height: 200px;
-  }
+@media (min-width: 1025px) {
+    .contentsImg {
+        max-width: calc(40% - 7px);
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1366px) {
+
+  .title {
+    font-size: 45px;
+    }
+    .contentsImg {
+    flex: 0 0 calc(40% - 7px); /* 두 개씩 줄바꿈을 위해 너비를 50%로 설정 */
+    max-width: calc(40% - 7px);
+}
+
+.contents {
+    width: 90%; /* 부모 요소의 전체 너비를 사용 */
+}
+  
+}
+
+@media (max-width: 800px) {
   .contents {
     width: 200px;
     height: 160px;
   }
+  .title {
+    font-size: 30px;
+    }
+    .contentsImg {
+        max-width: calc(50% - 5px);
+    }
 }
+
+
+/* 매우 작은 화면에 대한 대응 */
+@media (max-width: 480px) {
+    .title {
+    font-size: 25px;
+    }
+
+}
+
 
 </style>
