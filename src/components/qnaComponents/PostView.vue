@@ -157,15 +157,10 @@ onMounted(() => {
 
 
 <style scoped>
-.common-container {
-  width: 100%;
-  max-width: 1200px; /* 최대 너비를 늘립니다 */
-  margin: 0 auto;
-  padding: 20px;
-}
+
 
 .post-detail-container {
-  width: 100%;
+  width: 70%;
   background-color: #f0f8e3;
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
