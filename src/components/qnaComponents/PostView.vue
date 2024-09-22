@@ -18,25 +18,73 @@
         <router-link to="/postList" class="action-button back">목록으로 돌아가기</router-link>
       </div>
     </div>
+
+    <div class="comments-section">
+      <h3>댓글</h3>
+      <div class="new-comment-form">
+        <textarea v-model="newCommentContent" placeholder="댓글을 입력하세요..."></textarea>
+        <button @click="addComment">댓글 추가</button>
+      </div>
+      <div v-for="comment in comments" :key="comment.id" class="comment">
+        <div class="comment-content">
+          <strong>{{ comment.author }}</strong>
+          <p>{{ comment.content }}</p>
+          <button @click="showReplyForm(comment.id)" class="reply-button">답글</button>
+        </div>
+        
+        <div v-if="replyingTo === comment.id" class="reply-form">
+          <textarea v-model="replyContent" placeholder="답글을 입력하세요..."></textarea>
+          <button @click="addReply(comment.id)">답글 추가</button>
+        </div>
+        
+        <div v-if="comment.replies && comment.replies.length > 0" class="replies">
+          <div v-for="reply in comment.replies" :key="reply.id" class="reply">
+            <strong>{{ reply.author }}</strong>
+            <p>{{ reply.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { ref, onMounted, computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import api from '@/services/api';
 
-const router = useRouter();
 const route = useRoute();
+const router = useRouter();
 
 const post = ref(null);
+const comments = ref([]);
+const newCommentContent = ref('');
+const replyContent = ref('');
+const replyingTo = ref(null);
+
+const getImageUrl = computed(() => {
+  return (imagePath) => {
+    if (imagePath) {
+      return `http://localhost:8080${imagePath}`;
+    }
+    return '';
+  };
+});
 
 const fetchPost = async () => {
   try {
     post.value = await api.getPostById(route.params.id);
-    console.log('Fetched post:', post.value); // 디버깅을 위한 로그
+    console.log('Fetched post:', post.value);
   } catch (error) {
     console.error('Error fetching post:', error);
+  }
+};
+
+const fetchComments = async () => {
+  try {
+    comments.value = await api.getCommentsByPostId(route.params.id);
+  } catch (error) {
+    console.error('Error fetching comments:', error);
   }
 };
 
@@ -49,26 +97,49 @@ const deletePost = async () => {
   }
 };
 
-// const getImageUrl = (imagePath) => {
-//   if (imagePath) {
-//     return `http://localhost:8080/api/images/${imagePath}`;
-//   }
-//   return '';
-// };
-
-const getImageUrl = (imagePath) => {
-  if (imagePath) {
-    return `http://localhost:8080${imagePath}`;
+const addComment = async () => {
+  try {
+    const newComment = await api.addComment({
+      postId: route.params.id,
+      content: newCommentContent.value
+    });
+    comments.value = [newComment, ...comments.value];
+    newCommentContent.value = '';
+  } catch (error) {
+    console.error('Error adding comment:', error);
   }
-  return '';
 };
 
-onMounted(fetchPost);
+const showReplyForm = (commentId) => {
+  replyingTo.value = commentId;
+};
+
+const addReply = async (parentId) => {
+  try {
+    const newReply = await api.addComment({
+      postId: route.params.id,
+      content: replyContent.value,
+      parentId: parentId
+    });
+    const parentComment = comments.value.find(c => c.id === parentId);
+    if (parentComment) {
+      if (!parentComment.replies) {
+        parentComment.replies = [];
+      }
+      parentComment.replies.push(newReply);
+    }
+    replyContent.value = '';
+    replyingTo.value = null;
+  } catch (error) {
+    console.error('Error adding reply:', error);
+  }
+};
+
+onMounted(() => {
+  fetchPost();
+  fetchComments();
+});
 </script>
-
-
-
-
 
 <style scoped>
 .post-detail-container {
@@ -162,5 +233,92 @@ onMounted(fetchPost);
 
 .action-button:hover {
   opacity: 0.8;
+}
+
+/* 댓글 관련 스타일 */
+.comments-section {
+  margin-top: 30px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.new-comment-form, .reply-form {
+  margin-bottom: 20px;
+}
+
+.new-comment-form textarea, .reply-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: vertical;
+  min-height: 60px;
+  max-height: 150px;
+}
+
+.new-comment-form button, .reply-form button, .reply-button {
+  margin-top: 5px;
+  background-color: #8ac007;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.comment {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0;
+  margin-bottom: 15px;
+}
+
+.comment-content {
+  margin-bottom: 10px;
+}
+
+.comment-content strong {
+  font-size: 16px;
+  color: #333;
+}
+
+.comment-content p {
+  margin-top: 5px;
+  color: #555;
+}
+
+.replies {
+  margin-left: 20px;
+  padding-left: 15px;
+  border-left: 2px solid #8ac007;
+}
+
+.reply {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.reply strong {
+  font-size: 14px;
+  color: #444;
+}
+
+.reply p {
+  margin-top: 5px;
+  color: #666;
+}
+
+.reply-button {
+  background-color: #f0f8e3;
+  color: #8ac007;
+  border: 1px solid #8ac007;
+}
+
+.reply-button:hover {
+  background-color: #e5f2d0;
 }
 </style>
