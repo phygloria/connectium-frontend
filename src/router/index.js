@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import PostCreate from '@/components/qnaComponents/PostCreate.vue';
 import PostEdit from '@/components/qnaComponents/PostEdit.vue';
-import PostView from '@/components/qnaComponents/PostView.vue';
 import HomeView from '@/views/HomeView.vue';
 import QnAView from '@/views/QnAView.vue';
 import EducationView from '@/views/EducationView.vue';
@@ -20,6 +19,7 @@ import ProgramList from '@/components/programComponents/ProgramList.vue';
 import Weather from '@/components/weatherComponents/WeatherWidget.vue';
 import WeatherPopup from '@/components/weatherComponents/WeatherPopup.vue';
 import ServiceInfo from '@/components/ServiceInfo.vue';
+import QnApostView from '@/views/QnApostView.vue';
 
 const routes = [
   {
@@ -55,7 +55,7 @@ const routes = [
   {
     path: '/post/:id',
     name: 'PostView',
-    component: PostView,
+    component: QnApostView,
   },
   {
     path: '/post/:id/edit',
