@@ -157,38 +157,44 @@ onMounted(() => {
 
 
 <style scoped>
-.post-detail-container {
-  max-width: 800px;
+.common-container {
+  width: 100%;
+  max-width: 1200px; /* 최대 너비를 늘립니다 */
   margin: 0 auto;
   padding: 20px;
+}
+
+.post-detail-container {
+  width: 100%;
   background-color: #f0f8e3;
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* 내용이 넘칠 경우 숨깁니다 */
 }
 
 .post-content {
   background-color: white;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
 }
 
 .post-header {
   border-bottom: 2px solid #8ac007;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .post-title {
   color: #8ac007;
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 28px; /* 제목 크기를 약간 키웁니다 */
+  margin-bottom: 15px;
 }
 
 .post-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .post-author,
@@ -214,13 +220,14 @@ onMounted(() => {
   background-color: #f9f9f9;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 20px;
+  margin-bottom: 25px;
 }
 
 .post-text {
   color: #333;
-  line-height: 1.6;
+  line-height: 1.8; /* 줄 간격을 약간 늘립니다 */
+  font-size: 16px; /* 글자 크기를 조정합니다 */
 }
 
 .post-actions {
@@ -259,14 +266,11 @@ onMounted(() => {
   opacity: 0.8;
 }
 
-
-
 /* 댓글 관련 스타일 */
 .comments-section {
-
-  margin-top: 30px;
+  margin-top: 40px;
   background-color: #f9f9f9;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -287,8 +291,8 @@ onMounted(() => {
   border: 1px solid #ddd;
   border-radius: 5px;
   resize: vertical;
-  height: 100px;
-  max-height: 150px;
+  min-height: 100px;
+  max-height: 200px; /* 최대 높이를 늘립니다 */
 }
 
 .new-comment-form button,
@@ -305,7 +309,6 @@ onMounted(() => {
   align-self: flex-end;
 }
 
-
 .comments-title {
   display: flex;
   margin-left: 5%;
@@ -313,9 +316,8 @@ onMounted(() => {
 
 .comment {
   border-bottom: 1px solid #e0e0e0;
-  padding: 15px 0;
-  margin-bottom: 15px;
-
+  padding: 20px 0;
+  margin-bottom: 20px;
 }
 
 .add-comment {
@@ -323,10 +325,8 @@ onMounted(() => {
   /* inline-block으로 변경하여 필요한 만큼의 너비만 차지하도록 함 */
 }
 
-
 .comment-content {
   margin-bottom: 10px;
-
 }
 
 .comment-content strong {
@@ -374,5 +374,24 @@ onMounted(() => {
 
 .reply-button:hover {
   background-color: #e5f2d0;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .common-container {
+    padding: 10px;
+  }
+
+  .post-content {
+    padding: 20px;
+  }
+
+  .post-title {
+    font-size: 24px;
+  }
+
+  .comments-section {
+    padding: 20px;
+  }
 }
 </style>
