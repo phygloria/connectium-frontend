@@ -160,7 +160,7 @@ onMounted(() => {
 
 
 .post-detail-container {
-  width: 70%;
+  width: 50%;
   background-color: #f0f8e3;
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

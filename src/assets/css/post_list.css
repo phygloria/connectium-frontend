@@ -156,11 +156,14 @@
   display: flex;
 
 }
-.post-view-count {
+
+.post-view-count, .post-author {
   display: flex;
   margin-right: 10px;
   font-size: 14px !important;
   align-items: center;
+  color: #999;
+  
 }
 
 .list-Edit,
