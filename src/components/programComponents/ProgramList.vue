@@ -24,7 +24,7 @@
 
               <div v-else-if="error" class="error">{{ error }}</div>
 
-              <!-- 테스트 -->
+              <!-- 테스트 --> 
               <div>
                 <!-- 이미지가 로딩 중일 때 표시할 로딩 메시지 -->
                 <div v-if="loading">Loading image...</div>

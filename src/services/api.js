@@ -168,4 +168,12 @@ export default {
   addComment(commentData) {
     return api.post('/comments', commentData).then(response => response.data);
   },
+  getBookmarks() {
+    return api.get('/bookmarks').then(response => response.data);
+  },
+
+  toggleBookmark(bookmarkData) {
+    return api.post('/bookmarks/toggle', bookmarkData).then(response => response.data);
+  },
+  
 };

@@ -21,6 +21,7 @@ import WeatherPopup from "@/components/weatherComponents/WeatherPopup.vue";
 import ServiceInfo from "@/components/ServiceInfo.vue";
 import QnApostView from "@/views/QnApostView.vue";
 import FilteredCommunityList from "@/components/communityComponents/FilteredCommunityList.vue";
+import MyPage from "@/components/MyPage.vue";
 
 
 const routes = [
@@ -134,6 +135,11 @@ const routes = [
     path: "/Education/:id",
     name: "junDetail",
     component: EduDetailView,
+  },
+  {
+    path: "/mypage",
+    name: "mypage",
+    component: MyPage,
   },
 ];
 
