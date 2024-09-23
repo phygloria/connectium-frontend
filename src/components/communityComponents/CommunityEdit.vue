@@ -39,7 +39,7 @@ export default {
     const route = useRoute()
     const router = useRouter()
     const post = ref(null)
-    const categories = ['전체','5세미만', '5세~6세', '7~9세', '10세이상']
+    const categories = ['5세미만', '5세~6세', '7세~9세', '10세이상']
 
     const fetchPost = async () => {
 try {
@@ -58,7 +58,6 @@ try {
   console.error('Error updating post:', error)
 }
 }
-
     onMounted(fetchPost)
 
     return {

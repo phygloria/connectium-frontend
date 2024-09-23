@@ -54,7 +54,7 @@ import { useRouter } from 'vue-router'
 import api from '@/services/api.js'
 
 const router = useRouter()
-const categories = ['전체', '5세미만', '5세~6세', '7~9세', '10세이상']
+const categories = ['5세미만', '5세~6세', '7세~9세', '10세이상']
 const newPost = ref({
   title: '',
   authorName: '',
