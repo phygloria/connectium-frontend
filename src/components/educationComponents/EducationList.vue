@@ -26,8 +26,12 @@
                 <div class="list-card" v-for="content in filteredEvents" :key="content.id"
                   @click="navigateToDetail(content)">
                   <div class="img-area">
-                    <img :src="getImageUrl(content.imagePath)" :alt="content.name" />
-                  </div>
+    <img 
+      :src="getImageUrl(content.imagePath)" 
+      :alt="content.name"
+      class="education-image"
+    />
+  </div>
 
                   <div class="content-info-box">
                     <div class="content-info-area">
@@ -108,8 +112,15 @@ const toggleLike = (id) => {
   }
 };
 
+// const getImageUrl = (imageName) => {
+//   if (!imageName) return '/path/to/default/image.jpg';  // 기본 이미지 경로
+//   return api.getEducationImageUrl(imageName);
+// };
+
 const getImageUrl = (imagePath) => {
-  return api.getEducationImageUrl(imagePath);
+  if (!imagePath) return '/path/to/default/image.jpg';  // 기본 이미지 경로
+  const imageName = imagePath.split('/').pop(); // 파일 이름만 추출
+  return api.getEducationImageUrl(imageName);
 };
 
 const navigateToDetail = (content) => {
@@ -118,3 +129,53 @@ const navigateToDetail = (content) => {
 
 onMounted(fetchEducations);
 </script>
+
+<style scoped>
+
+
+.img-area {
+  width: 100%;
+  height: 200px; /* 원하는 높이로 조정하세요 */
+  overflow: hidden;
+  position: relative;
+}
+
+.education-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.img-area:hover .education-image {
+  transform: scale(1.1);
+}
+.detail-img-area {
+  width: 100%;
+  height: 400px; /* 원하는 높이로 조정하세요 */
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px; /* 이미지 모서리를 둥글게 만듭니다 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 이미지에 그림자 효과를 줍니다 */
+}
+
+.education-detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.detail-img-area:hover .education-detail-image {
+  transform: scale(1.05);
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .detail-img-area {
+    height: 250px; /* 모바일 화면에서는 더 작게 */
+  }
+}
+</style>

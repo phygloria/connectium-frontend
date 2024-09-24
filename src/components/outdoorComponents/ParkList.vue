@@ -26,7 +26,7 @@
                                 <div class="list-card" v-for="content in filteredEvents" :key="content.id"
                                     @click="navigateToDetail(content)">
                                     <div class="img-area">
-                                        <img :src="getImageUrl(content.imagePath)" :alt="content.name" />
+                                        <img :src="getImageUrl(content.imagePath)" :alt="content.name" class="outdoor-image" />
                                     </div>
 
                                     <div class="content-info-box">
@@ -111,7 +111,9 @@ const filteredEvents = computed(() => {
 // };
 
 const getImageUrl = (imagePath) => {
-  return `${api.API_URL}/outdoorImages/${imagePath}`;
+  if (!imagePath) return '/path/to/default/image.jpg';  // 기본 이미지 경로
+  const imageName = imagePath.split('/').pop(); // 파일 이름만 추출
+  return api.getParkImage(imageName);
 };
 
 const navigateToDetail = (content) => {
@@ -120,3 +122,29 @@ const navigateToDetail = (content) => {
 
 onMounted(fetchParks);
 </script>
+
+<style scoped>
+.img-area {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.outdoor-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.list-card:hover .outdoor-image {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .img-area {
+    height: 150px;
+  }
+}
+</style>
+
