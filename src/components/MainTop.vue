@@ -32,17 +32,20 @@
                     <div class="auth-section">
                         <template v-if="!isLoggedIn">
                             <router-link to="/login" class="auth-link">로그인</router-link>
-                            <router-link to="/register" class="auth-link">회원가입</router-link>
-                            
+                            <router-link to="/register" class="auth-link">회원가입</router-link>    
                         </template>
-                        <a v-else @click="logout" class="auth-link">로그아웃</a>
+                        <template v-else>
+                          <a @click="logout" class="auth-link">로그아웃</a>
+                          <router-link to="/mypage" class="auth-link">마이페이지</router-link>
+                        </template>
                     </div>
-                    <div class="top-search-container">
+
+                    <!-- <div class="top-search-container">
                         <div class="top-search-box">
                             <input type="text" class="top-search" placeholder="검색" />
                             <img class="top-search-icon" src="@/assets/images/icon/searchtool.png" alt="검색" />
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -50,18 +53,21 @@
                 <nav class="main-nav">
                     <router-link to="/serviceInfo" class="nav-item">커넥티움?</router-link>
                     <router-link to="/community" class="nav-item">우리아이 커뮤니티</router-link>
-                    <router-link to="/educationProgram" class="nav-item">교육 프로그램</router-link>
-                    <router-link to="/Education" class="nav-item">교육</router-link>
+                    <router-link to="/program" class="nav-item">교육 프로그램</router-link>
+                    <router-link to="/education" class="nav-item">교육</router-link>
                     <router-link to="/outdoor/park" class="nav-item">신나는 우리동네</router-link>
                     <router-link to="#" class="nav-item">우리 같이가요!</router-link>
                     
                     <router-link to="/postList" class="nav-item">QnA</router-link>
-                    <router-link to="mypage" class="auth-link">마이페이지</router-link>
+                    
                 </nav>
             </div>
         </div>
     </header>
 </template>
+
+
+
 
 <script setup>
 import { RouterLink } from 'vue-router';
@@ -93,6 +99,15 @@ async function logout() {
     }
 }
 </script>
+
+
+
+
+
+
+
+
+
 
 <style src="@/assets/font.css"></style>
 
@@ -254,28 +269,30 @@ async function logout() {
 }
 
 .lower-section {
-    width: 100%;
-    align-self: center;
+    display: flex;    
+    justify-content: center;
 }
 
 .main-nav {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
 .nav-item {
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     white-space: nowrap;
     text-align: center;
-    font-family: 'Mango Ddobak';
+    font-family: 'Pretendard-Bold';
+    /* font-family: 'Mango Ddobak'; */
     font-size: 20px;
     padding: 5px 10px;
     flex: 0 1 auto;
     min-width: fit-content;
     word-break: keep-all;
+    text-shadow: 1px 1px 2px rgba(31, 31, 31, 0.5);
 }
 
 
@@ -290,9 +307,6 @@ async function logout() {
 
 /* 아이패드 가로 크기에 대응하는 미디어 쿼리 추가 */
 @media (max-width: 2048px) {
-    .main-nav {
-        justify-content: space-around;
-    }
 
     .nav-item {
         margin: 5px 10px;
@@ -376,7 +390,7 @@ async function logout() {
     }
 
     .lower-section {
-        width: 100%;
+        width: 80%;
     }
 
     .main-nav {
@@ -393,6 +407,7 @@ async function logout() {
 
 /* 더 작은 화면에 대한 추가 대응 */
 @media (max-width: 800px) {
+
     .auth-container {
         flex-direction: column;
     }

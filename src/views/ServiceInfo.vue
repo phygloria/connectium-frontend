@@ -1,5 +1,7 @@
 <template>
+
     <MainTop />
+
     <div class="common-container">
         <div class="common-container-line">
             <div class="bodyContainer">
@@ -65,8 +67,8 @@
 </template>
 
 <script setup>
-import MainTop from '@/components/MainTop.vue';
 import '@/assets/css/common_container.css'
+import MainTop from '@/components/MainTop.vue';
 
 </script>
 
@@ -75,13 +77,16 @@ import '@/assets/css/common_container.css'
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-image: url('@/assets/images/etc/service-info-back.png');
     background-position: bottom center;
     background-repeat: no-repeat;
     background-size: contain;
-    padding-bottom: 200px; /* 배경 이미지가 보일 수 있도록 하단 패딩 추가 */
+    padding-bottom: 10%; /* 배경 이미지가 보일 수 있도록 하단 패딩 추가 */
     position: relative;
     z-index: 1;
+    max-width: 2700px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 중앙 정렬 */
 }
 
 /* 배경 이미지 위에 내용이 잘 보이도록 하기 위한 추가적인 스타일 */
@@ -219,9 +224,7 @@ import '@/assets/css/common_container.css'
 }
 
 @media (max-width: 768px) {
-    .common-container-line {
-        padding: 15px;
-    }
+
 
     .service-title {
         font-size: 28px;

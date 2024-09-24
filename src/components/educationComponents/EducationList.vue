@@ -66,9 +66,10 @@
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_list.css';
 import '@/assets/css/like.css';
+
+import api from '@/services/api';
 import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import api from '@/services/api';
 
 const router = useRouter();
 const educations = ref([]);

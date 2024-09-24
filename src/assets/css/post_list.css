@@ -112,11 +112,11 @@
   margin-right: 15px;
 }
 
-.list-Container {
+.list-main-container {
   padding: 0 22% 20px 22%;
 }
 
-.list-Line {
+.list-line {
   width: 100%;
   box-shadow: 0px 3px 5px rgba(120, 120, 120, 0.3);
   border-radius: 20px;
@@ -126,9 +126,10 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  
 }
 
-.list-Title {
+.list-title-bar {
   display: flex;
   padding: 0 10px 0 20px;
   justify-content: space-between;
@@ -142,15 +143,32 @@
   box-shadow: 0px 3px 5px rgba(120, 120, 120, 0.3);
   border-radius: 10px;
   margin-bottom: 10px; /* 각 항목 사이에 간격 추가 */
+  text-decoration: none !important;
 }
-.list-Title a {
+
+.list-title-bar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.list-title {
   text-decoration: none;
   color: #242424;
   font-family: Mango Ddobak;
   font-size: 18px;
-  flex-grow: 1;
-  text-align: left; /* 왼쪽 정렬 */
+  margin: 0;
+  padding: 0;
 }
+.post-title h3 {
+  text-decoration: none !important;
+  color: #242424;
+  font-family: Mango Ddobak;
+  font-size: 18px;
+  flex-grow: 1;
+  text-align: left;
+  /* 왼쪽 정렬 */
+}
+
 
 .list-ediNdelNcount {
   display: flex;
@@ -159,7 +177,7 @@
 
 .post-view-count, .post-author {
   display: flex;
-  margin-right: 10px;
+  margin-right: 20px;
   font-size: 14px !important;
   align-items: center;
   color: #999;
@@ -250,7 +268,7 @@
     align-items: center;
     margin-top: 10px;
   }
-  .list-Container {
+  .list-main-container {
     padding: 0 5% 20px 5%;
   }
 }
@@ -303,7 +321,7 @@
     align-items: center;
     margin-top: 10px;
   }
-  .list-Container {
+  .list-main-container {
     padding: 0 5% 20px 5%;
   }
 }
