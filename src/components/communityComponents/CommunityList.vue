@@ -4,8 +4,8 @@
 
   <div class="common-container">
     <div class="common-container-line">
-      <div class="commponent-list">
-        <div class="commponent-list-wrapper">
+      <div class="list-container">
+        <div class="list-warpper">
           <div class="commponent-title">
             <h1 class="community-title">우리아이 커뮤니티</h1>
             <p class="community-subtitle">우리아이를 돌아보세요!</p>
@@ -27,11 +27,11 @@
           </div>
         </div>
 
-        <div class="list-wrapper">
+        <div class="list-wrapper" hidden>
           <div class="post-list">
             <div v-for="post in filteredPosts" :key="post.id" class="post-item">
-              <router-link :to="`/community/${post.id}`">
-                <h3 class="post-title">{{ post.title }}</h3>
+              <router-link :to="{ name: 'CommunityDetail', params: { id: post.id } }" class="post-title">
+                <h3>{{ post.title }}</h3>
               </router-link>
               <div class="post-item-wrapper">
                 <span class="post-category">{{ post.category }}</span>
@@ -52,11 +52,13 @@
 
 <script setup>
 import '@/assets/css/community_list.css'
+import '@/assets/css/post_list.css'
 import '@/assets/css/common_container.css'
+import MainTop from '@/components/MainTop.vue'
+
+import api from '@/services/api';
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import api from '@/services/api';
-import MainTop from '@/components/MainTop.vue'
 
 const route = useRoute()
 

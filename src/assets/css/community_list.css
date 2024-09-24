@@ -1,4 +1,10 @@
-.commponent-list-wrapper {
+
+.list-container {
+  width: 90%;
+}
+
+
+.list-warpper {
     display: column;
 }
 
@@ -108,13 +114,11 @@
     color: white;
     border: none;
     border-radius: 0 5px 5px 0;
-    cursor: pointer;
+    
   }
   
   .post-item {
     background-color: white;
-    padding: 10px;
-    /* 패딩 조금 늘림 */
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -122,26 +126,28 @@
     flex-direction: column;
     justify-content: space-between;
     /* 제목과 정보 사이 공간 분배 */
-    min-height: 80px;
+    min-height: 30px;
     /* 최소 높이 설정 */
   }
   
   .post-title {
-    margin-right: auto;
-    /* 이 줄을 추가하여 오른쪽 정렬 */
-    margin-left: 30px;
+    display: flex;
+    margin-left: 20%;
     color: #333;
     text-decoration: none;
+    
   }
 
   .post-item a {
+    display: flex;
     text-decoration: none;
+    min-height: 50px;
   }
   
   .post-item p {
     display: flex;
     color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 2%;
   }
   
   .post-item-wrapper {
@@ -149,16 +155,13 @@
     justify-content: space-between;
     align-items: center;
     /* 수직 중앙 정렬 */
-    height: 20px;
-    /* 높이 지정 */  
+    cursor: pointer;
   }
   
   .post-category {
     font-size: 12px;
     color: #999;
-    margin-right: auto;
-    /* 이 줄을 추가하여 오른쪽 정렬 */
-    margin-left: 10px;
+    margin-left: 30px;
     display: flex;
     align-items: center;
     /* 수직 중앙 정렬 */
@@ -169,7 +172,7 @@
     color: #999;
     margin-left: auto;
     /* 이 줄을 추가하여 오른쪽 정렬 */
-    margin-right: 10px;
+    margin-right: 30px;
     display: flex;
     align-items: center;
     /* 수직 중앙 정렬 */

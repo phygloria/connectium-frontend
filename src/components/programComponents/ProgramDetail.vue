@@ -1,4 +1,7 @@
 <template>
+
+<MainTop />
+
   <div class="common-container">
     <div class="common-container-line">
       <div class="content-detail-container">
@@ -73,12 +76,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import api from '@/services/api';
-
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
+import MainTop from '../MainTop.vue';
+
+import api from '@/services/api';
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
 
 const route = useRoute();
 const program = ref(null);
