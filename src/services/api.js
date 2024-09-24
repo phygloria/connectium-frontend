@@ -85,7 +85,7 @@ export default {
   getWeather(latitude, longitude) {
     return api.get('/weather', {
       params: { latitude, longitude }
-    }).then(response => response.data);
+    }).then(response => response.data); 
   },
 
   // park_info 리스트 가져오기

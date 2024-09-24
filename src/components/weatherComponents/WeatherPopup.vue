@@ -1,68 +1,68 @@
 <template>
-    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div class="bg-white rounded-lg p-6 w-4/5 max-w-4xl">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-2xl font-bold">광진구 군자동 상세 날씨</h2>
-          <button @click="onClose" class="text-2xl">&times;</button>
-        </div>
-  
-        <div class="mb-6">
-          <h3 class="text-xl font-semibold mb-2">현재 날씨</h3>
-          <div class="flex items-center">
-            <div class="text-6xl mr-4">{{ weatherData.temperature || 'N/A' }}°</div>
-            <div>
-              <p>{{ weatherData.condition || '정보 없음' }}</p>
-              <p>습도: {{ weatherData.humidity || 'N/A' }}%</p>
-              <p>바람: {{ weatherData.windSpeed || 'N/A' }} m/s</p>
-            </div>
-          </div>
-        </div>
-  
-        <div class="mb-6">
-          <h3 class="text-xl font-semibold mb-2">시간별 예보</h3>
-          <LineChart width="700" height="200" :data="hourlyForecast">
-            <XAxis dataKey="time" />
-            <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey="temp" stroke="#8884d8" />
-          </LineChart>
-        </div>
-  
-        <div>
-          <h3 class="text-xl font-semibold mb-2">주간 예보</h3>
-          <div class="grid grid-cols-7 gap-4">
-            <div v-for="day in weeklyForecast" :key="day.day" class="text-center">
-              <p>{{ day.day }}</p>
-              <p class="text-2xl">{{ day.icon }}</p>
-              <p>{{ day.minTemp }}° / {{ day.maxTemp }}°</p>
-              <p>{{ day.rainProb }}%</p>
-            </div>
-          </div>
-        </div>
+  <div class="weather-popup">
+    <h2>{{ props.location }} 날씨</h2>
+    <div v-if="props.currentWeather" class="current-weather">
+      <h3>현재 날씨</h3>
+      <span class="weather-emoji">{{ getWeatherEmoji(props.currentWeather.skyCondition) }}</span>
+      <p>기온: {{ props.currentWeather.temperature }}°C</p>
+      <p>날씨: {{ props.currentWeather.skyCondition }}</p>
+      <p>습도: {{ props.currentWeather.humidity }}%</p>
+      <p>강수량: {{ props.currentWeather.hourlyRainfall }}mm</p>
+      <p>풍속: {{ props.currentWeather.windSpeed }} m/s</p>
+      <p>풍향: {{ props.currentWeather.windDirection }}</p>
+    </div>
+    <div class="hourly-forecast">
+      <h3>시간별 예보</h3>
+      <div v-for="forecast in props.hourlyForecasts" :key="forecast.forecastDate + forecast.forecastTime" class="forecast-item">
+        <p>{{ formatDateTime(forecast.forecastDate, forecast.forecastTime) }}</p>
+        <span class="weather-emoji-small">{{ getWeatherEmoji(forecast.skyCondition) }}</span>
+        <p>{{ forecast.temperature }}°C</p>
+        <p>{{ forecast.skyCondition }}</p>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  import { defineProps } from 'vue';
-  import { LineChart, XAxis, YAxis, Tooltip, Line } from 'recharts';
-  
-  const props = defineProps({
-    weatherData: {
-      type: Object,
-      required: true,
-    },
-    onClose: {
-      type: Function,
-      required: true,
-    },
-  });
-  
-  const hourlyForecast = props.weatherData.hourly || [];
-  const weeklyForecast = props.weatherData.weekly || [];
-  </script>
-  
-  <style scoped>
-  /* 스타일 추가 */
-  </style>
-  
+  </div>
+</template>
+
+<script setup>
+const props = defineProps(['currentWeather', 'hourlyForecasts', 'location']);
+
+const formatDateTime = (date, time) => {
+  return `${date.substring(4, 6)}/${date.substring(6, 8)} ${time.substring(0, 2)}:${time.substring(2, 4)}`;
+};
+
+const getWeatherEmoji = (condition) => {
+  switch (condition) {
+    case "맑음": return "☀️";
+    case "구름많음": return "⛅";
+    case "흐림": return "☁️";
+    case "비": return "🌧️";
+    case "눈": return "❄️";
+    default: return "🌈";
+  }
+};
+</script>
+
+<style scoped>
+.weather-popup {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+}
+.weather-emoji {
+  font-size: 48px;
+}
+.weather-emoji-small {
+  font-size: 24px;
+}
+.forecast-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.current-weather, .hourly-forecast {
+  margin-bottom: 20px;
+}
+</style>

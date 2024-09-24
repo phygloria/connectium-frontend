@@ -17,9 +17,9 @@ import Register from '@/components/loginComponents/Register.vue';
 import EduView from '@/views/EduView.vue';
 import EduDetailView from '@/views/EduDetailView.vue';
 import ProgramList from '@/components/programComponents/ProgramList.vue';
-import Weather from '@/components/weatherComponents/WeatherWidget.vue';
 import WeatherPopup from '@/components/weatherComponents/WeatherPopup.vue';
 import ServiceInfo from '@/components/ServiceInfo.vue';
+import WeatherWidget from '@/components/weatherComponents/WeatherWidget.vue';
 
 const routes = [
   {
@@ -30,7 +30,7 @@ const routes = [
   {
     path: '/weather',
     name: 'weather',
-    component: Weather, 
+    component: WeatherWidget, 
   },
   {
     path: '/weather-popup',

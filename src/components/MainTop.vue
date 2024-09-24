@@ -95,16 +95,15 @@ async function logout() {
 
 <style scoped>
 
-.wheather-bar{
-    position: relative;
-    left: 5%;
-    right: 5%;
+.wheather-bar {
+  position: relative;
+  left: 5%;
+  right: 5%;
 }
 .weather-compo {
-    align-items: center;
-    width: 300px;
-    height: 130px;
-    
+  align-items: center;
+  width: 150px;
+  height: 80px;
 }
 
 /* 스타일유지 */
