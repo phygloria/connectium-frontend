@@ -100,7 +100,9 @@ export default {
 
   // 공원이미지 가져오기
   getParkImage(imageName) {
-    return `${API_URL}/outdoorImages/${imageName}`;
+    if (!imageName) return '/path/to/default/image.jpg';
+    const encodedImageName = encodeURIComponent(imageName);
+    return `${API_URL}/images/outdoor/${encodedImageName}`;
   },
 
   login(username, password) {
@@ -158,7 +160,9 @@ export default {
 
   // 교육 프로그램 이미지 URL 가져오기
   getEducationImageUrl(imageName) {
-    return `${API_URL}/educationImages/${imageName}`;
+    if (!imageName) return '/path/to/default/image.jpg';
+    const encodedImageName = encodeURIComponent(imageName);
+    return `${API_URL}/images/education/${encodedImageName}`;
   },
   // qna 댓글
   getCommentsByPostId(postId) {

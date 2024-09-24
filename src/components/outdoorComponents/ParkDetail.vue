@@ -8,7 +8,12 @@
             <div class="content-wrapper">
               <div class="image-container">
                 <div class="detail-img-area">
-                  <img :src="getParkImage(content.imagePath)" :alt="content.name" v-if="content.imagePath">
+                  <img 
+  :src="getParkImage(content.imagePath)" 
+  :alt="content.name" 
+  v-if="content.imagePath"
+  class="outdoor-detail-image"
+>
                 </div>
                 <div class="action-buttons">
                   <button class="map-button">지도보기</button>
@@ -111,9 +116,36 @@ const toggleBookmark = async () => {
 };
 
 const getParkImage = (imagePath) => {
-  if (!imagePath) return '';
-  return api.getParkImage(imagePath);
+  if (!imagePath) return '/path/to/default/image.jpg';  // 기본 이미지 경로
+  const imageName = imagePath.split('/').pop(); // 파일 이름만 추출
+  return api.getParkImage(imageName);
 };
 
 onMounted(fetchContentDetail);
 </script>
+
+<style scoped>
+.detail-img-area {
+   width: 100%;
+   height: 400px;
+   overflow: hidden;
+   position: relative;
+}
+
+.outdoor-detail-image {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: transform 0.3s ease;
+}
+
+.detail-img-area:hover .outdoor-detail-image {
+   transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+   .detail-img-area {
+     height: 250px;
+   }
+}
+</style>
