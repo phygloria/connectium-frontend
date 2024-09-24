@@ -12,8 +12,9 @@
                 </div>
                 <div class="action-buttons">
                   <button class="map-button">지도보기</button>
-                  <!-- <button class="like-button">♡</button> -->
-                  <button class="bookmark-button">🔖</button>
+                  <button class="bookmark-button" @click="toggleBookmark">
+                    {{ isBookmarked ? '🔖' : '☆' }}
+                  </button>
                 </div>
               </div>
               <div class="info-container">
@@ -46,7 +47,7 @@
                 </div>
               </div>
             </div>
-
+            
             <div class="review-section">
               <h3 class="review-write">리뷰쓰기</h3>
               <textarea placeholder="리뷰를 작성해주세요"></textarea>
@@ -63,36 +64,56 @@
 </template>
 
 <script setup>
-import '@/assets/css/common_container.css';
-import '@/assets/css/contents_detail.css';
-// import '@/assets/css/like.css';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import api from '@/services/api';
 
+import '@/assets/css/common_container.css';
+import '@/assets/css/contents_detail.css';
+
 const route = useRoute();
 const content = ref(null);
 const error = ref(null);
-
+const isBookmarked = ref(false);
 
 const fetchContentDetail = async () => {
   try {
     const response = await api.getParkDetail(route.params.id);
-    content.value = { ...response, }; // liked 속성 추가 (...response, liked: false )
-    error.value = null; // 성공 시 에러 초기화
-  } catch (error) {
-    console.error('Error fetching content detail:', error);
-    error.value = '컨텐츠를 불러오는 데 실패했습니다.'; // 에러 메시지 설정
-    content.value = null; // 컨텐츠 초기화
+    content.value = response;
+    await checkBookmarkStatus();
+  } catch (err) {
+    console.error('Error fetching content detail:', err);
+    error.value = '컨텐츠를 불러오는 데 실패했습니다.';
   }
 };
 
+const checkBookmarkStatus = async () => {
+  try {
+    const bookmarks = await api.getBookmarks();
+    isBookmarked.value = bookmarks.some(bookmark => 
+      bookmark.itemId === content.value.id.toString() && bookmark.itemType === 'OUTDOOR'
+    );
+  } catch (err) {
+    console.error('Error checking bookmark status:', err);
+  }
+};
+
+const toggleBookmark = async () => {
+  try {
+    await api.toggleBookmark({
+      itemId: content.value.id.toString(),
+      itemType: 'OUTDOOR'
+    });
+    isBookmarked.value = !isBookmarked.value;
+  } catch (err) {
+    console.error('Error toggling bookmark:', err);
+  }
+};
 
 const getParkImage = (imagePath) => {
   if (!imagePath) return '';
-  return `${api.API_URL}/outdoorImages/${imagePath}`;
+  return api.getParkImage(imagePath);
 };
-
 
 onMounted(fetchContentDetail);
 </script>

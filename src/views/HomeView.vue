@@ -4,7 +4,9 @@
     <br>
     <HomeBody />
     <br>
-    <HomeContents />
+    <div class="home-contents">
+        <HomeContents />
+    </div>
 
 </template>
 
@@ -15,3 +17,13 @@ import HomeContents from '@/components/homeComponents/HomeContents.vue';
 
 
 </script>
+
+
+<style scoped>
+@media (max-width: 1024px) {
+    .home-contents {
+        position: absolute;
+        top: 93%;
+    }
+}
+</style>
