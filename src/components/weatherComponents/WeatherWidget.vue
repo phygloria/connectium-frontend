@@ -21,10 +21,10 @@ import { ref, computed, onMounted } from 'vue';
 import api from '@/services/api';
 import WeatherPopup from './WeatherPopup.vue';
 
-const weatherData = ref(null);
-const location = ref("중랑구");
-const error = ref(null);
-const showPopup = ref(false);
+const weatherData = ref(null); // 날씨 데이터를 저장
+const location = ref("중랑구"); // 사용자의 위치를 저장
+const error = ref(null); // API 호출 시 발생한 에러 메시지를 저장
+const showPopup = ref(false); // 팝업의 표시 여부를 제어
 
 const currentWeather = computed(() => weatherData.value?.currentWeather);
 const hourlyForecasts = computed(() => weatherData.value?.shortTermForecasts || []);
@@ -45,6 +45,7 @@ const getWeather = async (latitude = null, longitude = null) => {
 const togglePopup = () => {
   showPopup.value = !showPopup.value;
 };
+// togglePopup 함수는 showPopup 값을 반전시켜 팝업을 열거나 닫음
 
 // 날씨 상태에 따른 이모티콘 반환
 const getWeatherEmoji = (condition) => {
@@ -66,10 +67,10 @@ onMounted(getWeather);
 .weather-widget {
   position: absolute;
   top: 20px; /* 상단에서 20px */
-  right: 20px; /* 우측에서 20px */
-  width: 200px;
-  height: 160px;
-  z-index: 1000; /* 다른 요소들 위에 표시되도록 */
+  right: 10px; /* 우측에서 20px */
+  width: 180px;
+  height: 130px;
+  /* z-index: 1000; 다른 요소들 위에 표시되도록 */
 }
 .weather-info {
   display: flex;

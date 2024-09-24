@@ -3,6 +3,7 @@
     <h2>{{ props.location }} 날씨</h2>
     <div v-if="props.currentWeather" class="current-weather">
       <h3>현재 날씨</h3>
+      <!-- props로 받은 currentWeather가 있을 경우에만 렌더링 -->
       <span class="weather-emoji">{{ getWeatherEmoji(props.currentWeather.skyCondition) }}</span>
       <p>기온: {{ props.currentWeather.temperature }}°C</p>
       <p>날씨: {{ props.currentWeather.skyCondition }}</p>
@@ -11,9 +12,13 @@
       <p>풍속: {{ props.currentWeather.windSpeed }} m/s</p>
       <p>풍향: {{ props.currentWeather.windDirection }}</p>
     </div>
+
+    <!-- 시간별 날씨 예보를 표시하는 섹션 -->
     <div class="hourly-forecast">
       <h3>시간별 예보</h3>
+      <!-- 각 시간별 예보 항목을 반복적으로 렌더링 -->
       <div v-for="forecast in props.hourlyForecasts" :key="forecast.forecastDate + forecast.forecastTime" class="forecast-item">
+        <!-- 예보 날짜와 시간을 포맷팅하여 표시 -->
         <p>{{ formatDateTime(forecast.forecastDate, forecast.forecastTime) }}</p>
         <span class="weather-emoji-small">{{ getWeatherEmoji(forecast.skyCondition) }}</span>
         <p>{{ forecast.temperature }}°C</p>
@@ -25,6 +30,7 @@
 
 <script setup>
 const props = defineProps(['currentWeather', 'hourlyForecasts', 'location']);
+// props로부터 세 가지 값(currentWeather, hourlyForecasts, location)을 받아오고 부모 컴포넌트한테서 전달됨
 
 const formatDateTime = (date, time) => {
   return `${date.substring(4, 6)}/${date.substring(6, 8)} ${time.substring(0, 2)}:${time.substring(2, 4)}`;
