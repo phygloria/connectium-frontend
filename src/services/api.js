@@ -160,4 +160,20 @@ export default {
   getEducationImageUrl(imageName) {
     return `${API_URL}/educationImages/${imageName}`;
   },
+  // qna 댓글
+  getCommentsByPostId(postId) {
+    return api.get(`/comments/post/${postId}`).then(response => response.data);
+  },
+
+  addComment(commentData) {
+    return api.post('/comments', commentData).then(response => response.data);
+  },
+  getBookmarks() {
+    return api.get('/bookmarks').then(response => response.data);
+  },
+
+  toggleBookmark(bookmarkData) {
+    return api.post('/bookmarks/toggle', bookmarkData).then(response => response.data);
+  },
+  
 };

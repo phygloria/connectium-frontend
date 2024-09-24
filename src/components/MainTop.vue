@@ -33,6 +33,7 @@
                         <template v-if="!isLoggedIn">
                             <router-link to="/login" class="auth-link">로그인</router-link>
                             <router-link to="/register" class="auth-link">회원가입</router-link>
+                            
                         </template>
                         <a v-else @click="logout" class="auth-link">로그아웃</a>
                     </div>
@@ -50,10 +51,12 @@
                     <router-link to="/serviceInfo" class="nav-item">커넥티움?</router-link>
                     <router-link to="/community" class="nav-item">우리아이 커뮤니티</router-link>
                     <router-link to="/educationProgram" class="nav-item">교육 프로그램</router-link>
+                    <router-link to="/Education" class="nav-item">교육</router-link>
                     <router-link to="/outdoor/park" class="nav-item">신나는 우리동네</router-link>
                     <router-link to="#" class="nav-item">우리 같이가요!</router-link>
-                    <router-link to="/Education" class="nav-item">준성</router-link>
+                    
                     <router-link to="/postList" class="nav-item">QnA</router-link>
+                    <router-link to="mypage" class="auth-link">마이페이지</router-link>
                 </nav>
             </div>
         </div>
