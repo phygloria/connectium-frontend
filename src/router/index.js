@@ -17,7 +17,6 @@ import Register from "@/components/loginComponents/Register.vue";
 import EduView from "@/views/EduView.vue";
 import EduDetailView from "@/views/EduDetailView.vue";
 import ProgramList from "@/components/programComponents/ProgramList.vue";
-import WeatherPopup from "@/components/weatherComponents/WeatherPopup.vue";
 import ServiceInfo from "@/components/ServiceInfo.vue";
 import QnApostView from "@/views/QnApostView.vue";
 import FilteredCommunityList from "@/components/communityComponents/FilteredCommunityList.vue";
@@ -33,16 +32,12 @@ const routes = [
   },
   {
 
-    path: '/weather',
-    name: 'weather',
+    path: '/weather-Widget',
+    name: 'WeatherWidget',
     component: WeatherWidget, 
 
   },
-  {
-    path: "/weather-popup",
-    name: "WeatherPopup",
-    component: WeatherPopup,
-  },
+
   {
     path: "/serviceInfo",
     name: "커넥티움?",
