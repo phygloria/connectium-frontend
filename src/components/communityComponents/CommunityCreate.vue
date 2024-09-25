@@ -6,10 +6,10 @@
           <label for="title">제목:</label>
           <input id="title" v-model="newPost.title" required>
         </div>
-        <div>
+        <!-- <div>
           <label for="authorName">작성자:</label>
           <input id="authorName" v-model="newPost.authorName" required>
-        </div>
+        </div> -->
         <div>
           <label for="category">카테고리:</label>
           <select id="category" v-model="newPost.category" required>
