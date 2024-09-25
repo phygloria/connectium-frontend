@@ -3,8 +3,11 @@ import axios from "axios";
 const API_URL = "http://1.214.19.22:8080/api";
 
 const api = axios.create({
-  baseURL: API_URL,
-  withCredentials: true,
+  baseURL: '/api',  // 프록시 설정에 맞춰 '/api'를 기본 URL로 사용
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  withCredentials: true
 });
 
 // 요청 인터셉터 추가
@@ -23,6 +26,8 @@ api.interceptors.request.use(
 
 export default {
 
+  
+
   //게시글 가져오기
   // getAllPosts() {
   //   return axios.get(`${API_URL}/post`).then((response) => response.data);
@@ -37,9 +42,9 @@ export default {
         .then((response) => response.data);
     },
   
-  getPostById(id) {
-    return axios.get(`${API_URL}/post/${id}`).then((response) => response.data);
-  },
+    getPostById(id) {
+      return api.get(`/post/${id}`).then((response) => response.data);
+    },
 
   createPost(formData) {
     return api
@@ -62,7 +67,7 @@ export default {
   },
 
   deletePost(id) {
-    return axios.delete(`${API_URL}/post/${id}`);
+    return api.delete(`/post/${id}`);
   },
 
   getAllPrograms() {

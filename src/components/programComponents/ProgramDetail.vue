@@ -183,36 +183,5 @@ defineExpose({ formatDateRange });
 </script>
 
 <style scoped>
-.img-area, .detail-img-area {
-  width: 100%;
-  height: 200px; /* 원하는 높이로 조정하세요 */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.img-area img, .detail-img-area img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채웁니다 */
-}
-
-/* ProgramDetail.vue에만 필요한 경우 */
-.image-container {
-  max-width: 500px; /* 원하는 최대 너비로 조정하세요 */
-  margin: 0 auto;
-}
-
-/* 이미지를 불러올 수 없을 때의 대체 텍스트 스타일 */
-.image-placeholder {
-  width: 100%;
-  height: 200px; /* img-area와 같은 높이로 설정 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0f0f0;
-  color: #666;
-  font-size: 14px;
-}
 </style>
