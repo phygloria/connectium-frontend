@@ -1,4 +1,7 @@
 <template>
+
+<MainTop/>
+
   <div class="common-container">
     <div class="common-container-line">
       <div class="content-detail-container">
@@ -7,9 +10,14 @@
             <h2 class="service-name">{{ content.name }}</h2>
             <div class="content-wrapper">
               <div class="image-container">
-                <div class="detail-img-area">
-                  <img :src="getEducationImage(content.imagePath)" :alt="content.name" v-if="content.imagePath">
-                </div>
+    <div class="detail-img-area">
+      <img 
+        :src="getEducationImage(content.imagePath)" 
+        :alt="content.name" 
+        v-if="content.imagePath"
+        class="education-detail-image"
+      >
+    </div>
                 <div class="action-buttons">
                   <button class="map-button">지도보기</button>
                   <button class="bookmark-button" @click="toggleBookmark">
@@ -61,13 +69,15 @@
 </template>
 
 <script setup>
+import '@/assets/css/common_container.css';
+import '@/assets/css/contents_detail.css';
+import '@/assets/css/like.css';
+import MainTop from '../MainTop.vue';
+
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import api from '@/services/api';
 
-import '@/assets/css/common_container.css';
-import '@/assets/css/contents_detail.css';
-import '@/assets/css/like.css';
 
 const route = useRoute();
 const content = ref(null);
@@ -109,10 +119,43 @@ const toggleBookmark = async () => {
 };
 
 const getEducationImage = (imagePath) => {
-  if (!imagePath) return '';
-  return api.getEducationImageUrl(imagePath);
+  if (!imagePath) return '/path/to/default/image.jpg';  // 기본 이미지 경로
+  const imageName = imagePath.split('/').pop(); // 파일 이름만 추출
+  return api.getEducationImageUrl(imageName);
 };
 
 onMounted(fetchContentDetail);
 </script>
+
+<style scoped>
+
+
+.detail-img-area {
+  width: 100%;
+  height: 400px; /* 원하는 높이로 조정하세요 */
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px; /* 이미지 모서리를 둥글게 만듭니다 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 이미지에 그림자 효과를 줍니다 */
+}
+
+.education-detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.detail-img-area:hover .education-detail-image {
+  transform: scale(1.05);
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .detail-img-area {
+    height: 250px; /* 모바일 화면에서는 더 작게 */
+  }
+}
+</style>
 

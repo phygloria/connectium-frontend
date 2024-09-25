@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
 import api from '@/services/api';
+import { ref, computed, onMounted } from 'vue';
 import WeatherPopup from './WeatherPopup.vue';
 
 const weatherData = ref(null);

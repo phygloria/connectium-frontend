@@ -1,4 +1,7 @@
 <template>
+
+  <MainTop />
+
     <div class="common-container">
       <div class="common-container-line">
         <h2>내 북마크</h2>
@@ -35,9 +38,11 @@
   </template>
   
   <script setup>
+  import MainTop from './MainTop.vue';
+
+  import api from '@/services/api';
   import { ref, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
-  import api from '@/services/api';
   
   const router = useRouter();
   const bookmarks = ref([]);

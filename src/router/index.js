@@ -2,27 +2,27 @@
 import { createRouter, createWebHistory } from "vue-router";
 import PostCreate from "@/components/qnaComponents/PostCreate.vue";
 import PostEdit from "@/components/qnaComponents/PostEdit.vue";
+import PostView from "@/components/qnaComponents/PostView.vue";
 import HomeView from "@/views/HomeView.vue";
 import QnAView from "@/views/QnAView.vue";
-import EducationView from "@/views/EducationView.vue";
+import ProgramListView from "@/views/ProgramListView.vue";
 import CommunityList from "@/components/communityComponents/CommunityList.vue";
 import CommunityCreate from "@/components/communityComponents/CommunityCreate.vue";
 import CommunityDetail from "@/components/communityComponents/CommunityDetail.vue";
 import CommunityEdit from "@/components/communityComponents/CommunityEdit.vue";
-import ProgramView from "@/views/ProgramView.vue";
 import ParkView from "@/views/ParkView.vue";
-import ParkDetailView from "@/views/ParkDetailView.vue";
+import ParkDetail from "@/components/outdoorComponents/ParkDetail.vue";
 import Login from "@/components/loginComponents/Login.vue";
 import Register from "@/components/loginComponents/Register.vue";
 import EduView from "@/views/EduView.vue";
-import EduDetailView from "@/views/EduDetailView.vue";
+import EducationDetail from "@/components/educationComponents/EducationDetail.vue";
 import ProgramList from "@/components/programComponents/ProgramList.vue";
 import WeatherPopup from "@/components/weatherComponents/WeatherPopup.vue";
-import ServiceInfo from "@/components/ServiceInfo.vue";
-import QnApostView from "@/views/QnApostView.vue";
+import ServiceInfo from "@/views/ServiceInfo.vue";
 import FilteredCommunityList from "@/components/communityComponents/FilteredCommunityList.vue";
 import MyPage from "@/components/MyPage.vue";
 import WeatherWidget from "@/components/weatherComponents/WeatherWidget.vue";
+import ProgramDetail from "@/components/programComponents/ProgramDetail.vue";
 
 
 const routes = [
@@ -61,7 +61,7 @@ const routes = [
   {
     path: "/post/:id",
     name: "PostView",
-    component: QnApostView,
+    component: PostView,
   },
   {
     path: "/post/:id/edit",
@@ -69,14 +69,14 @@ const routes = [
     component: PostEdit,
   },
   {
-    path: "/educationProgram",
-    name: "교육프로그램",
-    component: EducationView,
+    path: "/program",
+    name: "프로그램",
+    component: ProgramListView,
   },
   {
     path: "/program/:type/:svcid",
     name: "programDetail",
-    component: ProgramView,
+    component: ProgramDetail,
   },
   {
     path: "/program/all",
@@ -103,6 +103,7 @@ const routes = [
     path: "/community/:id",
     name: "CommunityDetail",
     component: CommunityDetail,
+    props: true,
   },
   {
     path: "/community/edit/:id",
@@ -117,7 +118,7 @@ const routes = [
   {
     path: "/outdoor/park/:id",
     name: "ParkDetail",
-    component: ParkDetailView,
+    component: ParkDetail,
   },
   {
     path: "/login",
@@ -130,14 +131,14 @@ const routes = [
     component: Register,
   },
   {
-    path: "/Education",
+    path: "/education",
     name: "jun",
     component: EduView,
   },
   {
-    path: "/Education/:id",
+    path: "/education/:id",
     name: "junDetail",
-    component: EduDetailView,
+    component: EducationDetail,
   },
   {
     path: "/mypage",

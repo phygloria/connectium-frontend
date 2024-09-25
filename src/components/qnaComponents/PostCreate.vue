@@ -5,8 +5,8 @@
   <div class="common-container">
     <div class="common-container-line">
       <h2 class="component-title">질문하기</h2>
-      <div class="bodyContainer">
-        <div class="bodyBar">
+      <div class="post-create-container">
+        <div class="post-create-bar">
           <form @submit.prevent="createPost" class="c-form">
             <div class="input-row">
               <div class="input-wrapper title-wrapper">
@@ -62,7 +62,7 @@
 
 <script setup>
 import '@/assets/css/common_container.css'
-import '@/assets/css/create.css';
+import '@/assets/css/post_create.css';
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import MainTop from '@/components/MainTop.vue';
