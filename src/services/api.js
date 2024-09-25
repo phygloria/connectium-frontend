@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api";
+const API_URL = "http://1.214.19.22:8080/api";
 
 const api = axios.create({
   baseURL: '/api',  // 프록시 설정에 맞춰 '/api'를 기본 URL로 사용
@@ -12,17 +12,18 @@ const api = axios.create({
 
 // 요청 인터셉터 추가
 api.interceptors.request.use(
-  config => {
-    const token = localStorage.getItem('token');
+  (config) => {
+    const token = localStorage.getItem("token");
     if (token) {
-      config.headers['Authorization'] = 'Bearer ' + token;
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
   },
-  error => {
+  (error) => {
     return Promise.reject(error);
   }
 );
+
 export default {
 
   
