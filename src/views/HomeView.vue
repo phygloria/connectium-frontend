@@ -23,7 +23,7 @@ import HomeContents from '@/components/homeComponents/HomeContents.vue';
 @media (max-width: 1024px) {
     .home-contents {
         position: absolute;
-        top: 93%;
+        top: 97%;
     }
 }
 </style>

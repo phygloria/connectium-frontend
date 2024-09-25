@@ -17,13 +17,7 @@ import Register from "@/components/loginComponents/Register.vue";
 import EduView from "@/views/EduView.vue";
 import EducationDetail from "@/components/educationComponents/EducationDetail.vue";
 import ProgramList from "@/components/programComponents/ProgramList.vue";
-<<<<<<< HEAD
-import ServiceInfo from "@/components/ServiceInfo.vue";
-import QnApostView from "@/views/QnApostView.vue";
-=======
-import WeatherPopup from "@/components/weatherComponents/WeatherPopup.vue";
 import ServiceInfo from "@/views/ServiceInfo.vue";
->>>>>>> dbbea92197900adeeb9afd1839711e8d43068d67
 import FilteredCommunityList from "@/components/communityComponents/FilteredCommunityList.vue";
 import MyPage from "@/components/MyPage.vue";
 import WeatherWidget from "@/components/weatherComponents/WeatherWidget.vue";
