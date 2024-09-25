@@ -184,5 +184,18 @@ export default {
   toggleBookmark(bookmarkData) {
     return api.post('/bookmarks/toggle', bookmarkData).then(response => response.data);
   },
+
+  // 리뷰
+  getReviews(itemType, itemId) {
+    return api.get(`/reviews`, { params: { itemType, itemId } });
+  },
+
+  postReview(itemType, itemId, content) {
+    const formData = new FormData();
+    formData.append('itemType', itemType);
+    formData.append('itemId', itemId);
+    formData.append('content', content);
+    return api.post(`/reviews`, formData);
+  },
   
 };

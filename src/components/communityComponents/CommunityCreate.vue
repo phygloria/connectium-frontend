@@ -15,7 +15,6 @@
               </div>
             </div>
             <div class="input-row">
-              
               <div class="input-wrapper category-wrapper">
                 <label for="category" class="input-label">카테고리:</label>
                 <select id="category" v-model="newPost.category" required>
@@ -29,8 +28,6 @@
               <label for="content" class="input-label">내용:</label>
               <textarea id="content" v-model="newPost.content" required></textarea>
             </div>
-
-
             <div class="btn">
               <button type="submit" id="submit">글 등록</button>
             </div>
