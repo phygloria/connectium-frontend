@@ -53,10 +53,10 @@
               </div>
             </div>
             
-            <div class="review-section">
-              <h3>리뷰쓰기</h3>
-              <textarea placeholder="리뷰를 작성해주세요"></textarea>
-            </div>
+            <ReviewSection 
+              :itemId="content.id.toString()" 
+              itemType="EDUCATION" 
+            />
           </div>
           <div v-else-if="error" class="error-message">
             {{ error }}
@@ -73,6 +73,7 @@ import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
 import '@/assets/css/like.css';
 import MainTop from '../MainTop.vue';
+import ReviewSection from '@/components/ReviewSection.vue';
 
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
@@ -156,6 +157,124 @@ onMounted(fetchContentDetail);
   .detail-img-area {
     height: 250px; /* 모바일 화면에서는 더 작게 */
   }
+}
+
+.review-section {
+  margin-top: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.review-title {
+  font-size: 1.5em;
+  color: #343a40;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.reviews-list {
+  margin-bottom: 30px;
+}
+
+.review-item {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.review-item:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-author {
+  font-weight: bold;
+  color: #495057;
+}
+
+.review-date {
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
+.review-content {
+  color: #212529;
+  line-height: 1.6;
+}
+
+.no-reviews {
+  color: #6c757d;
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.review-form {
+  margin-top: 20px;
+}
+
+.review-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.review-textarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+.submit-review-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-review-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.submit-review-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.login-prompt {
+  margin-top: 20px;
+  text-align: center;
+  color: #495057;
+}
+
+.login-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link:hover {
+  text-decoration: underline;
 }
 </style>
 
