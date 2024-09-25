@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://1.214.19.22:8080/api";
+const API_URL = "http://localhost:8080/api";
 
 const api = axios.create({
   baseURL: '/api',  // 프록시 설정에 맞춰 '/api'를 기본 URL로 사용
