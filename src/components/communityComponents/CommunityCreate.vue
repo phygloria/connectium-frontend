@@ -15,10 +15,7 @@
               </div>
             </div>
             <div class="input-row">
-              <div class="input-wrapper author-wrapper">
-                <label for="authorName" class="input-label">작성자:</label>
-                <input id="authorName" v-model="newPost.authorName" required>
-              </div>
+              
               <div class="input-wrapper category-wrapper">
                 <label for="category" class="input-label">카테고리:</label>
                 <select id="category" v-model="newPost.category" required>
