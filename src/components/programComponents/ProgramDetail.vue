@@ -184,14 +184,6 @@ defineExpose({ formatDateRange });
 </script>
 
 <style scoped>
-.img-area, .detail-img-area {
-  width: 100%;
-  height: 200px; /* 원하는 높이로 조정하세요 */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .img-area img, .detail-img-area img {
   width: 100%;
@@ -334,4 +326,5 @@ defineExpose({ formatDateRange });
 .login-link:hover {
   text-decoration: underline;
 }
+
 </style>

@@ -11,8 +11,12 @@
             <div class="content-wrapper">
               <div class="image-container">
                 <div class="detail-img-area">
-                  <img :src="getParkImage(content.imagePath)" :alt="content.name" v-if="content.imagePath"
-                    class="outdoor-detail-image">
+                  <img 
+                  :src="getParkImage(content.imagePath)" 
+                  :alt="content.name" 
+                  v-if="content.imagePath"
+                  
+                  >
                 </div>
                 <div class="action-buttons">
                   <button class="map-button">지도보기</button>
@@ -126,12 +130,6 @@ onMounted(fetchContentDetail);
 </script>
 
 <style scoped>
-.detail-img-area {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  position: relative;
-}
 
 .outdoor-detail-image {
   width: 100%;
@@ -267,4 +265,5 @@ onMounted(fetchContentDetail);
 .login-link:hover {
   text-decoration: underline;
 }
+
 </style>
