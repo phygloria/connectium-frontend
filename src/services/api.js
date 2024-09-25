@@ -76,9 +76,9 @@ export default {
 
   // 이미지 URL 프록시
   getProxyImageUrl(filename) {
-    return `${API_URL}/programs/proxy-image?filename=${encodeURIComponent(
-      filename
-    )}`;
+    // '/HOMEPAGE/PROGRAM/IN/' 경로 제거
+    const cleanFilename = filename.replace('/HOMEPAGE/PROGRAM/IN/', '');
+    return `${API_URL}/programs/proxy-image?filename=${encodeURIComponent(cleanFilename)}`;
   },
 
   // 날씨

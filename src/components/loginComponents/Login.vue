@@ -27,11 +27,11 @@
         </button>
       </form>
       <div class="idpwrgi-find-bar">
-        <router-link to="/register" class="h6">아이디 찾기</router-link>
-        <router-link to="/register" class="h6">비밀번호 찾기</router-link>
+        <!-- <router-link to="/register" class="h6">아이디 찾기</router-link>
+        <router-link to="/register" class="h6">비밀번호 찾기</router-link> -->
         <router-link to="/register" class="h6">회원가입</router-link>
       </div>
-      <div class="quick-login">
+      <!-- <div class="quick-login">
         <div>
           <div>
             <img class="quick-icon" src="@/assets/images/icon/googleLogo.png" />
@@ -41,7 +41,7 @@
         <div class="quick-text">
           <h6 class="quick-text">간편 로그인</h6>
         </div>
-      </div>
+      </div> -->
       <p v-if="error" class="error-message">{{ error }}</p>
     </div>
   </div>

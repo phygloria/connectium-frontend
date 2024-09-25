@@ -1,4 +1,7 @@
 <template>
+
+<MainTop />
+
   <div class="common-container">
     <div class="common-container-line">
       <div class="content-detail-container">
@@ -8,8 +11,13 @@
             <div class="content-wrapper">
               <div class="image-container">
                 <div class="detail-img-area">
-                  <img :src="getImageUrl(program.imgurl)" :alt="program.svcnm" v-if="program.imgurl">
-                </div>
+    <img 
+      :src="getImageUrl(program.imgurl)" 
+      :alt="program.svcnm" 
+      @error="handleImageError"
+      ref="imageRef"
+    >
+  </div>
                 <div class="action-buttons">
                   <button class="map-button">지도보기</button>
                   <button class="bookmark-button" @click="toggleBookmark">
@@ -23,13 +31,13 @@
                   <span class="value">{{ program.usetgtinfo }}</span>
                 </div>
                 <div class="info-item">
-                  <span class="label">이용기간 :</span>
-                  <span class="value">{{ formatDateRange(program.svcopnbgndt, program.svcopnenddt) }}</span>
-                </div>
-                <div class="info-item">
-                  <span class="label">접수기간 :</span>
-                  <span class="value">{{ formatDateRange(program.rcptbgndt, program.rcptenddt) }}</span>
-                </div>
+    <span class="label">이용기간 :</span>
+    <span class="value">{{ formatDateRange(program.svcopnbgndt, program.svcopnenddt) }}</span>
+  </div>
+  <div class="info-item">
+    <span class="label">접수기간 :</span>
+    <span class="value">{{ formatDateRange(program.rcptbgndt, program.rcptenddt) }}</span>
+  </div>
                 <div class="info-item">
                   <span class="label">위치 :</span>
                   <span class="value">{{ program.areanm }} {{ program.placenm }}</span>
@@ -60,7 +68,7 @@
           <div v-else-if="error" class="error-message">
             {{ error }}
           </div>
-          <div v-else>Loading...</div>
+          <div v-else class="loading">Loading...</div>
         </div>
       </div>
     </div>
@@ -68,17 +76,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import api from '@/services/api';
-
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
+import MainTop from '../MainTop.vue';
+
+import api from '@/services/api';
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
 
 const route = useRoute();
 const program = ref(null);
 const error = ref(null);
 const isBookmarked = ref(false);
+const imageRef = ref(null);
 
 const fetchProgramDetail = async () => {
   try {
@@ -116,7 +127,28 @@ const toggleBookmark = async () => {
 
 const getImageUrl = (filename) => {
   if (!filename) return '';
-  return api.getProxyImageUrl(filename, route.params.type);
+  // '/HOMEPAGE/PROGRAM/IN/' 경로가 이미 포함되어 있다면 제거
+  const cleanFilename = filename.replace('/HOMEPAGE/PROGRAM/IN/', '');
+  return api.getProxyImageUrl(cleanFilename);
+};
+
+const handleImageError = () => {
+  if (imageRef.value) {
+    imageRef.value.style.display = 'none';
+    const parent = imageRef.value.parentNode;
+    const placeholder = document.createElement('div');
+    placeholder.className = 'image-placeholder';
+    placeholder.textContent = '이미지를 불러올 수 없습니다';
+    placeholder.style.width = '100%';
+    placeholder.style.height = '200px';
+    placeholder.style.backgroundColor = '#f0f0f0';
+    placeholder.style.display = 'flex';
+    placeholder.style.alignItems = 'center';
+    placeholder.style.justifyContent = 'center';
+    placeholder.style.color = '#666';
+    placeholder.style.fontSize = '14px';
+    parent.appendChild(placeholder);
+  }
 };
 
 const formatDateRange = (start, end) => {
@@ -126,14 +158,61 @@ const formatDateRange = (start, end) => {
     return date.toLocaleDateString('ko-KR', { 
       year: 'numeric', 
       month: '2-digit', 
-      day: '2-digit', 
-      hour: '2-digit', 
-      minute: '2-digit' 
+      day: '2-digit'
     });
   };
-  return `${formatDate(start)} ~ ${formatDate(end)}`;
+  
+  const startFormatted = formatDate(start);
+  const endFormatted = formatDate(end);
+  
+  if (startFormatted && endFormatted) {
+    return `${startFormatted} ~ ${endFormatted}`;
+  } else if (startFormatted) {
+    return `${startFormatted}부터`;
+  } else if (endFormatted) {
+    return `${endFormatted}까지`;
+  } else {
+    return '날짜 정보 없음';
+  }
 };
 
 onMounted(fetchProgramDetail);
+
+// formatDateRange 함수를 템플릿에서 사용할 수 있도록 노출
+defineExpose({ formatDateRange });
 </script>
 
+<style scoped>
+.img-area, .detail-img-area {
+  width: 100%;
+  height: 200px; /* 원하는 높이로 조정하세요 */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-area img, .detail-img-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채웁니다 */
+}
+
+/* ProgramDetail.vue에만 필요한 경우 */
+.image-container {
+  max-width: 500px; /* 원하는 최대 너비로 조정하세요 */
+  margin: 0 auto;
+}
+
+/* 이미지를 불러올 수 없을 때의 대체 텍스트 스타일 */
+.image-placeholder {
+  width: 100%;
+  height: 200px; /* img-area와 같은 높이로 설정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  color: #666;
+  font-size: 14px;
+}
+</style>

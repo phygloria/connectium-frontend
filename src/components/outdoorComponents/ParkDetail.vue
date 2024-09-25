@@ -1,4 +1,7 @@
 <template>
+
+  <MainTop />
+
   <div class="common-container">
     <div class="common-container-line">
       <div class="content-detail-container">
@@ -8,12 +11,8 @@
             <div class="content-wrapper">
               <div class="image-container">
                 <div class="detail-img-area">
-                  <img 
-  :src="getParkImage(content.imagePath)" 
-  :alt="content.name" 
-  v-if="content.imagePath"
-  class="outdoor-detail-image"
->
+                  <img :src="getParkImage(content.imagePath)" :alt="content.name" v-if="content.imagePath"
+                    class="outdoor-detail-image">
                 </div>
                 <div class="action-buttons">
                   <button class="map-button">지도보기</button>
@@ -52,7 +51,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="review-section">
               <h3 class="review-write">리뷰쓰기</h3>
               <textarea placeholder="리뷰를 작성해주세요"></textarea>
@@ -69,12 +68,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import api from '@/services/api';
-
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
+import MainTop from '@/components/MainTop.vue';
+
+import api from '@/services/api';
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const content = ref(null);
@@ -95,7 +95,7 @@ const fetchContentDetail = async () => {
 const checkBookmarkStatus = async () => {
   try {
     const bookmarks = await api.getBookmarks();
-    isBookmarked.value = bookmarks.some(bookmark => 
+    isBookmarked.value = bookmarks.some(bookmark =>
       bookmark.itemId === content.value.id.toString() && bookmark.itemType === 'OUTDOOR'
     );
   } catch (err) {
@@ -126,26 +126,26 @@ onMounted(fetchContentDetail);
 
 <style scoped>
 .detail-img-area {
-   width: 100%;
-   height: 400px;
-   overflow: hidden;
-   position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
 }
 
 .outdoor-detail-image {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-   transition: transform 0.3s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .detail-img-area:hover .outdoor-detail-image {
-   transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
-   .detail-img-area {
-     height: 250px;
-   }
+  .detail-img-area {
+    height: 250px;
+  }
 }
 </style>

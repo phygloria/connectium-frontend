@@ -5,8 +5,8 @@
   <div class="common-container">
     <div class="common-container-line">
       <h2 class="component-title">새 글 작성</h2>
-      <div class="bodyContainer">
-        <div class="bodyBar">
+      <div class="post-create-container">
+        <div class="post-create-bar">
           <form @submit.prevent="createPost">
             <div class="input-row">
               <div class="input-wrapper title-wrapper">
@@ -47,11 +47,12 @@
 
 <script setup>
 import '@/assets/css/common_container.css'
-import '@/assets/css/create.css';
+import '@/assets/css/post_create.css';
 import MainTop from '@/components/MainTop.vue';
+
+import api from '@/services/api.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import api from '@/services/api.js'
 
 const router = useRouter()
 const categories = ['5세미만', '5세~6세', '7세~9세', '10세이상']

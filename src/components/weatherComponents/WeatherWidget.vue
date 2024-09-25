@@ -12,7 +12,13 @@
 </template>
 
 <script setup>
+<<<<<<< HEAD
 import { defineProps, defineEmits } from 'vue';
+=======
+import api from '@/services/api';
+import { ref, computed, onMounted } from 'vue';
+import WeatherPopup from './WeatherPopup.vue';
+>>>>>>> dbbea92197900adeeb9afd1839711e8d43068d67
 
 const props = defineProps(['weatherData']);
 defineEmits(['showPopup']);

@@ -1,14 +1,17 @@
 <template>
   <div id="app">
+
      
     
-    
+
+
     <router-view/>
-       
-        
-    
-    </div>
+  </div>
 </template>
+
+<script setup>
+
+</script>
 
 <script>
 export default {
@@ -27,6 +30,3 @@ export default {
 }
 </style>
 
-
-<style >
-</style>
