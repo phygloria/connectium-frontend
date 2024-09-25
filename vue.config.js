@@ -25,6 +25,7 @@ module.exports = defineConfig({
         target: 'http://1.214.19.22:8080',
         changeOrigin: true,
         pathRewrite: { '^/api': '/api' }
+        // secure: false,
       }
     }
   }
