@@ -12,7 +12,6 @@
             <label for="title">제목:</label>
             <input id="title" v-model="post.title" required class="form-input">
           </div>
-         
           <div class="form-group">
             <label for="category">카테고리:</label>
             <select id="category" v-model="post.category" required class="form-input">

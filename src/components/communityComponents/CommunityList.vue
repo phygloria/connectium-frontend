@@ -37,7 +37,7 @@
                 <span class="post-category">{{ post.category }}</span>
                 <div class="list-ediNdelNcount">
                   <span class="post-view-count">조회수: {{ post.viewCount }}</span>
-                  <span class="post-author">작성자: {{ post.authorName }}</span>
+                  <span class="post-author">작성자: {{ post.author }}</span>
                 </div>
               </div>
             </div>
