@@ -8,7 +8,7 @@
         <div v-if="post" class="post-content">
           <div class="post-header">
             <h2>{{ post.title }}</h2>
-            <p>작성자: {{ post.authorName }}</p>
+            <p>작성자: {{ post.author }}</p>
             <p>카테고리: {{ post.category }}</p>
           </div>
           <div class="post-body">

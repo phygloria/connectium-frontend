@@ -52,7 +52,7 @@ const router = useRouter()
 const categories = ['5세미만', '5세~6세', '7세~9세', '10세이상']
 const newPost = ref({
   title: '',
-  authorName: '',
+  author: '',
   content: '',
   category: ''
 })

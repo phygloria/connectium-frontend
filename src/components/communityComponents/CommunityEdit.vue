@@ -14,7 +14,7 @@
           </div>
           <div class="form-group">
             <label for="author">작성자:</label>
-            <input id="author" v-model="post.authorName" required class="form-input">
+            <input id="author" v-model="post.author" required class="form-input">
           </div>
           <div class="form-group">
             <label for="category">카테고리:</label>
