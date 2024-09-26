@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
-    <title>CONNECTIUM</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+    
     <!-- 추가// 브라우저에게 모든 HTTP 요청을 HTTPS로 업그레이드하도록 지시합니다. -->
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
-
+    
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <!-- 카카오맵 API 스크립트 추가 -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f647a199751b8c18f579fff34313544&libraries=services"></script>
+    
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
