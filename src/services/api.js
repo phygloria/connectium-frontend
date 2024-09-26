@@ -195,7 +195,11 @@ export default {
     formData.append('itemType', itemType);
     formData.append('itemId', itemId);
     formData.append('content', content);
-    return api.post(`/reviews`, formData);
+    return api.post(`/reviews`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    });
   },
   
 };
