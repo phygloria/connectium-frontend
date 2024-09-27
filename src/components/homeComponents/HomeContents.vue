@@ -39,18 +39,23 @@ const goToContents = (route) => {
 };
 </script>
 
+
+
+
+
 <style scoped>
 .containerBox {
-    padding: 0 2%;
+    padding: 1% calc((100% - var(--main-content-width)) / 2);
 }
 
 .containerLine {
-    width: 100%; box-shadow: 0px 3px 7px #DBFA5F; border-radius: 50px; border: 2px  #90ce2d solid; 
+    width: 100%; 
+    box-shadow: 0px 3px 7px #DBFA5F; 
+    border-radius: 50px; border: 2px  #90ce2d solid; 
     height: auto; min-height: 350px;
     padding: 10px;
     display: flex;
     flex-direction: column;  
-    margin-bottom: 3%;
 }
 
 .title {

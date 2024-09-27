@@ -72,13 +72,13 @@
 </template>
 
 <script setup>
+import '@/assets/css/common_container.css';
+import '@/assets/css/contents_list.css';
+
+import api from '@/services/api';
 import { ref, reactive, computed, onMounted } from 'vue';
 import { useAllPrograms } from '@/composables/useAllPrograms';
 import { useRouter } from 'vue-router';
-import api from '@/services/api';
-
-import '@/assets/css/common_container.css';
-import '@/assets/css/contents_list.css';
 
 const router = useRouter();
 const { programs, isLoading, error, fetchPrograms } = useAllPrograms();
@@ -174,9 +174,8 @@ onMounted(async () => {
   object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채웁니다 */
 }
 
-/* ProgramDetail.vue에만 필요한 경우 */
 .image-container {
-  max-width: 500px; /* 원하는 최대 너비로 조정하세요 */
+  max-width: 100%; /* 원하는 최대 너비로 조정하세요 */
   margin: 0 auto;
 }
 
