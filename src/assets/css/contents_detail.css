@@ -199,11 +199,12 @@
 }
 
 .action-buttons {
-  position: absolute; /* 이미지 위에 고정 */
-  bottom: 10px; /* 부모 컨테이너의 하단에 위치 */
-  right: 10px; /* 부모 컨테이너의 오른쪽에 위치 */
+  position: absolute; /* 위치를 절대값으로 설정 */
+  top: 10px; /* 상단에 배치 */
+  right: 10px; /* 우측에 배치 */
+  z-index: 1; /* 이미지 위로 올라오게 설정 */
   display: flex;
-  gap: 10px;
+  gap: 10px; /* 버튼 사이에 간격 추가 */
 }
 
 .map-button,

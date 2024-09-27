@@ -32,11 +32,11 @@
                     <div class="auth-section">
                         <template v-if="!isLoggedIn">
                             <router-link to="/login" class="auth-link">로그인</router-link>
-                            <router-link to="/register" class="auth-link">회원가입</router-link>    
+                            <router-link to="/register" class="auth-link">회원가입</router-link>
                         </template>
                         <template v-else>
-                          <a @click="logout" class="auth-link">로그아웃</a>
-                          <router-link to="/mypage" class="auth-link">마이페이지</router-link>
+                            <a @click="logout" class="auth-link">로그아웃</a>
+                            <router-link to="/mypage" class="auth-link">마이페이지</router-link>
                         </template>
                     </div>
 
@@ -51,16 +51,11 @@
             </div>
             <div class="lower-section">
                 <nav class="main-nav">
-    <router-link 
-      v-for="item in navItems" 
-      :key="item.path" 
-      :to="item.path" 
-      class="nav-item" 
-      active-class="active-nav-item"
-    >
-      {{ item.label }}
-    </router-link>
-  </nav>
+                    <router-link v-for="item in navItems" :key="item.path" :to="item.path" class="nav-item"
+                        active-class="active-nav-item">
+                        {{ item.label }}
+                    </router-link>
+                </nav>
             </div>
         </div>
     </header>
@@ -102,13 +97,13 @@ async function logout() {
 
 
 const navItems = [
-  { path: '/serviceInfo', label: '커넥티움?' },
-  { path: '/community', label: '우리아이 커뮤니티' },
-  { path: '/program', label: '교육 프로그램' },
-  { path: '/education', label: '교육' },
-  { path: '/outdoor/park', label: '신나는 우리동네' },
-//   { path: '#', label: '우리 같이가요!' },
-  { path: '/postList', label: 'QnA' },
+    //   { path: '/serviceInfo', label: '커넥티움?' },
+    { path: '/community', label: '우리아이 커뮤니티' },
+    { path: '/program', label: '몸으로 놀아요' },
+    { path: '/education', label: '즐겁게 공부하자' },
+    { path: '/outdoor/park', label: '신나는 우리동네' },
+    //   { path: '#', label: '우리 같이가요!' },
+    { path: '/postList', label: 'QnA' },
 ];
 </script>
 
@@ -124,31 +119,31 @@ const navItems = [
 <style src="@/assets/font.css"></style>
 
 <style scoped>
-
 .wheather-bar {
-  position: relative;
-  left: 5%;
-  right: 5%;
+    position: relative;
+    left: 5%;
+    right: 5%;
 }
+
 .weather-compo {
-  align-items: center;
-  width: 150px;
-  height: 80px;
+    align-items: center;
+    width: 150px;
+    height: 80px;
 }
 
 /* 스타일유지 */
 .top-header {
-  padding: 0 calc((100% - var(--main-content-width)) / 2);
+    padding: 0 calc((100% - var(--main-content-width)) / 2);
 }
 
 .top-bar {
-  width: 100%;
-  max-width: var(--main-content-width);
-  margin: 0 auto;
-  background: #a9da49;
-  box-shadow: 0px 3px 7px #DBFA5F;
-  border-radius: 50px;
-  padding: var(--main-content-padding);
+    width: 100%;
+    max-width: var(--main-content-width);
+    margin: 0 auto;
+    background: #a9da49;
+    box-shadow: 0px 3px 7px #DBFA5F;
+    border-radius: 50px;
+    padding: var(--main-content-padding);
 }
 
 .top-container {
@@ -282,7 +277,7 @@ const navItems = [
 }
 
 .lower-section {
-    display: flex;    
+    display: flex;
     justify-content: center;
 }
 
@@ -294,25 +289,25 @@ const navItems = [
 }
 
 .nav-item {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  white-space: nowrap;
-  text-align: center;
-  font-family: 'Pretendard-Bold';
-  font-size: 20px;
-  padding: 5px 10px;
-  flex: 0 1 auto;
-  min-width: fit-content;
-  word-break: keep-all;
-  text-shadow: 1px 1px 2px rgba(31, 31, 31, 0.5);
-  transition: background-color 0.3s, color 0.3s;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: center;
+    font-family: 'Pretendard-Bold';
+    font-size: 20px;
+    padding: 5px 10px;
+    flex: 0 1 auto;
+    min-width: fit-content;
+    word-break: keep-all;
+    text-shadow: 1px 1px 2px rgba(31, 31, 31, 0.5);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .active-nav-item {
-  background-color: #ffffff;
-  color: #90ce2d;
-  border-radius: 5px;
-  text-shadow: none;
+    background-color: #ffffff;
+    color: #90ce2d;
+    border-radius: 5px;
+    text-shadow: none;
 }
 
 

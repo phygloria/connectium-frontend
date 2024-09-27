@@ -1,7 +1,4 @@
 <template>
-
-    <MainTop />
-
     <div class="common-container">
         <div class="common-container-line">
             <div class="bodyContainer">
@@ -75,14 +72,13 @@
 
 <script setup>
 import '@/assets/css/common_container.css'
-import MainTop from '@/components/MainTop.vue';
 
 </script>
 
 <style scoped>
 .bodyContainer {
     position: relative;
-    width: 100%;
+    width: 80%;
     min-height: 100vh;
     overflow: hidden;
 }
@@ -164,7 +160,7 @@ import MainTop from '@/components/MainTop.vue';
 
 .service-title {
     color: black;
-    font-size: 90px;
+    font-size: 500%;
     font-family: MangoByeolbyeol;
     font-weight: 400;
     word-wrap: keep-all;
@@ -175,7 +171,7 @@ import MainTop from '@/components/MainTop.vue';
 }
 
 .sub-text {
-    font-size: 25px;
+    font-size: 20px;
     color: #666;
     margin: 5% 0 3% 0;
 }
@@ -193,7 +189,7 @@ import MainTop from '@/components/MainTop.vue';
 }
 
 .needs-text {
-    font-size: 25px;
+    font-size: 20px;
     color: #333;
     margin-bottom: 15px;
     line-height: 1.5;
@@ -202,7 +198,7 @@ import MainTop from '@/components/MainTop.vue';
 .solution-text {
     color: #000;
     font-family: "Pretendard-Bold";
-    font-size: 50px;
+    font-size: 35px;
     font-style: normal;
     font-weight: 600;
     line-height: 165.249%;
@@ -213,7 +209,7 @@ import MainTop from '@/components/MainTop.vue';
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 3%;
     margin: 2% 0;
 }
 
@@ -221,7 +217,7 @@ import MainTop from '@/components/MainTop.vue';
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 120%;
     max-width: 700px;
     height: 80px;
     border-radius: 50px;
@@ -245,7 +241,7 @@ import MainTop from '@/components/MainTop.vue';
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1000px;
+    width: 100%;
     height: 200px;
     flex-shrink: 0;
     margin: 0 0 3% 0;
@@ -256,7 +252,7 @@ import MainTop from '@/components/MainTop.vue';
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 190px;
+    width: 30%;
     height: 180px;
     flex-shrink: 0;
     border-radius: 30px;
