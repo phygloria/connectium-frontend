@@ -1,0 +1,53 @@
+.review-section {
+    margin-top: 20px;
+  }
+
+  .review-top-title{
+    font-family: "Ownglyph_meetme-Rg";
+    font-size: 35px;
+  }
+  
+  .reviews-list {
+    margin-bottom: 10px;
+  }
+  
+  .review-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding: 1% 2%;
+    width: 100%;
+    height: 20%;
+  }
+  
+  .review-auth-date {
+    padding: 0;
+    margin: 0;
+  }
+  .review-content {
+    font-family: Pretendard-Regular;
+    margin-left: 20%;
+  }
+
+  .review-write {
+    font-family: "Ownglyph_meetme-Rg";
+    font-size: 35px;
+  }
+  .review-write-area {
+      width: 100%;
+      height: 30%;
+      margin-bottom: 10px;
+
+  }
+  .review-write-btn {
+      background-color: #a9da49;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+  }

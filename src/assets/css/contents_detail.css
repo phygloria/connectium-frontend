@@ -1,13 +1,49 @@
+.content-detail-container {
+  align-items: center;
+  justify-content: center;
+  /* display: flex; */
+  width: 100%; /* 화면 너비의 90%로 확장 */
+  
+  
+}
+
+.background-image {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+    left: 0;
+    right: 3%;
+    height: 150%; /* 각 이미지가 전체 높이의 절반을 차지 */
+    background-image: url('@/assets/images/etc/service-info-back.png');
+    background-repeat: no-repeat;
+    background-size: 70% auto;
+    /* 이미지 크기 증가 */
+    z-index: -1;
+    top: 30;
+    /* body-title 바로 뒤에서 시작 */
+    background-position: center top;
+}
+
+.content-detail-warpper {
+  display: flex;
+  width: 100%; /* 화면 너비의 90%로 확장 */
+  align-items: center;
+  justify-content: center;
+
+}
 
 
 .contents-detail {
-  max-width: 1700px;
+  width: 70%; /* 화면 너비의 90%로 확장 */
+  height: 100%;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
+  padding: 30px; /* 여백을 추가하여 더 넓은 공간 확보 */
+  background-color: #ffffff27;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+
+
 
 .service-name {
   font-size: 24px;
@@ -16,36 +52,48 @@
   font-family: MangoByeolbyeol;
 }
 
+
+
+
+
+
 .content-wrapper {
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px; /* 전체 컨텐츠의 최대 너비 설정 */
+  margin: 0 auto;
 }
 
+
 .image-container {
-  display: flex;
-  flex: 1;
-  position: relative;
-  align-items: center;
-  justify-content: center;
+  position: relative; /* 부모 컨테이너를 상대적으로 위치시킴 */
   width: 100%;
-  max-width: 500px; /* 원하는 최대 너비로 조정하세요 */
+  height: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 3px 3px 0 #d8d4d4;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  box-shadow: 0px 3px 5px #90ce2d;
+  overflow: hidden; /* 경계 밖으로 넘치지 않도록 설정 */
 }
 
 .detail-img-area {
-  /* width: 100%;
-  height: auto; */
-  width: 600px;
-  height: 350px;
+  width: 100%;
+  height: 100%;
+  max-height: 400px; /* 이미지의 최대 높이 설정 */
+  overflow: hidden; /* 경계 밖으로 넘치지 않도록 설정 */
 }
+
 
 .img-area, .detail-img-area {
   width: 100%;
-  height: 200px; /* 원하는 높이로 조정하세요 */
+  height: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -55,8 +103,9 @@
 
 .img-area img, .detail-img-area img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채웁니다 */
+  height: 100%; /* 원하는 높이로 조정하세요 */
+  object-fit: cover; /* 이미지가 영역을 채우도록 설정 */
+  border-radius: inherit; /* 부모 요소의 border-radius를 상속 */
 }
 
 
@@ -73,38 +122,47 @@
 }
 
 .info-container {
-  flex: 1;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 30px; /* 여백을 추가하여 더 넓은 공간 확보 */
+  border-radius: 20px;
+  box-shadow: 0px 3px 5px #90ce2d;
 }
 
 .info-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* 세로 정렬 시 상단 정렬 */
+  margin-bottom: 10px;
 }
 
 .label {
+  font-family: "MangoDdobak-B";
   font-weight: bold;
-  min-width: 80px;
-  text-align-last: left;
+  font-size: 20px;
+  min-width: 100px; /* 라벨의 최소 너비 증가 */
+  text-align: left;
+  color: #80c414;;
 }
 
 .value {
+  font-family: "Pretendard-Regular";
+  font-size: 20px;
   flex: 1;
-  text-align-last: left;
+  text-align: left;
+  margin-left: 20px;
 }
 
 .description {
   margin-top: 20px;
+  width: 100%;
 }
 
-.description h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
 
 .direction-button {
+  font-family: "Pretendard-Regular";
   margin: 5px;
   padding: 8px;
   background: #ffffff;
@@ -114,27 +172,19 @@
   cursor: pointer;
 }
 
-.review-section {
-  margin-top: 20px;
-  
-}
-.review-write {
-  font-family: Ownglyph meetme !important;
-}
-
-.review-section textarea {
-  width: 100%;
-  height: 100px;
-  margin-top: 10px;
-  font-family: Mango Ddobak;
+.direction-button:hover {
+  background-color: #a9da49;
+  color: white;
 }
 
 .info-item-btn {
+  font-family: "Pretendard-Regular";
   position: relative;
   top: 20%;
 }
 
 .reservation-button {
+  font-family: "Pretendard-Regular";
   display: inline-block;
   padding: 10px 20px;
   background-color: #a9da49;
@@ -149,11 +199,11 @@
 }
 
 .action-buttons {
+  position: absolute; /* 이미지 위에 고정 */
+  bottom: 10px; /* 부모 컨테이너의 하단에 위치 */
+  right: 10px; /* 부모 컨테이너의 오른쪽에 위치 */
   display: flex;
-  align-items: center;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  gap: 10px;
 }
 
 .map-button,
@@ -166,4 +216,130 @@
   box-shadow: 0 3px 3px 0 #cdd1cd;
   border-radius: 5px;
   cursor: pointer;
+}
+
+
+
+
+
+
+
+
+/* 리뷰 영역 */
+.review-section {
+  margin-top: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-title {
+  font-size: 1.5em;
+  color: #343a40;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.reviews-list {
+  margin-bottom: 30px;
+}
+
+.review-item {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.review-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-author {
+  font-weight: bold;
+  color: #495057;
+}
+
+.review-date {
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
+.review-content {
+  color: #212529;
+  line-height: 1.6;
+}
+
+.no-reviews {
+  color: #6c757d;
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.review-form {
+  margin-top: 20px;
+}
+
+.review-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.review-textarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.submit-review-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-review-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.submit-review-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.login-prompt {
+  margin-top: 20px;
+  text-align: center;
+  color: #495057;
+}
+
+.login-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link:hover {
+  text-decoration: underline;
 }

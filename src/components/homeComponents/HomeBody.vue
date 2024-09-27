@@ -50,15 +50,17 @@ onMounted(() => {
 
 
 <style scoped>
+
+
 .bodyContainer {
   width: 100%;
   height: 100%;
   position: relative;
-  padding: 0 2%;
+  padding: 0 1% 0 calc((100% - var(--main-content-width)) / 2);
 }
 
 .bodyImageBar {
-  width: 100%;
+  max-width: var(--main-content-width);
   height: 500px;
   left: 0px;
   top: 0px;
@@ -124,7 +126,7 @@ onMounted(() => {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 0 15%;
+  padding: 0 5%;
 }
 
 .arrow {
@@ -141,13 +143,13 @@ onMounted(() => {
 }
 
 .left-arrow {
-  left: 22%;
+  left: 10%;
   /* arrowBar의 padding과 일치 */
   border-right: 25px solid #ffffff;
 }
 
 .right-arrow {
-  right: 22%;
+  right: 10%;
   /* arrowBar의 padding과 일치 */
   border-left: 25px solid #ffffff;
 }

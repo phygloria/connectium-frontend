@@ -1,6 +1,6 @@
 <template>
     <header class="top-header">
-        <div class="top-bar">
+        <div class="top-bar common-width">
             <div class="top-container">
                 <div class="upper-section">
                     <div class="logo-slogan">
@@ -51,16 +51,16 @@
             </div>
             <div class="lower-section">
                 <nav class="main-nav">
-                    <router-link to="/serviceInfo" class="nav-item">커넥티움?</router-link>
-                    <router-link to="/community" class="nav-item">우리아이 커뮤니티</router-link>
-                    <router-link to="/program" class="nav-item">교육 프로그램</router-link>
-                    <router-link to="/education" class="nav-item">교육</router-link>
-                    <router-link to="/outdoor/park" class="nav-item">신나는 우리동네</router-link>
-                    <router-link to="#" class="nav-item">우리 같이가요!</router-link>
-                    
-                    <router-link to="/postList" class="nav-item">QnA</router-link>
-                    
-                </nav>
+    <router-link 
+      v-for="item in navItems" 
+      :key="item.path" 
+      :to="item.path" 
+      class="nav-item" 
+      active-class="active-nav-item"
+    >
+      {{ item.label }}
+    </router-link>
+  </nav>
             </div>
         </div>
     </header>
@@ -98,6 +98,18 @@ async function logout() {
         console.error('로그아웃 실패:', error);
     }
 }
+
+
+
+const navItems = [
+  { path: '/serviceInfo', label: '커넥티움?' },
+  { path: '/community', label: '우리아이 커뮤니티' },
+  { path: '/program', label: '교육 프로그램' },
+  { path: '/education', label: '교육' },
+  { path: '/outdoor/park', label: '신나는 우리동네' },
+//   { path: '#', label: '우리 같이가요!' },
+  { path: '/postList', label: 'QnA' },
+];
 </script>
 
 
@@ -126,22 +138,23 @@ async function logout() {
 
 /* 스타일유지 */
 .top-header {
-    padding: 0% 2%;
+  padding: 0 calc((100% - var(--main-content-width)) / 2);
 }
 
 .top-bar {
-    width: 100%;
-    background: #a9da49;
-    box-shadow: 0px 3px 7px #DBFA5F;
-    border-radius: 50px;
-    padding: 1% 10%;
-    flex-direction: column;
+  width: 100%;
+  max-width: var(--main-content-width);
+  margin: 0 auto;
+  background: #a9da49;
+  box-shadow: 0px 3px 7px #DBFA5F;
+  border-radius: 50px;
+  padding: var(--main-content-padding);
 }
 
 .top-container {
     display: flex;
     justify-content: space-between;
-    margin: 0 50px;
+    margin: 0 30px;
 }
 
 
@@ -281,20 +294,26 @@ async function logout() {
 }
 
 .nav-item {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    white-space: nowrap;
-    text-align: center;
-    font-family: 'Pretendard-Bold';
-    /* font-family: 'Mango Ddobak'; */
-    font-size: 20px;
-    padding: 5px 10px;
-    flex: 0 1 auto;
-    min-width: fit-content;
-    word-break: keep-all;
-    text-shadow: 1px 1px 2px rgba(31, 31, 31, 0.5);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  white-space: nowrap;
+  text-align: center;
+  font-family: 'Pretendard-Bold';
+  font-size: 20px;
+  padding: 5px 10px;
+  flex: 0 1 auto;
+  min-width: fit-content;
+  word-break: keep-all;
+  text-shadow: 1px 1px 2px rgba(31, 31, 31, 0.5);
+  transition: background-color 0.3s, color 0.3s;
 }
 
+.active-nav-item {
+  background-color: #ffffff;
+  color: #90ce2d;
+  border-radius: 5px;
+  text-shadow: none;
+}
 
 
 
