@@ -28,9 +28,9 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const contentsItems = ref([
-    { src: new URL('@/assets/images/home/contents (1).jpg', import.meta.url).href, route: '/educationProgram' },
-    { src: new URL('@/assets/images/home/contents (2).jpg', import.meta.url).href, route: '/community' },
-    { src: new URL('@/assets/images/home/contents (3).jpg', import.meta.url).href, route: '/postCreate' },
+    { src: new URL('@/assets/images/home/contents (1).jpg', import.meta.url).href, route: '/community' },
+    { src: new URL('@/assets/images/home/contents (2).jpg', import.meta.url).href, route: '/program' },
+    { src: new URL('@/assets/images/home/contents (3).jpg', import.meta.url).href, route: '/education' },
     { src: new URL('@/assets/images/home/contents (4).jpg', import.meta.url).href, route: '/outdoor/park' },
 ]);
 

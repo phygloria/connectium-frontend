@@ -6,8 +6,8 @@
         <div class="review-auth-date">
           <strong>{{ review.userName }}</strong>
           <strong class="review-content">{{ review.content }}</strong>
+          <small>{{ formatDate(review.createdAt) }}</small>
         </div>
-        <small>{{ formatDate(review.createdAt) }}</small>
       </div>
     </div>
     <h3 v-else>아직 리뷰가 없습니다.</h3>
@@ -75,3 +75,12 @@ onMounted(fetchReviews);
 
 
 
+
+
+<style scoped>
+
+.review-write-area {
+  padding: 2%;
+}
+
+</style>

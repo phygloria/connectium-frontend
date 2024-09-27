@@ -17,7 +17,6 @@ import Register from "@/components/loginComponents/Register.vue";
 import EduView from "@/views/EduView.vue";
 import EducationDetail from "@/components/educationComponents/EducationDetail.vue";
 import ProgramList from "@/components/programComponents/ProgramList.vue";
-import ServiceInfo from "@/views/ServiceInfo.vue";
 import FilteredCommunityList from "@/components/communityComponents/FilteredCommunityList.vue";
 import MyPage from "@/components/MyPage.vue";
 import WeatherWidget from "@/components/weatherComponents/WeatherWidget.vue";
@@ -36,12 +35,6 @@ const routes = [
     name: 'WeatherWidget',
     component: WeatherWidget, 
 
-  },
-
-  {
-    path: "/serviceInfo",
-    name: "커넥티움?",
-    component: ServiceInfo,
   },
   {
     path: "/postList",

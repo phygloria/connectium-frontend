@@ -1,17 +1,20 @@
 <template>
 
     <MainTop />
-    <br>
+<br>
     <HomeBody />
-    <br>
+
     <div class="home-contents">
         <HomeContents />
     </div>
+
+    <ServiceInfo />
 
 </template>
 
 <script setup>
 import MainTop from '@/components/MainTop.vue';
+import ServiceInfo from '@/components/homeComponents/ServiceInfo.vue';
 import HomeBody from '@/components/homeComponents/HomeBody.vue';
 import HomeContents from '@/components/homeComponents/HomeContents.vue';
 

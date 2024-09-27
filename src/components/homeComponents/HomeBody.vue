@@ -68,6 +68,7 @@ onMounted(() => {
   background: #D9D9D9;
   border-radius: 70px;
   overflow: hidden;
+  box-shadow: 0px 3px 7px #DBFA5F;
 }
 
 .homeImage {
@@ -77,6 +78,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   border-radius: 70px;
+  
 }
 
 .imageText {

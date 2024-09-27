@@ -11,17 +11,17 @@
             <h2 class="service-name">{{ program.svcnm }}</h2>
             <div class="content-wrapper">
               <div class="image-container">
+                <div class="action-buttons">
+                  <!-- <button class="map-button">지도보기</button> -->
+                  <button class="bookmark-button" @click="toggleBookmark">
+                    {{ isBookmarked ? '🔖' : '☆' }}
+                  </button>
+                </div>
                 <div class="detail-img-area">
                   <img :src="getImageUrl(program.imgurl)" :alt="program.svcnm" @error="handleImageError" ref="imageRef">
                 </div>
               </div>
               <div class="info-container">
-                <div class="action-buttons">
-                  <button class="map-button">지도보기</button>
-                  <button class="bookmark-button" @click="toggleBookmark">
-                    {{ isBookmarked ? '🔖' : '☆' }}
-                  </button>
-                </div>
                 <div class="info-item">
                   <span class="label">대상 :</span>
                   <span class="value">{{ program.usetgtinfo }}</span>
