@@ -1,12 +1,10 @@
 <template>
 
     <MainTop />
-<br>
+    <br>
     <HomeBody />
 
-    <div class="home-contents">
-        <HomeContents />
-    </div>
+    <HomeContents class="home-contents" />
 
     <ServiceInfo />
 
@@ -23,10 +21,5 @@ import HomeContents from '@/components/homeComponents/HomeContents.vue';
 
 
 <style scoped>
-@media (max-width: 1024px) {
-    .home-contents {
-        position: absolute;
-        top: 97%;
-    }
-}
+
 </style>
