@@ -12,10 +12,10 @@
             <label for="title">제목:</label>
             <input id="title" v-model="post.title" required class="form-input">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="author">글쓴이:</label>
             <input id="author" v-model="post.author" required class="form-input">
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="content">내용:</label>
             <textarea id="content" v-model="post.content" required class="form-textarea"></textarea>
