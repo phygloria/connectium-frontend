@@ -239,61 +239,69 @@ import '@/assets/css/common_container.css'
 
 .point-box-bar {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    height: 200px;
-    flex-shrink: 0;
-    margin: 0 0 3% 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .point-small-box {
-    margin: 2%;
+    flex: 1 1 200px;
+    max-width: 250px;
+    min-width: 150px;
+    margin: 10px;
+    height: auto;
+    min-height: 150px;
+    border-radius: 20px;
+    box-shadow: 3px 5px 15px 0px rgba(137, 203, 1, 0.50);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30%;
-    height: 180px;
-    flex-shrink: 0;
-    border-radius: 30px;
-    box-shadow: 3px 5px 15px 0px rgba(137, 203, 1, 0.50);
+    padding: 15px;
 }
 
 .point-text {
     font-family: 'Pretendard', sans-serif;
     color: #000;
     text-align: center;
-    font-size: 25px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 600;
-    line-height: 1.2;
-    /* 이 값을 조정하여 행간을 줄입니다 */
-    letter-spacing: -2.5px;
+    line-height: 1.3;
+    letter-spacing: -1px;
 }
 
 .point-text p {
     margin: 5px 0;
-    /* p 태그 사이의 간격을 조정합니다 */
 }
 
 @media (max-width: 768px) {
-
-
-    .service-title {
-        font-size: 28px;
-    }
-
-    .sub-text {
+    .point-small-box {
+        flex-basis: calc(50% - 20px);
         font-size: 16px;
     }
-
-    .solution-text {
+    
+    .point-title {
         font-size: 20px;
     }
-
+    
     .point-title-box {
-        font-size: 12px;
-        padding: 6px 12px;
+        width: 90%;
+        max-width: none;
+        height: auto;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .point-small-box {
+        flex-basis: 100%;
+    }
+    
+    .point-text {
+        font-size: 16px;
     }
 }
 </style>
