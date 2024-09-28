@@ -230,28 +230,7 @@ const navItems = [
     white-space: nowrap; /* 추가: 링크 내부 텍스트의 줄바꿈 방지 */
 }
 
-/* 반응형 스타일 */
-@media (max-width: 768px) {
-    .auth-container {
-        position: static;
-    }
 
-    .auth-section {
-        width: 100%;
-        right: auto;
-        left: 0;
-
-        justify-content: center;
-        /* 추가: 중앙 정렬 */
-    }
-
-    .auth-link {
-        margin: 5px 10px;
-        /* 수정: 좌우 여백 추가 */
-    }
-
-
-}
 
 
 
@@ -424,14 +403,66 @@ const navItems = [
 
 
 
+/* 반응형 스타일 */
+/* 햄버거 메뉴 위치 조정을 위한 미디어 쿼리 추가 */
+
+@media (max-width: 1024px) {
+    .hamburger-menu {
+        position: absolute;
+        top: 20%;
+        right: 40%;
+    }
+
+    .auth-container {
+        position: absolute;
+        width: 100%;  /* 추가: 전체 너비 사용 */
+        top: 20%;
+        right: 7%;
+    }
+
+    .auth-section {
+        position: absolute;
+        width: 20%;
+        right: 19%;
+        border-radius: 10px;  /* 변경: 상단 모서리만 둥글게 */
+        justify-content: center;
+    }
+    
+
+    .auth-section.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0); 
+    }
+    .auth-link {
+        margin: 5px 10px;
+        /* 수정: 좌우 여백 추가 */
+    }
+}
+
+@media (max-width:  800px) {
+
+    .auth-section {
+        right: 15%;
+ 
+    }
+
+}
+
+@media (max-width: 480px) {
+    .hamburger-menu {
+        top: 20%;
+        right: 20%;
+    }
+}
+
+
+
+
 
 /* 아이패드 가로 크기에 대응하는 미디어 쿼리 추가 */
 @media (max-width: 2048px) {
 
-    .nav-item {
-        margin: 5px 10px;
-        flex: 0 1 auto;
-    }
 
     .slogan {
         font-size: 25px;
