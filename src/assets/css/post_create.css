@@ -226,6 +226,17 @@ textarea {
   background:  #90ce2d;
 }
 
+
+
+
+/* 모바일 */
+@media (max-width: 800px) {
+  .post-create-container {
+    padding: 0 3%;
+  }
+
+}
+
 @media (max-width: 768px) {
   .input-row {
     flex-direction: column;
