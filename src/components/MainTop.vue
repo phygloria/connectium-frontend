@@ -414,9 +414,10 @@ const navItems = [
     }
 
     .auth-container {
+        top: 27%;
         position: absolute;
         width: 100%;  /* 추가: 전체 너비 사용 */
-        top: 20%;
+        
         right: 7%;
     }
 
