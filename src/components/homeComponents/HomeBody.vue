@@ -83,8 +83,8 @@ onMounted(() => {
 
 .imageText {
   position: absolute;
-  bottom: 10px;
-  right: 25%;
+  top: 70%;
+  right: 20%;
   color: white;
   text-align: right;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -173,17 +173,17 @@ onMounted(() => {
 @media (max-width: 1024px) {
 
   .bodyImageBar {
-  height: 500px;
+  height: 300px;
   background: #ffffff;
 }
 
   .homeImage {
-  height: 50%;
+  height: 100%;
   } 
 
 
 .arrow {
-  top: 25%;
+  top: 50%;
 }
 .left-arrow {
   left: 10%;
@@ -197,7 +197,7 @@ onMounted(() => {
 
   .imageText {
     position: absolute;
-    top: 30%;
+    top: 70%;
   right: 16%;
   font-size: 70%;
   }

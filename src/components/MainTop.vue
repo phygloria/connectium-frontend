@@ -29,17 +29,29 @@
                 </div>
 
                 <div class="auth-container">
-                    <div class="auth-section">
+                    <div class="hamburger-menu" @click="toggleMenu">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="auth-section" :class="{ 'open': isMenuOpen }">
                         <template v-if="!isLoggedIn">
-                            <router-link to="/login" class="auth-link">로그인</router-link>
-                            <router-link to="/register" class="auth-link">회원가입</router-link>
+                            <div class="auth-link" >
+                                <router-link to="/login" @click="closeMenu">로그인</router-link>
+                            </div>
+                            <div class="auth-link" >
+                                <router-link to="/register" @click="closeMenu">회원가입</router-link>
+                            </div>
                         </template>
                         <template v-else>
-                            <a @click="logout" class="auth-link">로그아웃</a>
-                            <router-link to="/mypage" class="auth-link">마이페이지</router-link>
+                            <div class="auth-link" >
+                                <a @click="logout" >로그아웃</a>
+                            </div>
+                            <div class="auth-link" >
+                                <router-link to="/mypage" @click="closeMenu">마이페이지</router-link>
+                            </div>
                         </template>
                     </div>
-
                     <!-- <div class="top-search-container">
                         <div class="top-search-box">
                             <input type="text" class="top-search" placeholder="검색" />
@@ -47,8 +59,12 @@
                         </div>
                     </div> -->
                 </div>
-
             </div>
+
+
+
+
+
             <div class="lower-section">
                 <nav class="main-nav">
                     <router-link v-for="item in navItems" :key="item.path" :to="item.path" class="nav-item"
@@ -73,6 +89,7 @@ import WeatherWidget from '@/components/weatherComponents/WeatherWidget.vue';
 
 const router = useRouter();
 const isLoggedIn = ref(false);
+const isMenuOpen = ref(false);
 
 onMounted(() => {
     checkLoginStatus();
@@ -83,12 +100,21 @@ function checkLoginStatus() {
     isLoggedIn.value = !!token;
 }
 
+function toggleMenu() {
+    isMenuOpen.value = !isMenuOpen.value;
+}
+
+function closeMenu() {
+    isMenuOpen.value = false;
+}
+
 async function logout() {
     try {
         await api.logout();
         localStorage.removeItem('token');
         isLoggedIn.value = false;
         router.push('/');
+        closeMenu();
     } catch (error) {
         console.error('로그아웃 실패:', error);
     }
@@ -119,6 +145,7 @@ const navItems = [
 <style src="@/assets/font.css"></style>
 
 <style scoped>
+/* 날씨 */
 .wheather-bar {
     position: relative;
     left: 5%;
@@ -130,6 +157,104 @@ const navItems = [
     width: 150px;
     height: 80px;
 }
+
+
+
+/* 햄버거 메뉴 */
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 10;
+    position: relative;  /* 추가: 상대 위치 설정 */
+    top: 20px;  /* 추가: 20px 아래로 이동 */
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.auth-container {
+    position: relative;
+    align-items: center;
+    z-index: 1000;
+    /* 다른 컴포넌트보다 위에 오도록 z-index 추가 */
+}
+
+.auth-section {
+    position: absolute;
+    top: 60%;
+    right: 0;
+    background-color: #fffffF;
+    /* 변경: 메뉴 배경색을 어둡게 */
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+   
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+}
+
+.auth-section.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.auth-link {
+    margin: 0 10px;    /* 유지: 좌우 여백 */
+    color: #42c6dd; 
+    font-size: 16px;
+    font-family: Pretendard;
+    font-weight: 700;
+    text-decoration: none;
+    flex-direction: column;    /* 변경: 세로 정렬 */
+    align-items: center;    /* 변경: 중앙 정렬 */
+    justify-content: center;    /* 추가: 세로 중앙 정렬 */
+    text-align: center;    /* 추가: 텍스트 중앙 정렬 */
+    white-space: nowrap; /* 추가: 줄바꿈 방지 */
+}
+
+.auth-link a {
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap; /* 추가: 링크 내부 텍스트의 줄바꿈 방지 */
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .auth-container {
+        position: static;
+    }
+
+    .auth-section {
+        width: 100%;
+        right: auto;
+        left: 0;
+
+        justify-content: center;
+        /* 추가: 중앙 정렬 */
+    }
+
+    .auth-link {
+        margin: 5px 10px;
+        /* 수정: 좌우 여백 추가 */
+    }
+
+
+}
+
+
+
 
 /* 스타일유지 */
 .top-header {
@@ -205,25 +330,6 @@ const navItems = [
     flex-direction: row;
     align-items: flex-start;
     text-shadow: 1px 1px 2px rgba(31, 31, 31, 0.5);
-}
-
-.auth-section {
-    display: flex;
-    color: white;
-    font-size: 20px;
-    font-family: Pretendard;
-    font-weight: 900;
-    margin-bottom: 10px;
-    margin-right: 50px;
-}
-
-.auth-link {
-    margin-left: 20px;
-    color: white;
-    font-size: 20px;
-    font-family: Pretendard;
-    font-weight: 900;
-    text-decoration: none;
 }
 
 
