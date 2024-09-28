@@ -3,25 +3,6 @@
   justify-content: center;
   /* display: flex; */
   width: 100%; /* 화면 너비의 90%로 확장 */
-  
-  
-}
-
-.background-image {
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-    left: 0;
-    right: 3%;
-    height: 150%; /* 각 이미지가 전체 높이의 절반을 차지 */
-    background-image: url('@/assets/images/etc/service-info-back.png');
-    background-repeat: no-repeat;
-    background-size: 70% auto;
-    /* 이미지 크기 증가 */
-    z-index: -1;
-    top: 30;
-    /* body-title 바로 뒤에서 시작 */
-    background-position: center top;
 }
 
 .content-detail-warpper {
@@ -29,9 +10,7 @@
   width: 100%; /* 화면 너비의 90%로 확장 */
   align-items: center;
   justify-content: center;
-
 }
-
 
 .contents-detail {
   width: 70%; /* 화면 너비의 90%로 확장 */
@@ -43,19 +22,12 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-
-
 .service-name {
   font-size: 24px;
   color: #333;
   margin-bottom: 20px;
   font-family: MangoByeolbyeol;
 }
-
-
-
-
-
 
 .content-wrapper {
   display: flex;
@@ -66,7 +38,6 @@
   max-width: 1200px; /* 전체 컨텐츠의 최대 너비 설정 */
   margin: 0 auto;
 }
-
 
 .image-container {
   position: relative; /* 부모 컨테이너를 상대적으로 위치시킴 */
@@ -89,7 +60,6 @@
   max-height: 400px; /* 이미지의 최대 높이 설정 */
   overflow: hidden; /* 경계 밖으로 넘치지 않도록 설정 */
 }
-
 
 .img-area, .detail-img-area {
   width: 100%;
