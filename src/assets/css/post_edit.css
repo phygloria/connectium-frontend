@@ -1,8 +1,10 @@
 .post-edit-container {
-  width: 50%;
+  width: 70%;
+  margin-top: 10px;
   background-color: #f0f8e3;
-  border-radius: 15px;
+  border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: width 0.5s ease; /* 너비 변화에 0.3초 동안의 부드러운 전환 효과 추가 */
 }
 
 .edit-title {
@@ -82,4 +84,18 @@ label {
 
 .submit-button:hover {
   background-color: #7ab006;
+}
+
+
+
+
+
+
+
+/* 모바일 */
+@media (max-width: 800px) {
+  .post-edit-container {
+    
+    width: 90%;
+  }
 }

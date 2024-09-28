@@ -139,6 +139,7 @@ h2 {
 
 .page-container {
   display: flex;
+  justify-content: center;
 }
 
 .page-num {
@@ -156,4 +157,6 @@ h2 {
   border: none;
   background-color: transparent;
 }
+
+
 </style>
