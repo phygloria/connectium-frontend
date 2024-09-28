@@ -95,6 +95,8 @@ export default {
 
 
 <style scoped>
+
+
 .background-container {
   width: 100%;
   height: 100vh;
@@ -110,7 +112,6 @@ export default {
 .background-container-box {
   width: 95%;
   height: 90%;
-  left: 45px;
   top: 45px;
   background: #f7f7f7;
   box-shadow: 0px 3px 7px #DBFA5F;
@@ -294,20 +295,36 @@ label {
 
 /* 더 작은 화면에 대한 추가 대응 */
 @media (max-width: 800px) {
+ 
+
   .login-container {
-    position: absolute;
-    align-items: center;
     justify-content: center;
-    display: flex;
     width: 100%; /* 전체 너비 사용 */
-    right: auto; /* right 속성 제거 */
   }
   
   .login-form {
-    margin-left: 0; /* 왼쪽 마진 제거 */
+        margin-left: 0; /* 왼쪽 마진 제거 */
     width: 90%; /* 폼의 너비를 90%로 조정 */
     max-width: 400px; /* 최대 너비 설정 */
+    max-height: 500px;
   }
+
+  .background-container-box {
+  width: 100%;
+  height: 90%;
+}
+
+  .login-img-container {
+    margin-left: 0; /* 왼쪽 마진 제거 */
+    display: inline;
+    top:3%;
+  }
+  .login-back-img {
+    
+  width: 95%;
+  object-fit: fill;
+
+}
 }
 
 /* 매우 작은 화면에 대한 대응 */

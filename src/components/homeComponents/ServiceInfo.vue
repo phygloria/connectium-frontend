@@ -174,6 +174,8 @@ import '@/assets/css/common_container.css'
     font-size: 20px;
     color: #666;
     margin: 5% 0 3% 0;
+    word-break: keep-all;
+    white-space: normal;
 }
 
 .solution-big-box {
@@ -193,6 +195,8 @@ import '@/assets/css/common_container.css'
     color: #333;
     margin-bottom: 15px;
     line-height: 1.5;
+    word-break: keep-all;
+    white-space: normal;
 }
 
 .solution-text {
@@ -202,6 +206,8 @@ import '@/assets/css/common_container.css'
     font-style: normal;
     font-weight: 600;
     line-height: 165.249%;
+    word-break: keep-all;
+    white-space: normal;
 }
 
 .service-good-point-bar {
@@ -271,13 +277,41 @@ import '@/assets/css/common_container.css'
     font-weight: 600;
     line-height: 1.3;
     letter-spacing: -1px;
+    word-break: keep-all;
+    white-space: normal;
 }
 
 .point-text p {
     margin: 5px 0;
 }
 
+
+
+
+
+
+
 @media (max-width: 768px) {
+    .service-title {
+        font-size: 300%;
+    }
+
+    .sub-text {
+        font-size: 18px;
+    }
+
+    .needs-text {
+    font-size: 18px;
+    width: 90%;
+
+}
+
+.solution-text {
+    font-size: 23px;
+    width: 80%;
+    
+}
+
     .point-small-box {
         flex-basis: calc(50% - 20px);
         font-size: 16px;
@@ -288,11 +322,12 @@ import '@/assets/css/common_container.css'
     }
     
     .point-title-box {
-        width: 90%;
+        width: 100%;
         max-width: none;
         height: auto;
-        padding: 15px;
+        padding: 25px;
     }
+
 }
 
 @media (max-width: 480px) {
