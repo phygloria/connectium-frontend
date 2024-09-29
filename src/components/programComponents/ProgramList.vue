@@ -135,7 +135,7 @@ const handleImageError = (event) => {
   textElement.style.display = 'flex';
   textElement.style.alignItems = 'center';
   textElement.style.justifyContent = 'center';
-  textElement.style.backgroundColor = '#f0f0f0';
+  textElement.style.backgroundColor = 'rgba(225,225,225,0.3);';
   textElement.style.color = '#666';
   textElement.style.fontSize = '14px';
   

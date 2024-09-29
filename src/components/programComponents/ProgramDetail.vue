@@ -4,7 +4,7 @@
 
   <div class="common-container">
     <div class="common-container-line">
-      
+
       <div class="content-detail-container">
         <div class="content-detail-warpper">
           <div v-if="program" class="contents-detail">
@@ -14,7 +14,10 @@
                 <div class="action-buttons">
                   <!-- <button class="map-button">지도보기</button> -->
                   <button class="bookmark-button" @click="toggleBookmark">
-                    {{ isBookmarked ? '🔖' : '☆' }}
+                    <img 
+                    :src="isBookmarked ? bookmarkIcon : starIcon" 
+                    :alt="isBookmarked ? '북마크 제거' : '북마크 추가'"
+                    :class="isBookmarked ? 'bookmark-icon' : 'star-icon'" />
                   </button>
                 </div>
                 <div class="detail-img-area">
@@ -72,6 +75,8 @@
 <script setup>
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
+import bookmarkIcon from '@/assets/images/icon/book-mark.png';
+import starIcon from '@/assets/images/icon/star-ch.png';
 import MainTop from '../MainTop.vue';
 import ReviewSection from '@/components/ReviewSection.vue';
 
@@ -136,7 +141,7 @@ const handleImageError = () => {
     placeholder.textContent = '이미지를 불러올 수 없습니다';
     placeholder.style.width = '100%';
     placeholder.style.height = '200px';
-    placeholder.style.backgroundColor = '#f0f0f0';
+    placeholder.style.backgroundColor = 'rgba(215,230,244,0.1)';
     placeholder.style.display = 'flex';
     placeholder.style.alignItems = 'center';
     placeholder.style.justifyContent = 'center';
@@ -177,6 +182,4 @@ onMounted(fetchProgramDetail);
 defineExpose({ formatDateRange });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -17,7 +17,7 @@
   height: 100%;
   margin: 0 auto;
   padding: 30px; /* 여백을 추가하여 더 넓은 공간 확보 */
-  background-color: rgba(255, 255, 255, 0.9); /* 배경색에 투명도 추가 */
+  background-color: rgba(255, 255, 255, 0.3); /* 배경색에 투명도 추가 */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
@@ -40,19 +40,6 @@
   margin: 0 auto;
 }
 
-.background-image {
-  position: fixed; /* 고정 위치로 변경 */
-  top: 0;
-  left: 0;
-  width: 100%; /* 전체 너비 */
-  height: 100%; /* 전체 높이 */
-  background-image: url('@/assets/images/etc/service-info-back.png');
-  background-repeat: no-repeat;
-  background-position: center center; /* 가로세로 중앙 정렬 */
-  background-size: contain; /* 이미지가 영역에 맞게 조정되면서 비율 유지 */
-  z-index: -1; /* 다른 콘텐츠 뒤에 위치 */
-  opacity: 0.5; /* 배경 투명도 조정 (필요에 따라 값 변경) */
-}
 
 
 .image-container {
@@ -102,7 +89,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
+  background-color: rgba(215,230,244,0.3);
   color: #666;
   font-size: 14px;
 }
@@ -195,8 +182,7 @@
 }
 
 .map-button,
-.like-button,
-.bookmark-button {
+.like-button {
   margin: 5px;
   padding: 8px;
   background: #ffffff;
@@ -205,7 +191,28 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.bookmark-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 5%;
+  width: 40px;  /* 버튼의 고정 너비 */
+  height: 40px; /* 버튼의 고정 높이 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.bookmark-icon {
+  width: 35px;  /* 북마크 아이콘의 너비 */
+  height: 35px; /* 북마크 아이콘의 높이 */
+}
+
+.star-icon {
+  width: 35px;  /* 별 아이콘의 너비 */
+  height: 35px; /* 별 아이콘의 높이 */
+}
 
 
 
