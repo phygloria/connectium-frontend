@@ -1,3 +1,4 @@
+<!-- MainTop.vue -->
 <template>
     <header class="top-header">
         <div class="top-bar common-width">
@@ -24,7 +25,7 @@
 
                 <div class="wheather-bar">
                     <div class="weather-compo">
-                        <WeatherWidget />
+                        <WeatherContainer />
                     </div>
                 </div>
 
@@ -85,7 +86,7 @@ import { RouterLink } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';  // api 서비스 import
-import WeatherWidget from '@/components/weatherComponents/WeatherWidget.vue';
+import WeatherContainer from '@/components/weatherComponents/WeatherContainer.vue';
 
 const router = useRouter();
 const isLoggedIn = ref(false);
@@ -148,7 +149,7 @@ const navItems = [
 /* 날씨 */
 .wheather-bar {
     position: relative;
-    left: 5%;
+    left: 10%;
     right: 5%;
 }
 
@@ -425,8 +426,8 @@ const navItems = [
     }
 
     .auth-section {
-        width: 20%;
-        right: 19%;
+        width: 15%;
+        left: 30%;
         border-radius: 10px;  /* 변경: 상단 모서리만 둥글게 */
         justify-content: center;
     }
@@ -447,7 +448,7 @@ const navItems = [
 
     .auth-section {
         top:10%;
-        right: 15%;
+        left: 25%;
  
     }
 
@@ -456,8 +457,13 @@ const navItems = [
 @media (max-width: 480px) {
     .hamburger-menu {
         top: 20%;
-        right: 20%;
+        right: 40%;
     }
+    .auth-section {
+        width: 25%;
+        left: 15%;
+    }
+   
 }
 
 
@@ -466,6 +472,16 @@ const navItems = [
 
 /* 아이패드 가로 크기에 대응하는 미디어 쿼리 추가 */
 @media (max-width: 2048px) {
+    /* 날씨 */
+    .wheather-bar {
+        left: 10%;
+    }
+    
+    .weather-compo {
+        width: 140px;
+        height: 75px;
+    }
+
 
 
     .slogan {
@@ -475,10 +491,22 @@ const navItems = [
     .serviceName {
         font-size: 40px;
     }
+
 }
 
 /* 중간 크기 화면에 대한 대응 */
 @media (max-width: 1024px) {
+    /* 날씨 */
+    .wheather-bar {
+        left: 30%;
+    }
+    
+    .weather-compo {
+        width: 130px;
+        height: 70px;
+    }
+
+
     .top-header {
         display: flex;
         flex-direction: column;
@@ -524,20 +552,6 @@ const navItems = [
         text-align: center;
     }
 
-
-    .auth-container {
-        flex-direction: column;
-    }
-
-    .auth-section {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
-
-    .auth-link {
-        margin: 0 10px;
-    }
-
     .top-search-container {
         width: 100%;
         max-width: 200px;
@@ -563,21 +577,25 @@ const navItems = [
 /* 더 작은 화면에 대한 추가 대응 */
 @media (max-width: 800px) {
 
-    .auth-container {
-        flex-direction: column;
+/* 날씨 */
+.wheather-bar {
+        left: 35%;
+    }
+    
+    .weather-compo {
+        width: 120px;
+        height: 65px;
     }
 
-    .auth-section {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
+
+
 }
 
 /* 매우 작은 화면에 대한 대응 */
 @media (max-width: 480px) {
+/* 날씨 */
 
-    .auth-container,
-    .auth-section,
+
     .top-search-container {
         display: flex;
         flex-direction: column;

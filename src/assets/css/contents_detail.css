@@ -17,9 +17,10 @@
   height: 100%;
   margin: 0 auto;
   padding: 30px; /* 여백을 추가하여 더 넓은 공간 확보 */
-  background-color: #ffffff27;
+  background-color: rgba(255, 255, 255, 0.9); /* 배경색에 투명도 추가 */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
 }
 
 .service-name {
@@ -38,6 +39,21 @@
   max-width: 1200px; /* 전체 컨텐츠의 최대 너비 설정 */
   margin: 0 auto;
 }
+
+.background-image {
+  position: fixed; /* 고정 위치로 변경 */
+  top: 0;
+  left: 0;
+  width: 100%; /* 전체 너비 */
+  height: 100%; /* 전체 높이 */
+  background-image: url('@/assets/images/etc/service-info-back.png');
+  background-repeat: no-repeat;
+  background-position: center center; /* 가로세로 중앙 정렬 */
+  background-size: contain; /* 이미지가 영역에 맞게 조정되면서 비율 유지 */
+  z-index: -1; /* 다른 콘텐츠 뒤에 위치 */
+  opacity: 0.5; /* 배경 투명도 조정 (필요에 따라 값 변경) */
+}
+
 
 .image-container {
   position: relative; /* 부모 컨테이너를 상대적으로 위치시킴 */
@@ -151,6 +167,7 @@
   font-family: "Pretendard-Regular";
   position: relative;
   top: 20%;
+  color: none;
 }
 
 .reservation-button {
