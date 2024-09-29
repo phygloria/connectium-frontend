@@ -119,8 +119,8 @@ onMounted(fetchParks);
 
 <style scoped>
 .img-area {
-    flex: 0 0 220px;
-    height: 150px;
+    flex: 0 0 120px;
+    height: 120px;
     background: #e2e2e2;
     border-radius: 10px;
     left: -70px;

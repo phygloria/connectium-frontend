@@ -49,6 +49,7 @@
           </div>
         </div>
       </div>
+      <div class="background-image"></div>
     </div>
   </div>
 

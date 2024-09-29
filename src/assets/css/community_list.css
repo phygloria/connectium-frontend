@@ -8,6 +8,19 @@
     display: column;
 }
 
+.background-image {
+  position: absolute; /* 고정 위치로 변경 */
+  top: 12%;
+  left: -0%;
+  width: 100%; /* 전체 너비 */
+  height: 100%; /* 전체 높이 */
+  background-image: url('@/assets/images/etc/service-info-back.png');
+  background-repeat: no-repeat;
+  background-position: center center; /* 가로세로 중앙 정렬 */
+  background-size: 1200px 950px; /* 이미지 크기를 200x200 픽셀로 조절 */
+  z-index: -1; /* 다른 콘텐츠 뒤에 위치 */
+}
+
 
 .community-title {
     color: #333;
