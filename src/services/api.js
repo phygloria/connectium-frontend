@@ -201,5 +201,17 @@ export default {
       }
     });
   },
+
+  getTodos() {
+    return api.get('/todos').then(response => response.data);
+  },
+
+  addTodo(todoData) {
+    return api.post('/todos', todoData).then(response => response.data);
+  },
+
+  removeTodo(todoId) {
+    return api.delete(`/todos/${todoId}`);
+  },
   
 };
