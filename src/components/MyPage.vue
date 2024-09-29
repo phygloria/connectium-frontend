@@ -26,6 +26,9 @@
   </div>
 </template>
 
+
+
+
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import FullCalendar from '@fullcalendar/vue3';
@@ -164,6 +167,11 @@ onMounted(async () => {
   await refetchCalendarEvents();
 });
 </script>
+
+
+
+
+
 
 <style scoped>
 .mypage-container {

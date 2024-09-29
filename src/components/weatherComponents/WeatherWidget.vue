@@ -12,8 +12,9 @@
 </template>
 
 <script setup>
-import { defineEmits } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
+defineProps(['weatherData']);
 defineEmits(['showPopup']);
 
 const getSkyCondition = (skyCode) => {
@@ -26,9 +27,13 @@ const getSkyCondition = (skyCode) => {
 };
 </script>
 
+
+
+
+
 <style scoped>
 .weather-widget {
-  width: 200px;
+  width: 100px;
   padding: 15px;
   background-color: #f0f0f0;
   border-radius: 10px;

@@ -21,7 +21,7 @@ import FilteredCommunityList from "@/components/communityComponents/FilteredComm
 import MyPage from "@/components/MyPage.vue";
 import WeatherWidget from "@/components/weatherComponents/WeatherWidget.vue";
 import ProgramDetail from "@/components/programComponents/ProgramDetail.vue";
-
+import WeatherPopup from '@/components/weatherComponents/WeatherPopup.vue'
 
 const routes = [
   {
@@ -132,6 +132,11 @@ const routes = [
     path: "/mypage",
     name: "mypage",
     component: MyPage,
+  },
+  {
+    path: '/weather-popup',
+    name: 'WeatherPopup',
+    component: WeatherPopup
   },
 ];
 
