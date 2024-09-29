@@ -405,24 +405,26 @@ const navItems = [
 
 /* 반응형 스타일 */
 /* 햄버거 메뉴 위치 조정을 위한 미디어 쿼리 추가 */
-
-@media (max-width: 1024px) {
+@media (max-width: 2048px) {
     .hamburger-menu {
         position: absolute;
-        top: 20%;
         right: 40%;
     }
 
+}
+@media (max-width: 1024px) {
+    .hamburger-menu {
+        top: 20%;
+    }
+
     .auth-container {
-        top: 27%;
         position: absolute;
+        top: 20%;
         width: 100%;  /* 추가: 전체 너비 사용 */
-        
         right: 7%;
     }
 
     .auth-section {
-        position: absolute;
         width: 20%;
         right: 19%;
         border-radius: 10px;  /* 변경: 상단 모서리만 둥글게 */
@@ -444,6 +446,7 @@ const navItems = [
 @media (max-width:  800px) {
 
     .auth-section {
+        top:10%;
         right: 15%;
  
     }
@@ -581,10 +584,6 @@ const navItems = [
         align-items: center;
         justify-content: center;
         width: 100%;
-    }
-
-    .auth-link {
-        margin: 5px 0;
     }
 
     .top-search-container {
