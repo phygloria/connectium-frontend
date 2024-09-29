@@ -132,6 +132,9 @@ onMounted(fetchContentDetail);
 
 <style scoped>
 
+
+
+
 .outdoor-detail-image {
   width: 100%;
   height: 100%;
@@ -143,11 +146,6 @@ onMounted(fetchContentDetail);
   transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .detail-img-area {
-    height: 250px;
-  }
-}
 
 .review-section {
   margin-top: 30px;
