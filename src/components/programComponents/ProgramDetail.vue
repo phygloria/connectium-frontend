@@ -13,15 +13,18 @@
                 <div class="detail-img-area">
                   <img 
                   :src="getImageUrl(program.imgurl)" 
-                  :alt="program.svcnm" @error="handleImageError" ref="imageRef">
+                  :alt="program.svcnm" 
+                  @error="handleImageError" 
+                  ref="imageRef">
                 </div>
               </div>
               <div class="info-container">
                 <div class="action-buttons">
                   <!-- <button class="map-button">지도보기</button> -->
                   <button class="bookmark-button" @click="toggleBookmark">
-                    <img :src="isBookmarked ? bookmarkIcon : starIcon" :alt="isBookmarked ? '북마크 제거' : '북마크 추가'"
-                      :class="isBookmarked ? 'bookmark-icon' : 'star-icon'" />
+                    <img 
+                    :src="isBookmarked ? bookmarkIcon : starIcon" :alt="isBookmarked ? '북마크 제거' : '북마크 추가'"
+                    :class="isBookmarked ? 'bookmark-icon' : 'star-icon'" />
                   </button>
                 </div>
                 <div class="info-item">
@@ -75,7 +78,7 @@
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
 import bookmarkIcon from '@/assets/images/icon/book-mark.png';
-import starIcon from '@/assets/images/icon/star-ch.png';
+import starIcon from '@/assets/images/icon/star.png';
 import MainTop from '../MainTop.vue';
 import ReviewSection from '@/components/ReviewSection.vue';
 
