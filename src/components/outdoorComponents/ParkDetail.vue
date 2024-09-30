@@ -75,6 +75,8 @@
 <script setup>
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
+import bookmarkIcon from '@/assets/images/icon/book-mark.png';
+import starIcon from '@/assets/images/icon/star.png';
 import MainTop from '@/components/MainTop.vue';
 import ReviewSection from '@/components/ReviewSection.vue';
 
@@ -137,14 +139,7 @@ onMounted(fetchContentDetail);
 
 <style scoped>
 
-.outdoor-detail-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.detail-img-area:hover .outdoor-detail-image {
+.detail-img-area:hover {
   transform: scale(1.05);
 }
 

@@ -2,7 +2,7 @@
   align-items: center;
   justify-content: center;
   /* display: flex; */
-  width: 100%; /* 화면 너비의 90%로 확장 */
+  width: 90%; /* 화면 너비의 90%로 확장 */
 }
 
 .content-detail-warpper {
@@ -172,13 +172,15 @@
   background-color: #fa811e;
 }
 
+
+
+
+/* 북마크 */
 .action-buttons {
-  position: absolute; /* 위치를 절대값으로 설정 */
-  top: 10px; /* 상단에 배치 */
-  right: 10px; /* 우측에 배치 */
   z-index: 1; /* 이미지 위로 올라오게 설정 */
   display: flex;
-  gap: 10px; /* 버튼 사이에 간격 추가 */
+  position: relative;
+  left: 95%;
 }
 
 .map-button,
@@ -196,9 +198,8 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  margin: 5%;
-  width: 40px;  /* 버튼의 고정 너비 */
-  height: 40px; /* 버튼의 고정 높이 */
+  width: 10px;  /* 버튼의 고정 너비 */
+  height: 10px; /* 버튼의 고정 높이 */
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,5 +1,7 @@
 <template>
-  <MainTop/>
+
+  <MainTop />
+
   <div class="common-container">
     <div class="common-container-line">
       <div class="content-detail-container">
@@ -10,10 +12,11 @@
               <div class="image-container">
                 <div class="detail-img-area">
                   <img 
-                    :src="getEducationImage(content.imagePath)" 
-                    :alt="content.name" 
-                    v-if="content.imagePath"                    
-                  >
+                  :src="getEducationImage(content.imagePath)" 
+                  :alt="content.name"
+                  @error="handleImageError" 
+                  ref="imageRef">
+                  
                 </div>
               </div>
               <div class="info-container">
@@ -53,10 +56,7 @@
             <div class="map-container">
               <div id="kakao-map" style="width:100%;height:400px;"></div>
             </div>
-            <ReviewSection 
-              :itemId="content.id.toString()" 
-              itemType="EDUCATION" 
-            />
+            <ReviewSection :itemId="content.id.toString()" itemType="EDUCATION" />
           </div>
           <div v-else-if="error" class="error-message">
             {{ error }}
@@ -72,6 +72,8 @@
 <script setup>
 import '@/assets/css/common_container.css';
 import '@/assets/css/contents_detail.css';
+import bookmarkIcon from '@/assets/images/icon/book-mark.png';
+import starIcon from '@/assets/images/icon/star.png';
 import MainTop from '@/components/MainTop.vue';
 import ReviewSection from '@/components/ReviewSection.vue';
 
@@ -83,6 +85,7 @@ const route = useRoute();
 const content = ref(null);
 const error = ref(null);
 const isBookmarked = ref(false);
+const imageRef = ref(null);
 
 const fetchContentDetail = async () => {
   try {
@@ -99,7 +102,7 @@ const fetchContentDetail = async () => {
 const checkBookmarkStatus = async () => {
   try {
     const bookmarks = await api.getBookmarks();
-    isBookmarked.value = bookmarks.some(bookmark => 
+    isBookmarked.value = bookmarks.some(bookmark =>
       bookmark.itemId === content.value.id.toString() && bookmark.itemType === 'EDUCATION'
     );
   } catch (err) {
@@ -125,6 +128,28 @@ const getEducationImage = (imagePath) => {
   return api.getEducationImageUrl(imageName);
 };
 
+
+const handleImageError = () => {
+  if (imageRef.value) {
+    imageRef.value.style.display = 'none';
+    const parent = imageRef.value.parentNode;
+    const placeholder = document.createElement('div');
+    placeholder.className = 'image-placeholder';
+    placeholder.textContent = '이미지를 불러올 수 없습니다';
+    placeholder.style.width = '100%';
+    placeholder.style.height = '200px';
+    placeholder.style.backgroundColor = 'rgba(215,230,244,0.1)';
+    placeholder.style.display = 'flex';
+    placeholder.style.alignItems = 'center';
+    placeholder.style.justifyContent = 'center';
+    placeholder.style.color = '#666';
+    placeholder.style.fontSize = '14px';
+    parent.appendChild(placeholder);
+  }
+};
+
+
+
 const initMap = () => {
   if (window.kakao && window.kakao.maps && content.value) {
     const container = document.getElementById('kakao-map');
@@ -136,10 +161,10 @@ const initMap = () => {
 
     // 주소로 좌표 검색
     const geocoder = new window.kakao.maps.services.Geocoder();
-    geocoder.addressSearch(content.value.location, function(result, status) {
+    geocoder.addressSearch(content.value.location, function (result, status) {
       if (status === window.kakao.maps.services.Status.OK) {
         const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
-        
+
         // 마커 생성
         const marker = new window.kakao.maps.Marker({
           map: map,
@@ -150,14 +175,14 @@ const initMap = () => {
         const infowindow = new window.kakao.maps.InfoWindow({
           content: `<div style="width:200px;text-align:center;padding:6px 0;">${content.value.name}</div>`
         });
-        
+
         // 마커에 마우스오버 이벤트 추가
-        window.kakao.maps.event.addListener(marker, 'mouseover', function() {
+        window.kakao.maps.event.addListener(marker, 'mouseover', function () {
           infowindow.open(map, marker);
         });
 
         // 마커에 마우스아웃 이벤트 추가
-        window.kakao.maps.event.addListener(marker, 'mouseout', function() {
+        window.kakao.maps.event.addListener(marker, 'mouseout', function () {
           infowindow.close();
         });
 
@@ -172,119 +197,17 @@ onMounted(fetchContentDetail);
 </script>
 
 <style scoped>
-
-.outdoor-detail-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.detail-img-area:hover .outdoor-detail-image {
-  transform: scale(1.05);
-}
-
-
-.review-section {
-  margin-top: 30px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.review-title {
-  font-size: 1.5em;
-  color: #343a40;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #e9ecef;
-}
-
-.reviews-list {
-  margin-bottom: 30px;
-}
-
-.review-item {
-  background-color: #ffffff;
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  padding: 15px;
-  margin-bottom: 15px;
-  transition: box-shadow 0.3s ease;
-}
-
-.review-item:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.review-header {
-  display: flex;
-  justify-content: space-between;
+.content-detail-container {
   align-items: center;
-  margin-bottom: 10px;
+  justify-content: center;
+  /* display: flex; */
+  width: 70%; /* 화면 너비의 90%로 확장 */
 }
-
-.review-author {
-  font-weight: bold;
-  color: #495057;
-}
-
-.review-date {
-  font-size: 0.9em;
-  color: #6c757d;
-}
-
-.review-content {
-  color: #212529;
-  line-height: 1.6;
-}
-
-.no-reviews {
-  color: #6c757d;
-  font-style: italic;
-  text-align: center;
-  padding: 20px 0;
-}
-
-.review-form {
-  margin-top: 20px;
-}
-
-.review-textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  resize: vertical;
-  font-family: inherit;
-  transition: border-color 0.3s ease;
-}
-
-.review-textarea:focus {
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
-}
-
-.submit-review-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submit-review-button:hover:not(:disabled) {
-  background-color: #0056b3;
-}
-
-.submit-review-button:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
+.content-detail-warpper {
+  display: inline;
+  width: 100%; /* 화면 너비의 90%로 확장 */
+  align-items: center;
+  justify-content: center;
 }
 
 .map-container {
@@ -298,20 +221,5 @@ onMounted(fetchContentDetail);
 #kakao-map {
   width: 100%;
   height: 100%;
-}
-
-@media (max-width: 768px) {
-  .content-wrapper {
-    flex-direction: column;
-  }
-  
-  .image-container {
-    width: 100%;
-    padding-top: 75%; /* 모바일에서는 4:3 비율로 변경 */
-  }
-
-  .info-container {
-    width: 100%;
-  }
 }
 </style>
