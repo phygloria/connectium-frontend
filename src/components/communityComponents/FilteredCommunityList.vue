@@ -8,7 +8,7 @@
                 <div class="list-warpper">
 
                     <div class="commponent-title">
-                        <h1>{{ category }} 커뮤니티방</h1>
+                        <h1 class="community-title">{{ category }} 커뮤니티방</h1>
                         <p class="community-subtitle">도담도담 이야기 나누어요!</p>
                     </div>
                     <div class="post-btn">
@@ -116,8 +116,7 @@ onMounted(fetchPosts);
 
 .content-wrapper {
     display: flex;
-    gap: 20px;
-    margin-bottom: 5%;
+    gap: 10px;
   }
 
 
@@ -126,15 +125,16 @@ onMounted(fetchPosts);
     justify-content: center; /* 중앙 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
     flex-wrap: nowrap; /* 줄바꿈 방지 */
-    gap: 10px; /* 버튼 사이의 간격 */
     margin-bottom: 20px;
     width: 100%; /* 전체 너비 사용 */
     height: auto; /* 높이 자동 조정 */
 }
   
+/* .btn-container {
 
+} */
 .category-buttons .btn-container {
-    flex: 0 0 auto; /* 버튼 크기 고정 */
+    flex: 0 0 calc(0% - 1px); /* 버튼 크기 고정 */
 }
 
 
@@ -142,9 +142,7 @@ onMounted(fetchPosts);
   /* 버튼 비활성화 상태 */
   .category-buttons button {
     height: 40px; /* 버튼 높이 고정 */
-    width: 100%;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    width: 70%;
     padding: 5px 10px;
     border: none;
     background-color: #ffffff;
@@ -156,7 +154,7 @@ onMounted(fetchPosts);
   
     font-family: "MangoDdobak-B", sans-serif;
     /* 폰트 적용 */
-    font-size: 16px; /* 폰트 크기 조정 */
+    font-size: 20px; /* 폰트 크기 조정 */
     font-weight: 500;
     /* 폰트 굵기 조정 */
     color: #333;
@@ -167,10 +165,80 @@ onMounted(fetchPosts);
   .category-buttons button.active {
     background-color: #90ce2d;
     color: white;
-    height: 100%;
+    height: 40px; /* 버튼 높이 고정 */
     border-radius: 20px;
     border: 2px #C0EA6A solid;
   }
   
+
+
+
+
+
+  /* 아이패드 12.9인치 */
+@media (max-width: 2048px) {
+  .category-buttons {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .category-buttons .btn-container {
+    flex: 0 0 calc(33.33% - 15px);
+  }
+
+  .category-buttons button {
+    font-size: 20px;
+    height: 40px;
+  }
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .category-buttons {
+    gap: 12px;
+  }
+
+  .category-buttons .btn-container {
+    flex: 0 0 calc(50% - 12px);
+  }
+
+  .category-buttons button {
+    font-size: 16px;
+    height: 45px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .category-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .category-buttons .btn-container {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .category-buttons button {
+    font-size: 14px;
+    height: 40px;
+    margin-right: 0;
+  }
+}
+
+/* 소형 모바일 */
+@media (max-width: 480px) {
+  .category-buttons {
+    gap: 8px;
+  }
+
+  .category-buttons button {
+    font-size: 12px;
+    height: 35px;
+    padding: 3px 8px;
+  }
+}
 
 </style>

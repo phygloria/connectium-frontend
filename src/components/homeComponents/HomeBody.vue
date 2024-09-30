@@ -1,6 +1,9 @@
 <template>
   <div class="bodyContainer">
-    <div class="bodyImageBar">
+    <div class="bodyImageBar" 
+         @touchstart="touchStart" 
+         @touchmove="touchMove" 
+         @touchend="touchEnd">
       <transition-group name="fade" tag="div">
         <img v-for="(image, index) in images" :key="image" v-show="currentIndex === index" :src="image"
           class="homeImage" alt="Home carousel image" />
@@ -31,6 +34,9 @@ const images = [image2, image1, image4, image3];
 
 const currentIndex = ref(0);
 
+const touchStartX = ref(0);
+const touchEndX = ref(0);
+
 const rotateImages = () => {
   currentIndex.value = (currentIndex.value + 1) % images.length;
 };
@@ -40,6 +46,24 @@ const prevImage = () => {
 };
 
 const nextImage = rotateImages;
+
+const touchStart = (event) => {
+  touchStartX.value = event.touches[0].clientX;
+};
+
+const touchMove = (event) => {
+  touchEndX.value = event.touches[0].clientX;
+};
+
+const touchEnd = () => {
+  if (touchStartX.value - touchEndX.value > 50) {
+    // 왼쪽으로 스와이프
+    nextImage();
+  } else if (touchEndX.value - touchStartX.value > 50) {
+    // 오른쪽으로 스와이프
+    prevImage();
+  }
+};
 
 
 onMounted(() => {
@@ -69,6 +93,7 @@ onMounted(() => {
   border-radius: 70px;
   overflow: hidden;
   box-shadow: 0px 3px 7px #DBFA5F;
+  touch-action: pan-y; /* Y축 스크롤은 허용하고 X축 스와이프만 캡처 */
 }
 
 .homeImage {
@@ -213,5 +238,13 @@ onMounted(() => {
   .imageText p {
     font-size: 2em;
   }
+}
+
+/* 소형 모바일 */
+@media (max-width: 480px) {
+  .bodyImageBar {
+  height: 250px;
+}
+
 }
 </style>
