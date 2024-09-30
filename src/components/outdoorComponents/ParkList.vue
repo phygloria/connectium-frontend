@@ -37,7 +37,7 @@
                             <h3 class="content-title">{{ content.name }}</h3>
                             <p class="content-location">{{ content.address }}</p>
                             <p class="content-feature">{{ content.feature }}</p>
-                            <p clss="content-fee">{{ content.ent_fee }}</p>
+                            <p clss="content-cost">{{ content.ent_fee }}</p>
                           </div>
                         </div>
                       </div>
@@ -119,8 +119,8 @@ onMounted(fetchParks);
 
 <style scoped>
 .img-area {
-    flex: 0 0 120px;
-    height: 120px;
+    flex: 0 0 250px;
+    height: 150px;
     background: #e2e2e2;
     border-radius: 10px;
     left: -70px;

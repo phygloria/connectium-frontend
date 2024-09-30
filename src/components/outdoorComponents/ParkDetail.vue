@@ -14,18 +14,18 @@
                   <img 
                   :src="getParkImage(content.imagePath)" 
                   :alt="content.name" 
-                  v-if="content.imagePath"
-                  
+                  v-if="content.imagePath"                
                   >
-                </div>
-                <div class="action-buttons">
-                  <button class="map-button">지도보기</button>
-                  <button class="bookmark-button" @click="toggleBookmark">
-                    {{ isBookmarked ? '🔖' : '☆' }}
-                  </button>
                 </div>
               </div>
               <div class="info-container">
+                <div class="action-buttons">
+                  <!-- <button class="map-button">지도보기</button> -->
+                  <button class="bookmark-button" @click="toggleBookmark">
+                    <img :src="isBookmarked ? bookmarkIcon : starIcon" :alt="isBookmarked ? '북마크 제거' : '북마크 추가'"
+                      :class="isBookmarked ? 'bookmark-icon' : 'star-icon'" />
+                  </button>
+                </div>
                 <div class="info-item">
                   <span class="label">주소 :</span>
                   <span class="value">{{ content.address }}</span>
@@ -130,10 +130,12 @@ const getParkImage = (imagePath) => {
 onMounted(fetchContentDetail);
 </script>
 
+
+
+
+
+
 <style scoped>
-
-
-
 
 .outdoor-detail-image {
   width: 100%;
@@ -249,20 +251,6 @@ onMounted(fetchContentDetail);
   cursor: not-allowed;
 }
 
-.login-prompt {
-  margin-top: 20px;
-  text-align: center;
-  color: #495057;
-}
 
-.login-link {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.login-link:hover {
-  text-decoration: underline;
-}
 
 </style>

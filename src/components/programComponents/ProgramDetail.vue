@@ -4,27 +4,26 @@
 
   <div class="common-container">
     <div class="common-container-line">
-
       <div class="content-detail-container">
         <div class="content-detail-warpper">
           <div v-if="program" class="contents-detail">
             <h2 class="service-name">{{ program.svcnm }}</h2>
             <div class="content-wrapper">
               <div class="image-container">
-                <div class="action-buttons">
-                  <!-- <button class="map-button">지도보기</button> -->
-                  <button class="bookmark-button" @click="toggleBookmark">
-                    <img 
-                    :src="isBookmarked ? bookmarkIcon : starIcon" 
-                    :alt="isBookmarked ? '북마크 제거' : '북마크 추가'"
-                    :class="isBookmarked ? 'bookmark-icon' : 'star-icon'" />
-                  </button>
-                </div>
                 <div class="detail-img-area">
-                  <img :src="getImageUrl(program.imgurl)" :alt="program.svcnm" @error="handleImageError" ref="imageRef">
+                  <img 
+                  :src="getImageUrl(program.imgurl)" 
+                  :alt="program.svcnm" @error="handleImageError" ref="imageRef">
                 </div>
               </div>
               <div class="info-container">
+                <div class="action-buttons">
+                  <!-- <button class="map-button">지도보기</button> -->
+                  <button class="bookmark-button" @click="toggleBookmark">
+                    <img :src="isBookmarked ? bookmarkIcon : starIcon" :alt="isBookmarked ? '북마크 제거' : '북마크 추가'"
+                      :class="isBookmarked ? 'bookmark-icon' : 'star-icon'" />
+                  </button>
+                </div>
                 <div class="info-item">
                   <span class="label">대상 :</span>
                   <span class="value">{{ program.usetgtinfo }}</span>

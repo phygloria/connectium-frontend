@@ -94,10 +94,12 @@ const filteredPosts = computed(() => {
 });
 
 const categories = [
-  { value: '5세미만', label: '5세미만'},
-  { value: '5세~6세', label: '5세~6세'},
-  { value: '7세~9세', label: '7세~9세'},
-  { value: '10세이상', label: '10세이상'}
+  { value: '영유아(0~2세)', label: '0~2세'},
+  { value: '유아(3~5세)', label: '3~5세' },
+  { value: '취학 전 아동(6~7세)', label: '6~7세'},
+  { value: '초등학교 저학년(8~9세)', label: '8~9세' },
+  { value: '초등학교 중학년(10~11세)', label: '10~11세' },
+  { value: '초등학교 고학년(12~13세)', label: '12~13세' }
 ];
 
 onMounted(fetchPosts);
