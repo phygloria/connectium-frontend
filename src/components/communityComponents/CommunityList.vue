@@ -63,9 +63,9 @@ import '@/assets/css/common_container.css'
 import MainTop from '@/components/MainTop.vue'
 
 // 이미지 import
-import imgUnder5 from '@/assets/images/community/category-under-5.png'
-import img5to6 from '@/assets/images/community/category-5-6.png'
-import img7to9 from '@/assets/images/community/category-7-9.png'
+// import imgUnder5 from '@/assets/images/community/category-under-5.png'
+// import img5to6 from '@/assets/images/community/category-5-6.png'
+// import img7to9 from '@/assets/images/community/category-7-9.png'
 import imgOver10 from '@/assets/images/community/category-over-10.png'
 
 import api from '@/services/api';
@@ -76,12 +76,21 @@ const route = useRoute()
 
 const posts = ref([])
 
+// const categories = [
+//   { value: '5세미만', label: '5세미만', imagePath: imgUnder5 },
+//   { value: '5세~6세', label: '5세~6세', imagePath: img5to6 },
+//   { value: '7세~9세', label: '7세~9세', imagePath: img7to9 },
+//   { value: '10세이상', label: '10세이상', imagePath: imgOver10 }
+// ];
 const categories = [
-  { value: '5세미만', label: '5세미만', imagePath: imgUnder5 },
-  { value: '5세~6세', label: '5세~6세', imagePath: img5to6 },
-  { value: '7세~9세', label: '7세~9세', imagePath: img7to9 },
-  { value: '10세이상', label: '10세이상', imagePath: imgOver10 }
+  { value: '영유아(0~2세)', label: '영유아(0~2세)', imagePath: imgOver10 },
+  { value: '유아(3~5세)', label: '유아(3~5세)', imagePath: imgOver10 },
+  { value: '취학 전 아동(6~7세)', label: '취학 전 아동(6~7세)', imagePath: imgOver10 },
+  { value: '초등학교 저학년(8~9세)', label: '초등학교 저학년(8~9세)', imagePath: imgOver10 },
+  { value: '초등학교 중학년(10~11세)', label: '초등학교 중학년(10~11세)', imagePath: imgOver10 },
+  { value: '초등학교 고학년(12~13세)', label: '초등학교 고학년(12~13세)', imagePath: imgOver10 }
 ];
+
 
 const fetchPosts = async () => {
   try {

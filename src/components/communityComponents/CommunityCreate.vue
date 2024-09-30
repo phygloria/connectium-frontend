@@ -49,7 +49,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const categories = ['5세미만', '5세~6세', '7세~9세', '10세이상']
+const categories = ['0-2세', '3-5세', '6-7세', '8-9세', '10-11세', '12-13세',]
 const newPost = ref({
   title: '',
   author: '',

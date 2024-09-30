@@ -208,7 +208,8 @@
 .content-location,
 .content-date,
 .content-feature,
-.content-fee
+.content-cost,
+.content-target
  {
   color: #1e1e1e;
   font-size: 14px; /* 글자 크기를 조금 줄임 */

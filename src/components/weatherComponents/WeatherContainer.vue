@@ -84,9 +84,9 @@ onMounted(fetchWeatherData);
 
 <style scoped>
 .error-message {
-  color: #c9e0ff;
+  color: #EDFD83;
   padding: 10px;
-  border: 1px solid #c9e0ff;
+  border: 1px solid #EDFD83;
   border-radius: 5px;
   margin-bottom: 10px;
 }

@@ -323,7 +323,7 @@
   cursor: not-allowed;
 }
 
-.login-prompt {
+/* .login-prompt {
   margin-top: 20px;
   text-align: center;
   color: #495057;
@@ -337,7 +337,7 @@
 
 .login-link:hover {
   text-decoration: underline;
-}
+} */
 
 
 
