@@ -72,7 +72,7 @@ async function fetchEvents() {
       id: todo.id,
       title: todo.content,
       date: todo.date,
-      color: '#4CAF50'
+      color: '#9ed334'
     }));
   } catch (error) {
     console.error('이벤트를 불러오는데 실패했습니다:', error);
@@ -127,7 +127,7 @@ async function addTodo(content) {
         id: newTodo.id,
         title: newTodo.content,
         date: newTodo.date,
-        color: '#4CAF50'
+        color: '#9ed334'
       });
     }
   } catch (error) {
@@ -181,10 +181,12 @@ onMounted(async () => {
 .mypage-content {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .left-section, .right-section {
   flex: 1;
+  min-width: 300px; /* 최소 너비 설정 */
 }
 
 .calendar-section {
@@ -195,6 +197,18 @@ onMounted(async () => {
   background-color: #f5f5f5;
   padding: 15px;
   border-radius: 8px;
+}
+
+
+/* 반응형 스타일 추가 */
+@media (max-width: 768px) {
+  .mypage-content {
+    flex-direction: column;
+  }
+
+  .left-section, .right-section {
+    width: 100%;
+  }
 }
 </style>
   
