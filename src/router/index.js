@@ -18,7 +18,7 @@ import EduView from "@/views/EduView.vue";
 import EducationDetail from "@/components/educationComponents/EducationDetail.vue";
 import ProgramList from "@/components/programComponents/ProgramList.vue";
 import FilteredCommunityList from "@/components/communityComponents/FilteredCommunityList.vue";
-import MyPage from "@/components/MyPage.vue";
+import MyPage from "@/views/MyPage.vue";
 import WeatherWidget from "@/components/weatherComponents/WeatherWidget.vue";
 import ProgramDetail from "@/components/programComponents/ProgramDetail.vue";
 import WeatherPopup from '@/components/weatherComponents/WeatherPopup.vue'
