@@ -37,18 +37,18 @@
                     </div>
                     <div class="auth-section" :class="{ 'open': isMenuOpen }">
                         <template v-if="!isLoggedIn">
-                            <div class="auth-link" >
+                            <div class="auth-link">
                                 <router-link to="/login" @click="closeMenu">로그인</router-link>
                             </div>
-                            <div class="auth-link" >
+                            <div class="auth-link">
                                 <router-link to="/register" @click="closeMenu">회원가입</router-link>
                             </div>
                         </template>
                         <template v-else>
-                            <div class="auth-link" >
-                                <a @click="logout" >로그아웃</a>
+                            <div class="auth-link">
+                                <a @click="logout">로그아웃</a>
                             </div>
-                            <div class="auth-link" >
+                            <div class="auth-link">
                                 <router-link to="/mypage" @click="closeMenu">마이페이지</router-link>
                             </div>
                         </template>
@@ -162,6 +162,14 @@ const navItems = [
 
 
 /* 햄버거 메뉴 */
+
+.auth-container {
+    position: relative;
+    align-items: center;
+    z-index: 1000;
+    /* 다른 컴포넌트보다 위에 오도록 z-index 추가 */
+}
+
 .hamburger-menu {
     display: flex;
     flex-direction: column;
@@ -170,8 +178,12 @@ const navItems = [
     height: 25px;
     cursor: pointer;
     z-index: 10;
-    position: relative;  /* 추가: 상대 위치 설정 */
-    top: 20px;  /* 추가: 20px 아래로 이동 */
+    position: absolute;
+    /* 추가: 상대 위치 설정 */
+    top: 20%;
+    /* 추가: 20px 아래로 이동 */
+    right: 20px;
+    /* 오른쪽 정렬 유지 */
 }
 
 .bar {
@@ -182,13 +194,6 @@ const navItems = [
 }
 
 
-.auth-container {
-    position: relative;
-    align-items: center;
-    z-index: 1000;
-    /* 다른 컴포넌트보다 위에 오도록 z-index 추가 */
-}
-
 .auth-section {
     position: absolute;
     top: 60%;
@@ -197,7 +202,7 @@ const navItems = [
     /* 변경: 메뉴 배경색을 어둡게 */
     padding: 10px;
     border-radius: 0 0 10px 10px;
-   
+
     align-items: center;
     opacity: 0;
     visibility: hidden;
@@ -212,23 +217,30 @@ const navItems = [
 }
 
 .auth-link {
-    margin: 0 10px;    /* 유지: 좌우 여백 */
-    color: #42c6dd; 
+    margin: 0 10px;
+    /* 유지: 좌우 여백 */
+    color: #42c6dd;
     font-size: 16px;
     font-family: Pretendard;
     font-weight: 700;
     text-decoration: none;
-    flex-direction: column;    /* 변경: 세로 정렬 */
-    align-items: center;    /* 변경: 중앙 정렬 */
-    justify-content: center;    /* 추가: 세로 중앙 정렬 */
-    text-align: center;    /* 추가: 텍스트 중앙 정렬 */
-    white-space: nowrap; /* 추가: 줄바꿈 방지 */
+    flex-direction: column;
+    /* 변경: 세로 정렬 */
+    align-items: center;
+    /* 변경: 중앙 정렬 */
+    justify-content: center;
+    /* 추가: 세로 중앙 정렬 */
+    text-align: center;
+    /* 추가: 텍스트 중앙 정렬 */
+    white-space: nowrap;
+    /* 추가: 줄바꿈 방지 */
 }
 
 .auth-link a {
     color: inherit;
     text-decoration: none;
-    white-space: nowrap; /* 추가: 링크 내부 텍스트의 줄바꿈 방지 */
+    white-space: nowrap;
+    /* 추가: 링크 내부 텍스트의 줄바꿈 방지 */
 }
 
 
@@ -405,78 +417,18 @@ const navItems = [
 
 
 /* 반응형 스타일 */
-/* 햄버거 메뉴 위치 조정을 위한 미디어 쿼리 추가 */
-@media (max-width: 2048px) {
-    .hamburger-menu {
-        position: absolute;
-        right: 40%;
-    }
-
-}
-@media (max-width: 1024px) {
-    .hamburger-menu {
-        top: 20%;
-    }
-
-    .auth-container {
-        position: absolute;
-        top: 20%;
-        width: 100%;  /* 추가: 전체 너비 사용 */
-        right: 7%;
-    }
-
-    .auth-section {
-        width: 15%;
-        left: 30%;
-        border-radius: 10px;  /* 변경: 상단 모서리만 둥글게 */
-        justify-content: center;
-    }
-    
-
-    .auth-section.open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0); 
-    }
-    .auth-link {
-        margin: 5px 10px;
-        /* 수정: 좌우 여백 추가 */
-    }
-}
-
-@media (max-width:  800px) {
-
-    .auth-section {
-        top:10%;
-        left: 25%;
- 
-    }
-
-}
-
-@media (max-width: 480px) {
-    .hamburger-menu {
-        top: 20%;
-        right: 40%;
-    }
-    .auth-section {
-        width: 25%;
-        left: 15%;
-    }
-   
-}
-
 
 
 
 
 /* 아이패드 가로 크기에 대응하는 미디어 쿼리 추가 */
 @media (max-width: 2048px) {
+
     /* 날씨 */
     .wheather-bar {
         left: 10%;
     }
-    
+
     .weather-compo {
         width: 140px;
         height: 75px;
@@ -484,6 +436,15 @@ const navItems = [
 
 
 
+    /* 햄버거 */
+    .hamburger-menu {
+        position: absolute;
+        right: 40%;
+    }
+
+
+
+    /* 메인탑 */
     .slogan {
         font-size: 25px;
     }
@@ -496,17 +457,56 @@ const navItems = [
 
 /* 중간 크기 화면에 대한 대응 */
 @media (max-width: 1024px) {
+
     /* 날씨 */
     .wheather-bar {
         left: 30%;
     }
-    
+
     .weather-compo {
         width: 130px;
         height: 70px;
     }
 
 
+    /* 햄버거 */
+
+    .auth-container {
+        position: absolute;
+        top: 29%;
+        width: 100%;
+        /* 추가: 전체 너비 사용 */
+        right: 9%;
+    }
+
+    .hamburger-menu {
+        position: absolute;
+        top: 50%;
+    }
+
+    .auth-section {
+        width: 15%;
+        left: 35%;
+        border-radius: 10px;
+        /* 변경: 상단 모서리만 둥글게 */
+        justify-content: center;
+    }
+
+
+    .auth-section.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .auth-link {
+        margin: 5px 10px;
+        /* 수정: 좌우 여백 추가 */
+    }
+
+
+
+    /* 메인탑 */
     .top-header {
         display: flex;
         flex-direction: column;
@@ -577,23 +577,46 @@ const navItems = [
 /* 더 작은 화면에 대한 추가 대응 */
 @media (max-width: 800px) {
 
-/* 날씨 */
-.wheather-bar {
+    /* 날씨 */
+    .wheather-bar {
         left: 35%;
     }
-    
+
     .weather-compo {
         width: 120px;
         height: 65px;
     }
 
+    /* 햄버거 */
+    .auth-container {
+        position: absolute;
+        top: 28%;
+        width: 100%;
+        /* 추가: 전체 너비 사용 */
+        right: 8%;
+    }
+
+    .auth-section {
+        top: 20%;
+        left: 35%;
+
+    }
 
 
 }
 
 /* 매우 작은 화면에 대한 대응 */
 @media (max-width: 480px) {
-/* 날씨 */
+    /* 날씨 */
+    .wheather-bar {
+        left: 35%;
+        top: 15%;
+    }
+
+    .weather-compo {
+        width: 120px;
+        height: 65px;
+    }
 
 
     .top-search-container {
@@ -607,5 +630,51 @@ const navItems = [
     .top-search-container {
         max-width: 100%;
     }
+
+    /* 햄버거 */
+    .auth-container {
+        position: absolute;
+        top: 28%;
+        width: 100%;
+        /* 추가: 전체 너비 사용 */
+        right: 8%;
+    }
+
+    .auth-section {
+        width: 25%;
+        left: 15%;
+    }
+
+}
+
+
+@media (max-width: 418px) {
+
+    
+    .wheather-bar {
+        left: 35%;
+        top: 15%;
+    }
+
+    .weather-compo {
+        width: 90px;
+        height: 70px;
+    }
+
+
+    /* 햄버거 */
+    .auth-container {
+        position: absolute;
+        top: 28%;
+        width: 100%;
+        /* 추가: 전체 너비 사용 */
+        right: 6%;
+    }
+
+    .auth-section {
+        width: 25%;
+        left: 15%;
+    }
+
 }
 </style>

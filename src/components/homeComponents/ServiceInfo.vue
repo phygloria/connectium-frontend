@@ -82,20 +82,24 @@ import '@/assets/css/common_container.css'
     min-height: 100vh;
     overflow: hidden;
 }
+
 .img-Container {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 200%; /* 컨테이너 높이를 2배로 설정 */
+    height: 200%;
+    /* 컨테이너 높이를 2배로 설정 */
     z-index: 1;
 }
+
 .background-image1,
 .background-image2 {
     position: absolute;
     left: 0;
     right: 0;
-    height: 50%; /* 각 이미지가 전체 높이의 절반을 차지 */
+    height: 50%;
+    /* 각 이미지가 전체 높이의 절반을 차지 */
     background-image: url('@/assets/images/etc/service-info-back.png');
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -174,8 +178,10 @@ import '@/assets/css/common_container.css'
     font-size: 20px;
     color: #666;
     margin: 5% 0 3% 0;
-    word-break: keep-all;
     white-space: normal;
+    word-wrap: keep-all;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 .solution-big-box {
@@ -195,7 +201,9 @@ import '@/assets/css/common_container.css'
     color: #333;
     margin-bottom: 15px;
     line-height: 1.5;
+    word-wrap: keep-all;
     word-break: keep-all;
+    overflow-wrap: break-word;
     white-space: normal;
 }
 
@@ -206,7 +214,9 @@ import '@/assets/css/common_container.css'
     font-style: normal;
     font-weight: 600;
     line-height: 165.249%;
+    word-wrap: keep-all;
     word-break: keep-all;
+    overflow-wrap: break-word;
     white-space: normal;
 }
 
@@ -301,26 +311,25 @@ import '@/assets/css/common_container.css'
     }
 
     .needs-text {
-    font-size: 18px;
-    width: 90%;
+        font-size: 18px;
+        width: 90%;
+    }
 
-}
+    .solution-text {
+        font-size: 23px;
+        width: 80%;
 
-.solution-text {
-    font-size: 23px;
-    width: 80%;
-    
-}
+    }
 
     .point-small-box {
         flex-basis: calc(50% - 20px);
         font-size: 16px;
     }
-    
+
     .point-title {
         font-size: 20px;
     }
-    
+
     .point-title-box {
         width: 100%;
         max-width: none;
@@ -334,9 +343,23 @@ import '@/assets/css/common_container.css'
     .point-small-box {
         flex-basis: 100%;
     }
-    
+
     .point-text {
         font-size: 16px;
     }
+}
+
+
+@media (max-width: 418px) {
+    .needs-text {
+        font-size: 15px;
+        width: 80%;
+    }
+    .solution-text {
+        font-size: 20px;
+        width: 80%;
+
+    }
+
 }
 </style>

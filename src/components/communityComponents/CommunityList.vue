@@ -63,10 +63,12 @@ import '@/assets/css/common_container.css'
 import MainTop from '@/components/MainTop.vue'
 
 // 이미지 import
-// import imgUnder5 from '@/assets/images/community/category-under-5.png'
-// import img5to6 from '@/assets/images/community/category-5-6.png'
-// import img7to9 from '@/assets/images/community/category-7-9.png'
-import imgOver10 from '@/assets/images/community/category-over-10.png'
+import img0to2 from '@/assets/images/community/category-under-2.png'
+import img3to5 from '@/assets/images/community/category-under-5.png'
+import img6to7 from '@/assets/images/community/category-under-7.png'
+import img8to9 from '@/assets/images/community/category-under-9.png'
+import img10to11 from '@/assets/images/community/category-over-10.png'
+import imgOver12 from '@/assets/images/community/category-over-12.png'
 
 import api from '@/services/api';
 import { ref, computed, onMounted } from 'vue'
@@ -83,12 +85,12 @@ const posts = ref([])
 //   { value: '10세이상', label: '10세이상', imagePath: imgOver10 }
 // ];
 const categories = [
-  { value: '영유아(0~2세)', label: '영유아(0~2세)', imagePath: imgOver10 },
-  { value: '유아(3~5세)', label: '유아(3~5세)', imagePath: imgOver10 },
-  { value: '취학 전 아동(6~7세)', label: '취학 전 아동(6~7세)', imagePath: imgOver10 },
-  { value: '초등학교 저학년(8~9세)', label: '초등학교 저학년(8~9세)', imagePath: imgOver10 },
-  { value: '초등학교 중학년(10~11세)', label: '초등학교 중학년(10~11세)', imagePath: imgOver10 },
-  { value: '초등학교 고학년(12~13세)', label: '초등학교 고학년(12~13세)', imagePath: imgOver10 }
+  { value: '영유아(0~2세)', label: '영유아(0~2세)', imagePath: img0to2 },
+  { value: '유아(3~5세)', label: '유아(3~5세)', imagePath: img3to5 },
+  { value: '취학 전 아동(6~7세)', label: '취학 전 아동(6~7세)', imagePath: img6to7 },
+  { value: '초등학교 저학년(8~9세)', label: '초등학교 저학년(8~9세)', imagePath: img8to9 },
+  { value: '초등학교 중학년(10~11세)', label: '초등학교 중학년(10~11세)', imagePath: img10to11 },
+  { value: '초등학교 고학년(12~13세)', label: '초등학교 고학년(12~13세)', imagePath: imgOver12 }
 ];
 
 
@@ -131,7 +133,7 @@ onMounted(async () => {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  max-width: 800px; /* 최대 너비 증가 */
+  max-width: 100%; /* 최대 너비를 100%로 제한 */
   margin: 0 auto;
 }
 
@@ -155,6 +157,7 @@ onMounted(async () => {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .category-buttons button:hover {
@@ -169,6 +172,7 @@ onMounted(async () => {
   justify-content: center;
   width: 100%;
   height: 100%; /* 컨테이너 높이를 100%로 설정 */
+  overflow: hidden; /* 이 줄을 추가합니다 */
 }
 
 .category-image {
@@ -176,6 +180,7 @@ onMounted(async () => {
   height: auto; /* 높이를 자동으로 조정 */
   object-fit: contain;
   margin-bottom: 10px;
+  max-width: 100%;
 }
 
 .category-label {
@@ -183,6 +188,7 @@ onMounted(async () => {
   font-weight: bold;
   font-size: 0.9em;
   width: 100%;
+  
 }
 
 </style>

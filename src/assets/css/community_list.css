@@ -29,7 +29,9 @@
     font-size: 50px;
     font-family: MangoByeolbyeol;
     font-weight: 400;
-    word-wrap: break-word
+    word-break: keep-all; /* 단어 단위로 줄바꿈 */
+    white-space: normal; /* 자동 줄바꿈 허용 */
+    overflow-wrap: normal; /* 긴 단어도 끊지 않음 */
   }
   
   .community-subtitle {
@@ -97,8 +99,25 @@
     background-color: #90ce2d;
     color: white;
     height: 120%;
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: none;
     border-radius: 20px;
     border: 2px #C0EA6A solid;
+    white-space: nowrap;
+    /* 버튼 내 텍스트를 한 줄로 유지 */
+    overflow: hidden;
+  
+    font-family: "MangoDdobak-B", sans-serif;
+    /* 폰트 적용 */
+    font-size: 20px;
+    /* 폰트 크기 조정 */
+    font-weight: 500;
+    /* 폰트 굵기 조정 */
+    color: #333;
+    /* 텍스트 색상 */
   }
   
   
