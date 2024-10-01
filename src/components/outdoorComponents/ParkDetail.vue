@@ -56,6 +56,10 @@
               </div>
             </div>
 
+             <div class="map-container">
+              <div id="kakao-map" style="width:100%;height:400px;"></div>
+            </div>
+
             <ReviewSection 
               :itemId="content.id.toString()"
               itemType="OUTDOOR"

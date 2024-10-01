@@ -25,7 +25,7 @@
               <div class="list-container">
                 <div class="list-column">
                   <div class="list-in-column">
-                    <div class="list-card" v-for="content in filteredEvents" :key="content.id"
+                    <div class="list-card" v-for="content in paginatedEvents" :key="content.id"
                       @click="navigateToDetail(content)">
                       <div class="img-area">
                         <img :src="getImageUrl(content.imagePath)" :alt="content.name" class="outdoor-image" />
@@ -37,13 +37,29 @@
                             <h3 class="content-title">{{ content.name }}</h3>
                             <p class="content-location">{{ content.address }}</p>
                             <p class="content-feature">{{ content.feature }}</p>
-                            <p clss="content-cost">{{ content.ent_fee }}</p>
+                            <p class="content-cost">{{ content.ent_fee }}</p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <!-- 페이지네이션 컨트롤 -->
+              <div class="pagination">
+                <button @click="prevPage" :disabled="currentPage === 1">이전</button>
+                
+                <button 
+                  v-for="page in displayedPageNumbers" 
+                  :key="page" 
+                  @click="goToPage(page)"
+                  :class="{ active: currentPage === page }"
+                >
+                  {{ page }}
+                </button>
+                
+                <button @click="nextPage" :disabled="currentPage === totalPages">다음</button>
               </div>
             </div>
           </div>
@@ -61,12 +77,14 @@ import api from '@/services/api';
 import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-
 const router = useRouter();
 const parks = ref([]);
 const isLoading = ref(true);
 const error = ref(false);
 const activeFilter = ref('all');
+
+const itemsPerPage = 6;
+const currentPage = ref(1);
 
 const filters = [
   { value: 'all', label: '전체보기' },
@@ -97,21 +115,54 @@ const filteredEvents = computed(() => {
   return parks.value.filter(filterFunction);
 });
 
-// const toggleLike = (id) => {
-//   const park = parks.value.find(p => p.id === id);
-//   if (park) {
-//     park.liked = !park.liked;
-//   }
-// };
+const paginatedEvents = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return filteredEvents.value.slice(start, end);
+});
+
+const totalPages = computed(() => Math.ceil(filteredEvents.value.length / itemsPerPage));
+
+const displayedPageNumbers = computed(() => {
+  const range = 2;
+  let start = Math.max(currentPage.value - range, 1);
+  let end = Math.min(currentPage.value + range, totalPages.value);
+
+  if (end - start + 1 < range * 2 + 1) {
+    if (start === 1) {
+      end = Math.min(start + range * 2, totalPages.value);
+    } else {
+      start = Math.max(end - range * 2, 1);
+    }
+  }
+
+  return Array.from({length: end - start + 1}, (_, i) => start + i);
+});
 
 const getImageUrl = (imagePath) => {
-  if (!imagePath) return '/path/to/default/image.jpg';  // 기본 이미지 경로
-  const imageName = imagePath.split('/').pop(); // 파일 이름만 추출
+  if (!imagePath) return '/path/to/default/image.jpg';
+  const imageName = imagePath.split('/').pop();
   return api.getParkImage(imageName);
 };
 
 const navigateToDetail = (content) => {
   router.push(`/outdoor/park/${content.id}`);
+};
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
+};
+
+const goToPage = (page) => {
+  currentPage.value = page;
 };
 
 onMounted(fetchParks);
@@ -126,8 +177,31 @@ onMounted(fetchParks);
     left: -70px;
     top: -25px;
     margin-right: 20px;
-
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 </style>

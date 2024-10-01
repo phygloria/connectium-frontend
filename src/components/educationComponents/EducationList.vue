@@ -27,11 +27,10 @@
               <div class="list-container">
                 <div class="list-column">
                   <div class="list-in-column">
-                    <div class="list-card" v-for="content in filteredEvents" 
+                    <div class="list-card" v-for="content in paginatedEvents" 
                     :key="content.id"
                       @click="navigateToDetail(content)"
                     >
-
                       <div class="img-area">
                         <img :src="getImageUrl(content.imagePath)" 
                         :alt="content.name" 
@@ -49,25 +48,34 @@
                             <p class="content-location">장소: {{ content.location }}</p>
                             <p class="content-cost">비용: {{ content.cost || '무료' }}</p>
                           </div>
-
-                          <!-- <div class="like-area">
-                            <button class="like-button" @click="toggleLike(content.id)">
-                              <img
-                                :src="content.liked ? require('@/assets/images/icon/heart_icon_in_pink.png') : require('@/assets/images/icon/flat_heart_shape.png')"
-                                :alt="content.liked ? '좋아요 취소' : '좋아요'" class="heart-icon">
-                            </button> -->
-                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <!-- 페이지네이션 컨트롤 -->
+              <div class="pagination">
+                <button @click="prevPage" :disabled="currentPage === 1">이전</button>
+                
+                <button 
+                  v-for="page in displayedPageNumbers" 
+                  :key="page" 
+                  @click="goToPage(page)"
+                  :class="{ active: currentPage === page }"
+                >
+                  {{ page }}
+                </button>
+                
+                <button @click="nextPage" :disabled="currentPage === totalPages">다음</button>
+              </div>
             </div>
           </div>
         </div>
-        </div>
       </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -83,6 +91,9 @@ const educations = ref([]);
 const isLoading = ref(true);
 const error = ref(null);
 const activeFilter = ref('all');
+
+const itemsPerPage = 6;
+const currentPage = ref(1);
 
 const filters = [
   { value: 'all', label: '전체보기' },
@@ -113,26 +124,58 @@ const filteredEvents = computed(() => {
   return educations.value.filter(filterFunction);
 });
 
-// const toggleLike = (id) => {
-//   const education = educations.value.find(e => e.id === id);
-//   if (education) {
-//     education.liked = !education.liked;
-//   }
-// };
+const paginatedEvents = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return filteredEvents.value.slice(start, end);
+});
 
-// const getImageUrl = (imageName) => {
-//   if (!imageName) return '/path/to/default/image.jpg';  // 기본 이미지 경로
-//   return api.getEducationImageUrl(imageName);
-// };
+const totalPages = computed(() => Math.ceil(filteredEvents.value.length / itemsPerPage));
+
+const displayedPageNumbers = computed(() => {
+  const range = 2;
+  let start = Math.max(currentPage.value - range, 1);
+  let end = Math.min(currentPage.value + range, totalPages.value);
+
+  if (end - start + 1 < range * 2 + 1) {
+    if (start === 1) {
+      end = Math.min(start + range * 2, totalPages.value);
+    } else {
+      start = Math.max(end - range * 2, 1);
+    }
+  }
+
+  return Array.from({length: end - start + 1}, (_, i) => start + i);
+});
 
 const getImageUrl = (imagePath) => {
-  if (!imagePath) return '/path/to/default/image.jpg';  // 기본 이미지 경로
-  const imageName = imagePath.split('/').pop(); // 파일 이름만 추출
+  if (!imagePath) return '/path/to/default/image.jpg';
+  const imageName = imagePath.split('/').pop();
   return api.getEducationImageUrl(imageName);
 };
 
 const navigateToDetail = (content) => {
   router.push(`/education/${content.id}`);
+};
+
+const handleImageError = (event) => {
+  event.target.src = '/path/to/default/image.jpg';
+};
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
+};
+
+const goToPage = (page) => {
+  currentPage.value = page;
 };
 
 onMounted(fetchEducations);
@@ -147,14 +190,37 @@ onMounted(fetchEducations);
     left: -70px;
     top: -25px;
     margin-right: 20px;
-
 }
 
-/* 반응형 디자인을 위한 미디어 쿼리 */
 @media (max-width: 768px) {
   .detail-img-area {
     height: 250px;
-    /* 모바일 화면에서는 더 작게 */
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 </style>
