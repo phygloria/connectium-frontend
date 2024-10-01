@@ -665,7 +665,7 @@ const navItems = [
     /* 햄버거 */
     .auth-container {
         position: absolute;
-        top: 35%;
+        top: 30%;
         width: 100%;
         /* 추가: 전체 너비 사용 */
         right: 6%;
