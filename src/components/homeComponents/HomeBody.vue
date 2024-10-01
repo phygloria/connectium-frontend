@@ -109,7 +109,7 @@ onMounted(() => {
 .imageText {
   position: absolute;
   top: 70%;
-  right: 20%;
+  right: 15%;
   color: white;
   text-align: right;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -242,9 +242,30 @@ onMounted(() => {
 
 /* 소형 모바일 */
 @media (max-width: 480px) {
-  .bodyImageBar {
-  height: 250px;
+    .bodyImageBar[data-v-0601281a] {
+        height: 160px;
+    }
+
+
+.bodyContainer {
+  height: 70%;
 }
+
+}
+
+
+@media (max-width: 418px) {
+  .imageText {
+  right: 10%;
+}
+.bodyImageBar[data-v-0601281a] {
+        height: 130px;
+    }
+
+.bodyContainer {
+  height: 30%;
+}
+
 
 }
 </style>
