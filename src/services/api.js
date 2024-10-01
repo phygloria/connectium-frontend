@@ -213,5 +213,22 @@ export default {
   removeTodo(todoId) {
     return api.delete(`/todos/${todoId}`);
   },
+
+  // CareInfo
+  // 모든 Care 정보 가져오기
+getAllCares() {
+  return api.get('/care').then(response => response.data);
+},
+
+// Care 상세 정보 가져오기
+getCareById(id) {
+  return api.get(`/care/${id}`).then(response => response.data);
+},
+
+// Care 이미지 URL 가져오기
+getCareImageUrl(imageName) {
+  if (!imageName) return '/path/to/default/image.jpg';
+  return `${API_URL}/images/Care service/${imageName}`;
+},
   
 };
