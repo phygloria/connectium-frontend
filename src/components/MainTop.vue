@@ -129,7 +129,7 @@ const navItems = [
     { path: '/program', label: '몸으로 놀아요' },
     { path: '/education', label: '즐겁게 공부하자' },
     { path: '/outdoor/park', label: '신나는 우리동네' },
-    //   { path: '#', label: '우리 같이가요!' },
+    {path: '/careview', label: '돌봄서비스'},
     { path: '/postList', label: 'QnA' },
 ];
 </script>

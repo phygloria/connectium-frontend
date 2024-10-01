@@ -22,6 +22,9 @@ import MyPage from "@/views/MyPage.vue";
 import WeatherWidget from "@/components/weatherComponents/WeatherWidget.vue";
 import ProgramDetail from "@/components/programComponents/ProgramDetail.vue";
 import WeatherPopup from '@/components/weatherComponents/WeatherPopup.vue'
+import CareDetail from "@/components/careComponents/CareDetail.vue";
+import CareView from "@/views/CareView.vue";
+import CareList from "@/components/careComponents/CareList.vue";
 
 const routes = [
   {
@@ -138,6 +141,22 @@ const routes = [
     name: 'WeatherPopup',
     component: WeatherPopup
   },
+  {
+    path: '/care',
+    name: 'careList',
+    component: CareList
+  },
+  {
+    path: '/careview',
+    name: 'careview',
+    component: CareView
+  },
+  {
+    path: '/care/:id',
+    name: 'CareDetail',
+    component: CareDetail
+  },
+
 ];
 
 const router = createRouter({
