@@ -1,4 +1,10 @@
 <template>
+
+  <div class="go-back">
+    <router-link to="/" class="goToHome">홈으로</router-link>
+  </div>
+
+
   <div class="mypage-container">
     <h1>마이페이지</h1>
     <div class="mypage-content">
@@ -14,12 +20,8 @@
         </div>
         <div class="todo-section">
           <h3>할 일 목록 - {{ formatDate(selectedDate) }}</h3>
-          <TodoList
-            :todos="todosForSelectedDate"
-            :selectedDate="selectedDate"
-            @addTodo="addTodo"
-            @removeTodo="removeTodo"
-          />
+          <TodoList :todos="todosForSelectedDate" :selectedDate="selectedDate" @addTodo="addTodo"
+            @removeTodo="removeTodo" />
         </div>
       </div>
     </div>
@@ -34,8 +36,8 @@ import { ref, computed, onMounted } from 'vue';
 import FullCalendar from '@fullcalendar/vue3';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import BookmarkList from './BookmarkList.vue';
-import TodoList from './TodoList.vue';
+import BookmarkList from '@/components/BookmarkList.vue';
+import TodoList from '@/components/TodoList.vue';
 import api from '@/services/api';
 
 const fullCalendar = ref(null);
@@ -119,7 +121,7 @@ async function addTodo(content) {
       date: dateString
     });
     todos.value.push(newTodo);
-    
+
     // 달력에 새 이벤트 추가
     if (fullCalendar.value) {
       const calendarApi = fullCalendar.value.getApi();
@@ -139,7 +141,7 @@ async function removeTodo(todoId) {
   try {
     await api.removeTodo(todoId);
     todos.value = todos.value.filter(todo => todo.id !== todoId);
-    
+
     // 달력에서 이벤트 제거
     if (fullCalendar.value) {
       const calendarApi = fullCalendar.value.getApi();
@@ -184,9 +186,11 @@ onMounted(async () => {
   flex-wrap: wrap;
 }
 
-.left-section, .right-section {
+.left-section,
+.right-section {
   flex: 1;
-  min-width: 300px; /* 최소 너비 설정 */
+  min-width: 300px;
+  /* 최소 너비 설정 */
 }
 
 .calendar-section {
@@ -199,6 +203,29 @@ onMounted(async () => {
   border-radius: 8px;
 }
 
+.go-back {
+  width: 140px;
+  height: 50px;
+  color: white;
+  font-family: Mango Ddobak;
+  font-size: 20px;
+  background:  #90ce2d;
+  box-shadow: 0px 3px 5px #dbfa5f;
+  border-radius: 15px;
+  border: 2px  #90ce2d solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 5%;
+}
+
+.goToHome {
+  text-decoration: none;
+  color: white;  /* 링크 색상을 흰색으로 유지 */
+}
+
+
 
 /* 반응형 스타일 추가 */
 @media (max-width: 768px) {
@@ -206,10 +233,9 @@ onMounted(async () => {
     flex-direction: column;
   }
 
-  .left-section, .right-section {
+  .left-section,
+  .right-section {
     width: 100%;
   }
 }
 </style>
-  
-  

@@ -240,6 +240,9 @@ import '@/assets/css/common_container.css'
     background: #B3E000;
     box-shadow: 0px 3px 7px 0px #DBFA5F;
     margin: 5% 0;
+    word-wrap: keep-all;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 .point-title {
@@ -251,6 +254,9 @@ import '@/assets/css/common_container.css'
     /* 폰트 크기 조정 */
     font-weight: bold;
     /* 폰트 굵기 조정 */
+    word-wrap: keep-all;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 .point-box-bar {
