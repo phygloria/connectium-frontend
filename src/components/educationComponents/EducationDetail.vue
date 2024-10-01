@@ -53,9 +53,9 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="map-container">
+            <div class="map-container">
               <div id="kakao-map" style="width:100%;height:400px;"></div>
-            </div> -->
+            </div>
             <ReviewSection :itemId="content.id.toString()" itemType="EDUCATION" />
           </div>
           <div v-else-if="error" class="error-message">
@@ -150,48 +150,48 @@ const handleImageError = () => {
 
 
 
-// const initMap = () => {
-//   if (window.kakao && window.kakao.maps && content.value) {
-//     const container = document.getElementById('kakao-map');
-//     const options = {
-//       center: new window.kakao.maps.LatLng(33.450701, 126.570667), // 기본 중심 좌표
-//       level: 3
-//     };
-//     const map = new window.kakao.maps.Map(container, options);
+const initMap = () => {
+  if (window.kakao && window.kakao.maps && content.value) {
+    const container = document.getElementById('kakao-map');
+    const options = {
+      center: new window.kakao.maps.LatLng(33.450701, 126.570667), // 기본 중심 좌표
+      level: 3
+    };
+    const map = new window.kakao.maps.Map(container, options);
 
-//     // 주소로 좌표 검색
-//     const geocoder = new window.kakao.maps.services.Geocoder();
-//     geocoder.addressSearch(content.value.location, function (result, status) {
-//       if (status === window.kakao.maps.services.Status.OK) {
-//         const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+    // 주소로 좌표 검색
+    const geocoder = new window.kakao.maps.services.Geocoder();
+    geocoder.addressSearch(content.value.location, function (result, status) {
+      if (status === window.kakao.maps.services.Status.OK) {
+        const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
 
-//         // 마커 생성
-//         const marker = new window.kakao.maps.Marker({
-//           map: map,
-//           position: coords
-//         });
+        // 마커 생성
+        const marker = new window.kakao.maps.Marker({
+          map: map,
+          position: coords
+        });
 
-//         // 인포윈도우 생성
-//         const infowindow = new window.kakao.maps.InfoWindow({
-//           content: `<div style="width:200px;text-align:center;padding:6px 0;">${content.value.name}</div>`
-//         });
+        // 인포윈도우 생성
+        const infowindow = new window.kakao.maps.InfoWindow({
+          content: `<div style="width:200px;text-align:center;padding:6px 0;">${content.value.name}</div>`
+        });
 
-//         // 마커에 마우스오버 이벤트 추가
-//         window.kakao.maps.event.addListener(marker, 'mouseover', function () {
-//           infowindow.open(map, marker);
-//         });
+        // 마커에 마우스오버 이벤트 추가
+        window.kakao.maps.event.addListener(marker, 'mouseover', function () {
+          infowindow.open(map, marker);
+        });
 
-//         // 마커에 마우스아웃 이벤트 추가
-//         window.kakao.maps.event.addListener(marker, 'mouseout', function () {
-//           infowindow.close();
-//         });
+        // 마커에 마우스아웃 이벤트 추가
+        window.kakao.maps.event.addListener(marker, 'mouseout', function () {
+          infowindow.close();
+        });
 
-//         // 지도 중심을 마커 위치로 이동
-//         map.setCenter(coords);
-//       }
-//     });
-//   }
-// };
+        // 지도 중심을 마커 위치로 이동
+        map.setCenter(coords);
+      }
+    });
+  }
+};
 
 onMounted(fetchContentDetail);
 </script>

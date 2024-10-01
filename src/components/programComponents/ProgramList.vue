@@ -34,7 +34,7 @@
                   <div class="list-in-column">
                     <div 
                       class="list-card" 
-                      v-for="content in filteredEvents" 
+                      v-for="content in paginatedEvents" 
                       :key="content.id"
                       @click="navigateToDetail(content)"
                     >
@@ -63,6 +63,22 @@
                   </div>
                 </div>
               </div>
+
+              <!-- 페이지네이션 컨트롤 -->
+              <div class="pagination">
+                <button @click="prevPage" :disabled="currentPage === 1">이전</button>
+                
+                <button 
+                  v-for="page in displayedPageNumbers" 
+                  :key="page" 
+                  @click="goToPage(page)"
+                  :class="{ active: currentPage === page }"
+                >
+                  {{ page }}
+                </button>
+                
+                <button @click="nextPage" :disabled="currentPage === totalPages">다음</button>
+              </div>
             </div>
           </div>
         </div>
@@ -84,10 +100,11 @@ const router = useRouter();
 const { programs, isLoading, error, fetchPrograms } = useAllPrograms();
 
 const activeFilter = ref('all');
+const itemsPerPage = 6;
+const currentPage = ref(1);
 
 const filters = reactive([
   { value: 'all', label: '전체보기' },
-  { value: 'culture', label: '문화행사' },
   { value: 'free', label: '무료' },
   { value: 'paid', label: '유료' }
 ]);
@@ -103,6 +120,30 @@ const filteredEvents = computed(() => {
   if (!programs.value) return [];
   const filterFn = filterFunctions[activeFilter.value] || filterFunctions['all'];
   return programs.value.filter(filterFn);
+});
+
+const paginatedEvents = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return filteredEvents.value.slice(start, end);
+});
+
+const totalPages = computed(() => Math.ceil(filteredEvents.value.length / itemsPerPage));
+
+const displayedPageNumbers = computed(() => {
+  const range = 2;
+  let start = Math.max(currentPage.value - range, 1);
+  let end = Math.min(currentPage.value + range, totalPages.value);
+
+  if (end - start + 1 < range * 2 + 1) {
+    if (start === 1) {
+      end = Math.min(start + range * 2, totalPages.value);
+    } else {
+      start = Math.max(end - range * 2, 1);
+    }
+  }
+
+  return Array.from({length: end - start + 1}, (_, i) => start + i);
 });
 
 const formatDate = (dateString) => {
@@ -152,12 +193,51 @@ const navigateToDetail = (content) => {
   });
 };
 
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
+};
+
+const goToPage = (page) => {
+  currentPage.value = page;
+};
+
 onMounted(async () => {
   await fetchPrograms();
 });
 </script>
 
-
 <style scoped>
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 </style>
