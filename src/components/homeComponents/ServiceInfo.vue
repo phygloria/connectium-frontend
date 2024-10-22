@@ -308,6 +308,9 @@ import '@/assets/css/common_container.css'
 
 
 @media (max-width: 768px) {
+    .common-container-line {
+        border-radius: 20px;
+    }
     .service-title {
         font-size: 300%;
     }
@@ -346,6 +349,8 @@ import '@/assets/css/common_container.css'
 }
 
 @media (max-width: 480px) {
+
+
     .point-small-box {
         flex-basis: 100%;
     }

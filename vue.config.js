@@ -15,7 +15,7 @@ module.exports = defineConfig({
       entry: 'src/main.js',
       template: 'public/index.html',
       filename: 'index.html',
-      title: 'Index Page',
+      title: 'CONNECTIUM',
       chunks: ['chunk-vendors', 'chunk-common', 'index']
     }
   },

@@ -35,7 +35,8 @@ const getSkyCondition = (skyCode) => {
 .weather-widget {
   width: 100px;
   padding: 15px;
-  background-color: #f0f0f0;
+  color: black;
+  background-color: #A9DA49;
   border-radius: 10px;
   cursor: pointer;
 }
