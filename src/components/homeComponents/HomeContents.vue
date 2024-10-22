@@ -128,8 +128,8 @@ const goToContents = (route) => {
 
 /* 반응형 스타일 */
 
-
-@media (max-width: 1240px) {
+/* 소형 데스크탑: 992px-1199px */
+@media (max-width: 1199px) {
 
     .title {
         font-size: 45px;
@@ -142,7 +142,7 @@ const goToContents = (route) => {
     }
 
     .contents {
-        width: 90%;
+        width: 100%;
         /* 부모 요소의 전체 너비를 사용 */
     }
 
@@ -151,49 +151,21 @@ const goToContents = (route) => {
 
 }
 
-@media (min-width: 1024px) {
+/* 태블릿: 768px-991px */
+@media (max-width: 991px) {
     .contentsImg {
-        max-width: calc(40% - 7px);
+        max-width: calc(50% - 7px);
     }
 }
 
 
 
-@media (max-width: 800px) {
-    .contents {
-        width: 200px;
-        height: 160px;
-    }
+/* 대형 모바일: 576px-767px */
+@media (max-width: 767px) {
 
     .title {
         font-size: 30px;
     }
-
-    .contentsImg {
-        max-width: calc(50% - 5px);
-    }
-
-    .image-text {
-        font-size: 15px;
-    }
-}
-
-
-/* 매우 작은 화면에 대한 대응 */
-@media (max-width: 480px) {
-    .title {
-        font-size: 25px;
-        right: 5%;
-        /* 타이틀 위치 조정 */
-    }
-
-    .contentsBar {
-        flex-direction: column;
-        /* 세로 정렬 */
-        align-items: center;
-        /* 중앙 정렬 */
-    }
-
     .contentsImg {
         max-width: 100%;
         /* 전체 너비 사용 */
@@ -215,6 +187,50 @@ const goToContents = (route) => {
     .image-text {
         font-size: 15px;
     }
+}
+
+/* 소형 모바일: 575px 이하 */
+@media (max-width: 575px)  {
+    .containerLine {
+        border-radius: 20px;
+    }
+
+    .title {
+        font-size: 25px;
+        right: 5%;
+        /* 타이틀 위치 조정 */
+    }
+
+    .contentsBar {
+        flex-direction: column;
+        /* 세로 정렬 */
+        align-items: center;
+        /* 중앙 정렬 */
+    }
+
+    .contentsImg {
+        max-width: 100%;
+        /* 전체 너비 사용 */
+        width: 100%;
+        /* 전체 너비 사용 */
+        border-radius: 20px;
+    }
+
+    .contents {
+        width: 100%;
+        /* 부모 요소의 전체 너비 사용 */
+        height: auto;
+        /* 높이 자동 조정 */
+        max-height: 160px;
+        /* 최대 높이 설정 */
+        object-fit: cover;
+        /* 이미지 비율 유지 */
+        border-radius: 20px;
+    }
+
+    .image-text {
+        font-size: 15px;
+    }
 
 }
 
@@ -222,11 +238,11 @@ const goToContents = (route) => {
 @media (max-width: 418px) {
 
     .image-container {
-        border-radius: 40px;
+        border-radius: 20px;
     }
 
     .contents {
-        border-radius: 40px;
+        border-radius: 20px;
     }
 
 }

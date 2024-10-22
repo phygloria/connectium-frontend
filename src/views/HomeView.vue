@@ -1,7 +1,7 @@
 <template>
 
     <MainTop />
-    <br>
+
     <HomeBody />
 
     <HomeContents class="home-contents" />

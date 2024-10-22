@@ -1,12 +1,20 @@
 <template>
   <div class="bodyContainer">
-    <div class="bodyImageBar" 
-         @touchstart="touchStart" 
-         @touchmove="touchMove" 
-         @touchend="touchEnd">
+    <div
+      class="bodyImageBar"
+      @touchstart="touchStart"
+      @touchmove="touchMove"
+      @touchend="touchEnd"
+    >
       <transition-group name="fade" tag="div">
-        <img v-for="(image, index) in images" :key="image" v-show="currentIndex === index" :src="image"
-          class="homeImage" alt="Home carousel image" />
+        <img
+          v-for="(image, index) in images"
+          :key="image"
+          v-show="currentIndex === index"
+          :src="image"
+          class="homeImage"
+          alt="Home carousel image"
+        />
       </transition-group>
       <div class="imageText">
         <h2>깜짝 놀랄걸요?</h2>
@@ -23,12 +31,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
-import image1 from '@/assets/images/home/MaskImage (1).png';
-import image2 from '@/assets/images/home/MaskImage (2).png';
-import image3 from '@/assets/images/home/MaskImage (3).png';
-import image4 from '@/assets/images/home/MaskImage (4).png';
+import image1 from "@/assets/images/home/MaskImage (1).png";
+import image2 from "@/assets/images/home/MaskImage (2).png";
+import image3 from "@/assets/images/home/MaskImage (3).png";
+import image4 from "@/assets/images/home/MaskImage (4).png";
 
 const images = [image2, image1, image4, image3];
 
@@ -65,34 +73,29 @@ const touchEnd = () => {
   }
 };
 
-
 onMounted(() => {
   setInterval(rotateImages, 7000);
 });
-
 </script>
 
-
 <style scoped>
-
-
 .bodyContainer {
   width: 100%;
   height: 100%;
   position: relative;
-  padding: 0 1% 0 calc((100% - var(--main-content-width)) / 2);
+  padding: 1% 1% 0 calc((100% - var(--main-content-width)) / 2);
 }
 
 .bodyImageBar {
   max-width: var(--main-content-width);
-  height: 500px;
+  height: 400px;
   left: 0px;
   top: 0px;
   position: relative;
-  background: #D9D9D9;
+  background: #d9d9d9;
   border-radius: 70px;
   overflow: hidden;
-  box-shadow: 0px 3px 7px #DBFA5F;
+  box-shadow: 0px 3px 7px #dbfa5f;
   touch-action: pan-y; /* Y축 스크롤은 허용하고 X축 스와이프만 캡처 */
 }
 
@@ -103,7 +106,6 @@ onMounted(() => {
   top: 0;
   left: 0;
   border-radius: 70px;
-  
 }
 
 .imageText {
@@ -116,14 +118,14 @@ onMounted(() => {
 }
 
 .imageText h2 {
-  font-family: 'MangoByeolbyeol';
+  font-family: "MangoByeolbyeol";
   font-size: 2.5em;
   line-height: 1.2; /* 행간 추가 */
   margin-bottom: 0.2em; /* 아래 여백 추가 */
 }
 
 .imageText p {
-  font-family: 'MangoByeolbyeol';
+  font-family: "MangoByeolbyeol";
   font-size: 2.5em;
   line-height: 1.2; /* 행간 추가 */
   margin-top: 0; /* 위 여백 제거 */
@@ -183,54 +185,57 @@ onMounted(() => {
 
 /* 화살표에 호버 효과 추가 */
 .left-arrow:hover {
-  border-right-color: #A3D600;
+  border-right-color: #a3d600;
 }
 
 .right-arrow:hover {
-  border-left-color: #A3D600;
+  border-left-color: #a3d600;
 }
 
-
-
-
-
-
-@media (max-width: 1024px) {
-
+/* 소형 데스크탑: 992px-1199px */
+@media (max-width: 1199px) {
   .bodyImageBar {
-  height: 300px;
-  background: #ffffff;
-}
+    height: 300px;
+    border-radius: 50px;
+  }
 
   .homeImage {
-  height: 100%;
-  } 
+    border-radius: 50px;
+  }
 
+  .arrow {
+    top: 50%;
+  }
+  .left-arrow {
+    left: 10%;
+  }
 
-.arrow {
-  top: 50%;
-}
-.left-arrow {
-  left: 10%;
-}
-
-.right-arrow {
-  right: 10%;
-}
-
-
+  .right-arrow {
+    right: 10%;
+  }
 
   .imageText {
     position: absolute;
     top: 70%;
-  right: 16%;
-  font-size: 70%;
+    right: 16%;
+    font-size: 70%;
   }
-
 }
 
-@media (max-width: 800px) {
+/* 태블릿: 768px-991px */
+@media (max-width: 991px) {
+  .bodyImageBar {
+    height: 250px;
+    border-radius: 40px;
+  }
 
+  .homeImage {
+    border-radius: 40px;
+  }
+
+  .imageText {
+    top: 65%;
+  }
   .imageText h2 {
     font-size: 2em;
   }
@@ -240,32 +245,25 @@ onMounted(() => {
   }
 }
 
+/* 대형 모바일: 576px-767px */
+@media (max-width: 767px) {
+
+  .bodyImageBar {
+    height: 200px;
+    border-radius: 20px;
+  }
+
+  .homeImage {
+    border-radius: 20px;
+  }
+
+}
+
 /* 소형 모바일 */
-@media (max-width: 480px) {
-    .bodyImageBar[data-v-0601281a] {
-        height: 160px;
-    }
-
-
-.bodyContainer {
-  height: 70%;
-}
-
-}
-
-
 @media (max-width: 418px) {
   .imageText {
-  right: 10%;
-}
-.bodyImageBar[data-v-0601281a] {
-        height: 130px;
-    }
-
-.bodyContainer {
-  height: 30%;
-}
-
+    right: 10%;
+  }
 
 }
 </style>
