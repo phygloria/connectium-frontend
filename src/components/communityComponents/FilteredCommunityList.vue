@@ -129,10 +129,7 @@ onMounted(fetchPosts);
     width: 100%; /* 전체 너비 사용 */
     height: auto; /* 높이 자동 조정 */
 }
-  
-/* .btn-container {
 
-} */
 .category-buttons .btn-container {
     flex: 0 0 calc(0% - 1px); /* 버튼 크기 고정 */
 }
@@ -211,8 +208,6 @@ onMounted(fetchPosts);
 /* 모바일 */
 @media (max-width: 768px) {
   .category-buttons {
-    flex-direction: column;
-    align-items: stretch;
     gap: 10px;
   }
 
@@ -228,17 +223,25 @@ onMounted(fetchPosts);
   }
 }
 
-/* 소형 모바일 */
-@media (max-width: 480px) {
+/* 소형 모바일: 575px 이하 */
+@media (max-width: 575px) {
+  .content-wrapper {
+    display: none;
+  }
   .category-buttons {
-    gap: 8px;
+    gap: 5px;
+    width: 20%; /* 전체 너비 사용 */
+    height: auto; /* 높이 자동 조정 */
+  }
+  .category-buttons .btn-container {
+    flex: none;
+    width: 50%;
   }
 
-  .category-buttons button {
-    font-size: 12px;
-    height: 35px;
-    padding: 3px 8px;
+  .category-image-container {
+    width: 20%;
   }
+
 }
 
 </style>
