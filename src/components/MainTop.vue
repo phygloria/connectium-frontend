@@ -567,15 +567,18 @@ const navItems = [
   }
 
   .imageLogo {
-    width: 110%;
-    margin-right: 30px;
+    position: absolute;
+    width: 12%;
+    top: 65px;
+    left: 25px;
+    margin-right: 0px;
     margin-left: 0px;
   }
 
   .slogan {
     font-size: 20px;
     font-weight: 200;
-    margin-left: 20%;
+    margin-left: 10%;
   }
 
   .slogan span {
