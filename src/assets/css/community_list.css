@@ -63,7 +63,7 @@
     grid-template-columns: repeat(2, minmax(350px, 1fr));
     max-width: 1040px;
     /* 두 카드의 너비(500px * 2) + 간격(20px) */
-    height: 350px;
+    height: 50px;
     margin: 0 auto;
     /* 중앙 정렬 */
   }

@@ -140,8 +140,8 @@ const navItems = [
 .wheather-bar {
     position: absolute;
     top: 2%;
-    left: 70%;
-    right: 20%;
+    left: 64%;
+    right: 10%;
     z-index: 1000;
     /* 다른 컴포넌트보다 위에 오도록 z-index 추가 */
   }
