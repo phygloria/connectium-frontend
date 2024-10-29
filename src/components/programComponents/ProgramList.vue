@@ -77,7 +77,7 @@ import '@/assets/css/contents_list.css';
 
 import api from '@/services/api';
 import { ref, reactive, computed, onMounted } from 'vue';
-import { useAllPrograms } from '@/composables/useAllPrograms';
+import { useAllPrograms } from '@/components/programComponents/composables/useAllPrograms';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

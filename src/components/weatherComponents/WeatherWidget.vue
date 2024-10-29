@@ -36,7 +36,7 @@ const getSkyCondition = (skyCode) => {
   width: 100px;
   padding: 15px;
   color: black;
-  background-color: #A9DA49;
+  background-color: rgba(255, 255, 255, 0.5); /* 마지막 값이 투명도 (0~1) */
   border-radius: 10px;
   cursor: pointer;
 }

@@ -36,8 +36,8 @@ import { ref, computed, onMounted } from 'vue';
 import FullCalendar from '@fullcalendar/vue3';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import BookmarkList from '@/components/BookmarkList.vue';
-import TodoList from '@/components/TodoList.vue';
+import BookmarkList from '@/components/myPageComponents/BookmarkList.vue';
+import TodoList from '@/components/myPageComponents/TodoList.vue';
 import api from '@/services/api';
 
 const fullCalendar = ref(null);
