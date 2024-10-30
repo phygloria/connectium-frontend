@@ -1,15 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-// 타입 정의 (TypeScript를 사용하는 경우)
-/**
- * @typedef {Object} Category
- * @property {string} value - 카테고리 식별 값
- * @property {string} label - 간단한 표시 라벨
- * @property {string} fullLabel - 전체 카테고리명
- * @property {string} imagePath - 카테고리 이미지 경로
- */
-
 // 이미지 import
 import img0to2 from '@/assets/images/community/category-under-2.png'
 import img3to5 from '@/assets/images/community/category-under-5.png'

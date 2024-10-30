@@ -307,7 +307,7 @@ import '@/assets/css/common_container.css'
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 869px) {
     .common-container-line {
         border-radius: 20px;
     }

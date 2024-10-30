@@ -1,20 +1,9 @@
 <template>
   <div class="bodyContainer">
-    <div
-      class="bodyImageBar"
-      @touchstart="touchStart"
-      @touchmove="touchMove"
-      @touchend="touchEnd"
-    >
+    <div class="bodyImageBar" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
       <transition-group name="fade" tag="div">
-        <img
-          v-for="(image, index) in images"
-          :key="image"
-          v-show="currentIndex === index"
-          :src="image"
-          class="homeImage"
-          alt="Home carousel image"
-        />
+        <img v-for="(image, index) in images" :key="image" v-show="currentIndex === index" :src="image"
+          class="homeImage" alt="Home carousel image" />
       </transition-group>
       <div class="imageText">
         <h2>깜짝 놀랄걸요?</h2>
@@ -96,7 +85,8 @@ onMounted(() => {
   border-radius: 70px;
   overflow: hidden;
   box-shadow: 0px 3px 7px #dbfa5f;
-  touch-action: pan-y; /* Y축 스크롤은 허용하고 X축 스와이프만 캡처 */
+  touch-action: pan-y;
+  /* Y축 스크롤은 허용하고 X축 스와이프만 캡처 */
 }
 
 .homeImage {
@@ -120,15 +110,19 @@ onMounted(() => {
 .imageText h2 {
   font-family: "MangoByeolbyeol";
   font-size: 2.5em;
-  line-height: 1.2; /* 행간 추가 */
-  margin-bottom: 0.2em; /* 아래 여백 추가 */
+  line-height: 1.2;
+  /* 행간 추가 */
+  margin-bottom: 0.2em;
+  /* 아래 여백 추가 */
 }
 
 .imageText p {
   font-family: "MangoByeolbyeol";
   font-size: 2.5em;
-  line-height: 1.2; /* 행간 추가 */
-  margin-top: 0; /* 위 여백 제거 */
+  line-height: 1.2;
+  /* 행간 추가 */
+  margin-top: 0;
+  /* 위 여백 제거 */
 }
 
 .fade-enter-active,
@@ -206,6 +200,7 @@ onMounted(() => {
   .arrow {
     top: 50%;
   }
+
   .left-arrow {
     left: 10%;
   }
@@ -222,7 +217,7 @@ onMounted(() => {
   }
 }
 
-/* 태블릿: 768px-991px */
+/* 태블릿: 870px-991px */
 @media (max-width: 991px) {
   .bodyImageBar {
     height: 250px;
@@ -236,6 +231,7 @@ onMounted(() => {
   .imageText {
     top: 65%;
   }
+
   .imageText h2 {
     font-size: 2em;
   }
@@ -245,24 +241,65 @@ onMounted(() => {
   }
 }
 
-/* 대형 모바일: 576px-767px */
-@media (max-width: 767px) {
+/* 대형 모바일: 576px-869px */
+@media (max-width: 869px) {
 
   .bodyImageBar {
     height: 200px;
     border-radius: 20px;
   }
 
-  .homeImage {
+  .homeImage {    
     border-radius: 20px;
   }
-
+  
+  
 }
 
 /* 소형 모바일 */
-@media (max-width: 418px) {
+@media (max-width: 575px) {
+  .arrowContainer {
+    display: none;
+  }
+  
+  .bodyImageBar {
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .homeImage {
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  
   .imageText {
-    right: 10%;
+  display: none;
+}
+
+
+/* 텍스트 오버레이 */
+.bodyImageBar::after {
+  content: "아이랑 자유롭게 \A 이어지는 우리 중랑";
+  position: absolute;
+  
+  /* 위치 조정 (예: 중앙 정렬) */
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%, -50%);
+  
+  /* 텍스트 스타일링 */
+  font-family: "MangoByeolbyeol";
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 0.2em;
+  white-space: pre;  /* 줄바꿈을 위해 필요 */
+  text-align: center;  /* 텍스트 중앙 정렬 */
+
+    /* 선택사항: 텍스트 가독성을 위한 효과 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
 }

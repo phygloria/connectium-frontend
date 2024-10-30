@@ -110,7 +110,7 @@ const goToContents = (route) => {
 
 .contents {
     width: 255px;
-    height: 200px;
+    height: 250px;
     border-radius: 20px;
     transition: transform 0.3s ease;
     cursor: pointer;
@@ -151,7 +151,7 @@ const goToContents = (route) => {
 
 }
 
-/* 태블릿: 768px-991px */
+/* 태블릿: 870px-991px */
 @media (max-width: 991px) {
     .contentsImg {
         max-width: calc(50% - 7px);
@@ -159,29 +159,15 @@ const goToContents = (route) => {
 }
 
 
-
-/* 대형 모바일: 576px-767px */
-@media (max-width: 767px) {
+/* 대형 모바일: 576px-869px */
+@media (max-width: 869px) {
 
     .title {
         font-size: 30px;
     }
     .contentsImg {
-        max-width: 100%;
-        /* 전체 너비 사용 */
-        width: 100%;
-        /* 전체 너비 사용 */
-    }
-
-    .contents {
-        width: 100%;
-        /* 부모 요소의 전체 너비 사용 */
-        height: auto;
-        /* 높이 자동 조정 */
-        max-height: 160px;
-        /* 최대 높이 설정 */
-        object-fit: cover;
-        /* 이미지 비율 유지 */
+        aspect-ratio: 16/9;
+        margin-bottom: 5px;
     }
 
     .image-text {
@@ -196,36 +182,15 @@ const goToContents = (route) => {
     }
 
     .title {
-        font-size: 25px;
-        right: 5%;
-        /* 타이틀 위치 조정 */
+        display: none;
+    }
+    .contentsImg {
+        margin-bottom: 2px;
     }
 
     .contentsBar {
-        flex-direction: column;
-        /* 세로 정렬 */
-        align-items: center;
-        /* 중앙 정렬 */
-    }
-
-    .contentsImg {
-        max-width: 100%;
-        /* 전체 너비 사용 */
-        width: 100%;
-        /* 전체 너비 사용 */
-        border-radius: 20px;
-    }
-
-    .contents {
-        width: 100%;
-        /* 부모 요소의 전체 너비 사용 */
-        height: auto;
-        /* 높이 자동 조정 */
-        max-height: 160px;
-        /* 최대 높이 설정 */
-        object-fit: cover;
-        /* 이미지 비율 유지 */
-        border-radius: 20px;
+        height: 350px;    /* ⭐ 모바일에서의 세로 크기 조절 */
+        width: 550px;
     }
 
     .image-text {
@@ -235,15 +200,4 @@ const goToContents = (route) => {
 }
 
 
-@media (max-width: 418px) {
-
-    .image-container {
-        border-radius: 20px;
-    }
-
-    .contents {
-        border-radius: 20px;
-    }
-
-}
 </style>

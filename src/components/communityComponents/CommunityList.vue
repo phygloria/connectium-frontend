@@ -150,7 +150,7 @@ onMounted(async () => {
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   width: 100%;
-  height: 50%; /* 높이를 100%로 설정 */
+  height: 100%; /* 높이를 100%로 설정 */
   padding: 10px;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
