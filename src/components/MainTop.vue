@@ -138,10 +138,9 @@ const navItems = [
 <style scoped>
 /* 날씨 */
 .wheather-bar {
-    position: absolute;
+  position: relative;
     top: 2%;
-    left: 64%;
-    right: 10%;
+    left: 5%;
     z-index: 1000;
     /* 다른 컴포넌트보다 위에 오도록 z-index 추가 */
   }
@@ -245,6 +244,7 @@ const navItems = [
   box-shadow: 0px 3px 7px #dbfa5f;
   border-radius: 50px;
   padding: var(--main-content-padding);
+  
 }
 
 .top-container {
@@ -390,33 +390,24 @@ const navItems = [
 /* 소형 데스크탑: 992px-1199px */
 @media (max-width: 1199px) {
   .wheather-bar {
-    position: absolute;
+    position: relative;
     top: 2%;
-    left: 70%;
-    right: 35%;
+    left: 75%;
     z-index: 1000;
     /* 다른 컴포넌트보다 위에 오도록 z-index 추가 */
   }
 }
 
-/* 태블릿: 768px-991px */
+/* 태블릿: 870px-991px */
 @media (max-width: 991px) {
   .top-bar {
     border-radius: 35px;
+    justify-content: center;
+    /* 추가: 중앙 정렬 */
   }
-
+  /* 날씨 */
   .wheather-bar {
-    position: absolute;
-    top: 12.5%;
-    left: 90%;
-    right: 15%;
-    z-index: 1000;
-    /* 다른 컴포넌트보다 위에 오도록 z-index 추가 */
-  }
-  .weather-compo {
-    align-items: center;
-    width: 100px;
-    height: 70px;
+    display: none;
   }
 
   /* 햄버거 메뉴 */
@@ -426,20 +417,23 @@ const navItems = [
   }
 }
 
-/* 대형 모바일: 576px-767px */
-@media (max-width: 767px) {
+/* 대형 모바일: 576px-869px */
+@media (max-width: 869px) {
   .top-bar {
     border-radius: 30px;
+    justify-content: center;
+    /* 추가: 중앙 정렬 */
   }
 
   /* 날씨 */
   .wheather-bar {
-    opacity: 0;
+    display: none;
   }
 
   /* 햄버거 메뉴 */
   .hamburger-menu {
-    right: 70px;
+    top: 50%;
+    right: 20px;
     /* 오른쪽 정렬 유지 */
   }
 
@@ -460,6 +454,7 @@ const navItems = [
   .serviceName {
     font-size: 30px;
     margin-left: 5%;
+    
   }
 
   .text-container {
@@ -488,12 +483,13 @@ const navItems = [
 /* 소형 모바일: 575px 이하 */
 @media (max-width: 575px) {
   .top-bar {
-    border-radius: 15px;
+    border-radius: 0px;
+    height: 80px;
   }
 
   /* 햄버거 메뉴 */
   .hamburger-menu {
-    top: 50%;
+    top: 30%;
     right: 10px;
     /* 오른쪽 정렬 유지 */
   }
@@ -504,29 +500,18 @@ const navItems = [
   }
 
   .imageLogo {
-    width: 70%;
+    width: 50%;
     margin-right: 10px;
     margin-left: 0px;
   }
 
   .slogan {
-    font-size: 20px;
-    font-weight: 200;
-    margin-left: 10%;
-  }
-
-  .slogan span {
-    width: 50%;
-    margin-left: 1%;
-    /* 추가: 각 단어가 절반의 너비를 차지하도록 설정 */
-    text-align: center;
-    /* 추가: 텍스트 중앙 정렬 */
+    display: none; /* 요소가 완전히 사라지고 공간도 차지하지 않음 */
   }
 
   .serviceName {
     font-size: 30px;
-
-    margin-left: 5%;
+    margin-left: -10%;
   }
 
   .text-container {
@@ -538,17 +523,11 @@ const navItems = [
   }
 
   .main-nav {
-    gap: 3px;
-    flex-wrap: wrap;
-    /* 추가: 줄 바꿈 허용 */
-    justify-content: center;
-    /* 추가: 중앙 정렬 */
-    max-width: 450px;
-    /* 추가: 최대 너비 설정 */
+    display: none; /* 요소가 완전히 사라지고 공간도 차지하지 않음 */
   }
 
   .nav-item {
-    font-size: 18px;
+    display: none; /* 요소가 완전히 사라지고 공간도 차지하지 않음 */
   }
 }
 
@@ -556,7 +535,7 @@ const navItems = [
 @media (max-width: 480px) {
   /* 햄버거 메뉴 */
   .hamburger-menu {
-    top: 50%;
+
     right: 10px;
     /* 오른쪽 정렬 유지 */
   }
@@ -566,40 +545,6 @@ const navItems = [
     right: 10px;
   }
 
-  .imageLogo {
-    position: absolute;
-    width: 12%;
-    top: 65px;
-    left: 25px;
-    margin-right: 0px;
-    margin-left: 0px;
-  }
 
-  .slogan {
-    font-size: 20px;
-    font-weight: 200;
-    margin-left: 10%;
-  }
-
-  .slogan span {
-    width: 50%;
-    margin-left: 1%;
-    /* 추가: 각 단어가 절반의 너비를 차지하도록 설정 */
-    text-align: center;
-    /* 추가: 텍스트 중앙 정렬 */
-  }
-
-  .serviceName {
-    font-size: 30px;
-    margin: 0 auto;
-  }
-
-  .main-nav {
-    gap: 1px;
-  }
-
-  .nav-item[data-v-1d2ba0dc] {
-    padding: 3px 5px;
-  }
 }
 </style>
