@@ -47,42 +47,30 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';
 
-export default {
-  name: 'UserLogin',
-  setup() {
-    const router = useRouter();
-    const username = ref('');
-    const password = ref('');
-    const error = ref('');
-    const isLoading = ref(false);
+const router = useRouter();
+const username = ref('');
+const password = ref('');
+const error = ref('');
+const isLoading = ref(false);
 
-    const login = async () => {
-      error.value = '';
-      isLoading.value = true;
-      try {
-        const response = await api.login(username.value, password.value);
-        api.setAuthHeader(response.data.token);
-        router.push('/');
-      } catch (err) {
-        console.error('Login failed', err.response ? err.response.data : err.message);
-        error.value = err.response?.data?.message || '로그인에 실패했습니다. 다시 시도해 주세요.';
-      } finally {
-        isLoading.value = false;
-      }
-    };
-
-    return {
-      username,
-      password,
-      login,
-      error,
-      isLoading
-    };
+const login = async () => {
+  error.value = '';
+  isLoading.value = true;
+  
+  try {
+    const response = await api.login(username.value, password.value);
+    api.setAuthHeader(response.data.token);
+    router.push('/');
+  } catch (err) {
+    console.error('Login failed', err.response ? err.response.data : err.message);
+    error.value = err.response?.data?.message || '로그인에 실패했습니다. 다시 시도해 주세요.';
+  } finally {
+    isLoading.value = false;
   }
 };
 </script>

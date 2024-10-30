@@ -36,48 +36,34 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '@/services/api';
 
-export default {
-  name: 'UserRegister',
-  setup() {
-    const router = useRouter();
-    const name = ref('');
-    const phoneNumber = ref('');
-    const username = ref('');
-    const email = ref('');
-    const password = ref('');
-    const error = ref('');
-    const isLoading = ref(false);
+const router = useRouter();
+const name = ref('');
+const phoneNumber = ref('');
+const username = ref('');
+const email = ref('');
+const password = ref('');
+const error = ref('');
+const isLoading = ref(false);
 
-    const register = async () => {
-      error.value = '';
-      isLoading.value = true;
-      try {
-        await api.register(name.value, phoneNumber.value, username.value, email.value, password.value);
-        router.push('/login');
-      } catch (err) {
-        console.error('Registration error:', err.response ? err.response.data : err.message);
-        error.value = err.response?.data?.message || '회원가입에 실패했습니다. 다시 시도해 주세요.';
-      } finally {
-        isLoading.value = false;
-      }
-    };
-
-    return {
-      name,
-      phoneNumber,
-      username,
-      email,
-      password,
-      register,
-      error,
-      isLoading
-    };
+const register = async () => {
+  error.value = '';
+  isLoading.value = true;
+  try {
+    await api.register(name.value, phoneNumber.value, username.value, email.value, password.value);
+    router.push('/login');
+  } catch (err) {
+    console.error('Registration error:', err.response ? err.response.data : err.message);
+    error.value = err.response?.data?.message || '회원가입에 실패했습니다. 다시 시도해 주세요.';
+  } finally {
+    isLoading.value = false;
   }
+
+
 };
 </script>
 
@@ -151,7 +137,7 @@ input {
 .signup-button {
   width: 100%;
   padding: 0.5rem;
-  background-color:  #90ce2d;
+  background-color: #90ce2d;
   color: white;
   border: none;
   border-radius: 5px;
