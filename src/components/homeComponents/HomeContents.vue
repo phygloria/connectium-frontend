@@ -177,8 +177,29 @@ const goToContents = (route) => {
 
 /* 소형 모바일: 575px 이하 */
 @media (max-width: 575px)  {
+    /* 상위 컨테이너들의 제약 해제 */
+    .containerBox {
+        padding: 1% 0;  /* 좌우 패딩 제거 */
+        max-width: none;  /* 최대 너비 제한 해제 */
+    }
+
     .containerLine {
         border-radius: 20px;
+        width: 100%;  /* 너비를 100%로 설정 */
+        max-width: none;  /* 최대 너비 제한 해제 */
+    }
+
+    .contentsContainer {
+        width: 100%;  /* 너비를 100%로 설정 */
+        max-width: none;  /* 최대 너비 제한 해제 */
+    }
+
+    .contentsBar {
+        height: 350px;
+        width: 300px;  /* 원하는 크기로 설정 */
+        min-width: 570px;  /* 최소 너비 설정 */
+        max-width: none;  /* 최대 너비 제한 해제 */
+        margin: 0 auto;  /* 중앙 정렬 */
     }
 
     .title {
@@ -186,11 +207,6 @@ const goToContents = (route) => {
     }
     .contentsImg {
         margin-bottom: 2px;
-    }
-
-    .contentsBar {
-        height: 350px;    /* ⭐ 모바일에서의 세로 크기 조절 */
-        width: 550px;
     }
 
     .image-text {
