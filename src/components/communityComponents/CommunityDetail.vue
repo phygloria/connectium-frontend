@@ -1,3 +1,4 @@
+<!-- CommunityDetail -->
 <template>
   <div> <!-- 루트 요소로 전체 감싸기 -->
     <MainTop />

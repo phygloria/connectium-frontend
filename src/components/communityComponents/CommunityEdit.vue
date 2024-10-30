@@ -1,3 +1,4 @@
+<!-- CommunityEdit -->
 <template>
 
   <MainTop />
@@ -38,11 +39,14 @@ import MainTop from '@/components/MainTop.vue'
 import api from '@/services/api.js'
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useCategoryStore } from '@/stores/categoryStore'
+
+const categoryStore = useCategoryStore()
+const categories = categoryStore.getCategoryByValue()
 
 const route = useRoute()
 const router = useRouter()
 const post = ref(null)
-const categories = ['5세미만', '5세~6세', '7세~9세', '10세이상']
 
 const fetchPost = async () => {
   try {
