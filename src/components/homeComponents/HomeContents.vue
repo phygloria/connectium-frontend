@@ -177,29 +177,37 @@ const goToContents = (route) => {
 
 /* 소형 모바일: 575px 이하 */
 @media (max-width: 575px)  {
-    /* 상위 컨테이너들의 제약 해제 */
-    .containerBox {
-        padding: 1% 0;  /* 좌우 패딩 제거 */
-        max-width: none;  /* 최대 너비 제한 해제 */
-    }
-
     .containerLine {
         border-radius: 20px;
-        width: 100%;  /* 너비를 100%로 설정 */
-        max-width: none;  /* 최대 너비 제한 해제 */
+        width: 100%;
+        overflow: hidden; /* 추가: 내부 컨텐츠가 넘치지 않도록 */
+        padding: 0px;
     }
 
     .contentsContainer {
-        width: 100%;  /* 너비를 100%로 설정 */
-        max-width: none;  /* 최대 너비 제한 해제 */
+        width: 100%;
+        padding: 10px;
     }
 
     .contentsBar {
         height: 350px;
-        width: 300px;  /* 원하는 크기로 설정 */
-        min-width: 530px;  /* 최소 너비 설정 */
-        max-width: none;  /* 최대 너비 제한 해제 */
-        margin: 0 auto;  /* 중앙 정렬 */
+        width: 100%; /* containerLine에 맞춤 */
+        display: flex;
+        justify-content: flex-start; /* 왼쪽부터 정렬 */
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .contentsImg {
+        flex: 0 0 auto; /* 크기 고정 */
+        width: 250px; /* 이미지 컨테이너 너비 설정 */
+        margin-bottom: 2px;
+    }
+
+    .contents {
+        width: 100%;
+        height: 200px; /* 이미지 높이 고정 */
+        object-fit: cover;
     }
 
     .title {
