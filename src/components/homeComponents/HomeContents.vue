@@ -197,7 +197,7 @@ const goToContents = (route) => {
     .contentsBar {
         height: 350px;
         width: 300px;  /* 원하는 크기로 설정 */
-        min-width: 570px;  /* 최소 너비 설정 */
+        min-width: 530px;  /* 최소 너비 설정 */
         max-width: none;  /* 최대 너비 제한 해제 */
         margin: 0 auto;  /* 중앙 정렬 */
     }
