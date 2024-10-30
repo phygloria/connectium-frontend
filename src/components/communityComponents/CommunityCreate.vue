@@ -1,3 +1,4 @@
+<!-- CommunityCreate -->
 <template>
 
   <MainTop />
@@ -40,16 +41,20 @@
 </template>
 
 <script setup>
-import '@/assets/css/common_container.css'
+import '@/assets/css/common_container.css';
 import '@/assets/css/post_create.css';
 import MainTop from '@/components/MainTop.vue';
 
-import api from '@/services/api.js'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import api from '@/services/api.js';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useCategoryStore } from '@/stores/categoryStore';
 
 const router = useRouter()
-const categories = ['영유아(0~2세)', '유아(3~5세)', '취학 전 아동(6~7세)', '초등학교 저학년(8~9세)', '초등학교 중학년(10~11세)', '초등학교 고학년(12~13세)',]
+
+const categoryStore = useCategoryStore()
+const categories = categoryStore.getCategoryByValue() // select box용 value만 가져오기
+
 const newPost = ref({
   title: '',
   author: '',

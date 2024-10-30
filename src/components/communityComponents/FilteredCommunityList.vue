@@ -1,3 +1,5 @@
+<!-- FilteredCommunityList -->
+
 <template>
   <MainTop />
 
@@ -105,9 +107,14 @@ import MainTop from "@/components/MainTop.vue";
 import api from "@/services/api";
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
+import { useCategoryStore } from '@/stores/categoryStore';
 
 const route = useRoute();
+
 const category = computed(() => route.params.category);
+const categoryStore = useCategoryStore()
+const categories = categoryStore.getAllCategories()
+
 const posts = ref([]);
 
 const isDropdownOpen = ref(false);
@@ -152,14 +159,6 @@ onMounted(() => {
   });
 });
 
-const categories = [
-  { value: "영유아(0~2세)", label: "0~2세" },
-  { value: "유아(3~5세)", label: "3~5세" },
-  { value: "취학 전 아동(6~7세)", label: "6~7세" },
-  { value: "초등학교 저학년(8~9세)", label: "8~9세" },
-  { value: "초등학교 중학년(10~11세)", label: "10~11세" },
-  { value: "초등학교 고학년(12~13세)", label: "12~13세" },
-];
 
 onMounted(fetchPosts);
 </script>
@@ -284,7 +283,7 @@ onMounted(fetchPosts);
   }
 
   .category-buttons .btn-container {
-    flex: 0 0 calc(33.33% - 15px);
+    flex: 0 0 calc(33.33% - 77px);
   }
 
   .category-buttons button {
@@ -296,16 +295,15 @@ onMounted(fetchPosts);
 /* 태블릿 */
 @media (max-width: 1024px) {
   .category-buttons {
-    gap: 12px;
+    gap: 7px;
   }
 
   .category-buttons .btn-container {
-    flex: 0 0 calc(50% - 12px);
+    flex: 0 0 calc(33% - 120px);
   }
 
   .category-buttons button {
-    font-size: 16px;
-    height: 45px;
+    font-size: 17px;
   }
 }
 
@@ -316,7 +314,7 @@ onMounted(fetchPosts);
   }
 
   .category-buttons .btn-container {
-    flex: 0 0 auto;
+    flex: 0 0 calc(33% - 120px);
     width: 100%;
   }
 
